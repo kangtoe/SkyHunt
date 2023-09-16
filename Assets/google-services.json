@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "496654973371",
+    "project_id": "fir-first-b6392",
+    "storage_bucket": "fir-first-b6392.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496654973371:android:fbb504f06f0ce0f0382c9e",
+        "android_client_info": {
+          "package_name": "com.kang.skyHunt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "496654973371-jh7rdnp67kkmam2i62r1p02nttsfuk1j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUTuRvYdx_ORAwCAk-9NPslXB80tAkRs4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "496654973371-jh7rdnp67kkmam2i62r1p02nttsfuk1j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
