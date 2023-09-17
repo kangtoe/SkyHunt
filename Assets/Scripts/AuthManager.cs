@@ -13,6 +13,7 @@ public class AuthManager : MonoBehaviour
     public InputField emailField;
     public InputField passwordField;
     public Button signInButton;
+    public Button signInButton_Anonymous;
 
     public static FirebaseApp firebaseApp;
     public static FirebaseAuth firebaseAuth;
@@ -48,6 +49,30 @@ public class AuthManager : MonoBehaviour
         });
     }
 
+    void LoginTask(System.Threading.Tasks.Task<AuthResult> task)
+    {
+        Debug.Log($"Sign in status : {task.Status}");
+
+        IsSignInOnProgress = false;
+        signInButton.interactable = true;
+
+        if (task.IsFaulted)
+        {
+            Debug.LogError(task.Exception);
+        }
+        else if (task.IsCanceled)
+        {
+            Debug.LogError("It's canceled");
+        }
+        else
+        {
+            User = task.Result.User;
+            Debug.Log(User.Email);
+            SceneManager.LoadScene("Lobby");
+        }
+    }
+
+    // email login
     public void SignIn()
     {
         if (!IsFirebaseReady || IsSignInOnProgress || User != null)
@@ -59,25 +84,21 @@ public class AuthManager : MonoBehaviour
         // firebaseAuth.SignInWithCredentialAsync 사용
         firebaseAuth.SignInWithEmailAndPasswordAsync(emailField.text, passwordField.text).ContinueWithOnMainThread(task =>
         {
-            Debug.Log($"Sign in status : {task.Status}");
+            LoginTask(task);
+        });
+    }
 
-            IsSignInOnProgress = false;
-            signInButton.interactable = true;
+    // Anonymous login
+    public void SignIn_Anonymous()
+    {
+        if (!IsFirebaseReady || IsSignInOnProgress || User != null)
+        {
+            return;
+        }
 
-            if (task.IsFaulted)
-            {
-                Debug.LogError(task.Exception);
-            }
-            else if (task.IsCanceled)
-            {
-                Debug.LogError("It's canceled");
-            }
-            else
-            {
-                User = task.Result.User;
-                Debug.Log(User.Email);
-                SceneManager.LoadScene("Lobby");
-            }
+        firebaseAuth.SignInAnonymouslyAsync().ContinueWithOnMainThread(task =>
+        {
+            LoginTask(task);
         });
     }
 }
