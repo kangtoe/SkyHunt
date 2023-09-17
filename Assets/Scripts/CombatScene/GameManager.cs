@@ -18,19 +18,23 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
     private static GameManager instance;
 
-    public Text scoreText;
+    //public Text scoreText;
     public Transform[] spawnPositions;
     public GameObject playerPrefab;
-    public GameObject ballPrefab;
+    //public GameObject ballPrefab;
 
-    private int[] playerScores;
+    //private int[] playerScores;
 
     private void Start()
     {
-        playerScores = new[] { 0, 0 };
+        //playerScores = new[] { 0, 0 };
         SpawnPlayerObject(); // 각 플레이어가 하나씩 오브젝트 생성
 
-        if (PhotonNetwork.IsMasterClient) SpawnBall();
+        if (PhotonNetwork.IsMasterClient)
+        {
+            // 볼 스폰
+            //PhotonNetwork.Instantiate(ballPrefab.name, Vector2.zero, Quaternion.identity).GetComponent<Ball>();
+        }
     }
 
     private void SpawnPlayerObject()
@@ -47,11 +51,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
     }
 
-    private void SpawnBall()
-    {
-        PhotonNetwork.Instantiate(ballPrefab.name, Vector2.zero, Quaternion.identity).GetComponent<Ball>();
-    }
-
     // 현재 게임 나가기 -> 버튼 이벤트
     public void QuitGame()
     {
@@ -63,19 +62,19 @@ public class GameManager : MonoBehaviourPunCallbacks
         SceneManager.LoadScene("Lobby");
     }
 
-    public void AddScore(int playerNumber, int score)
-    {
-        if (!PhotonNetwork.IsMasterClient) return; // 호스트만 점수 증가 제어
+    //public void AddScore(int playerNumber, int score)
+    //{
+    //    if (!PhotonNetwork.IsMasterClient) return; // 호스트만 점수 증가 제어
 
-        playerScores[playerNumber - 1] += score;
+    //    playerScores[playerNumber - 1] += score;
 
-        photonView.RPC(nameof(RPCUpdateScoreText), RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
-    }
+    //    photonView.RPC(nameof(RPCUpdateScoreText), RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
+    //}
 
-    // 실행 : 마스터 -> 다른 모든 로컬로 전파
-    [PunRPC]
-    private void RPCUpdateScoreText(string player1ScoreText, string player2ScoreText)
-    {
-        scoreText.text = $"{player1ScoreText} : {player2ScoreText}";
-    }
+    //// 실행 : 마스터 -> 다른 모든 로컬로 전파
+    //[PunRPC]
+    //private void RPCUpdateScoreText(string player1ScoreText, string player2ScoreText)
+    //{
+    //    scoreText.text = $"{player1ScoreText} : {player2ScoreText}";
+    //}
 }

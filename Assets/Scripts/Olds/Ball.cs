@@ -30,7 +30,7 @@ public class Ball : MonoBehaviourPun
                 var goalpost = hit.collider.GetComponent<Goalpost>();
                 if (goalpost != null)
                 {
-                    GameManager.Instance.AddScore(goalpost.playerNumber, 1);
+                    //GameManager.Instance.AddScore(goalpost.playerNumber, 1);
                 }
             }
 

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviourPunCallbacks // PunCallback (포톤 pun 콜백) 감지
 {
-    private readonly string gameVersion = "1";
+    private readonly string gameVersion = "0.01";
 
     public Text connectionInfoText;
     public Button joinButton;
@@ -73,6 +73,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks // PunCallback (포톤 pun
         connectionInfoText.text = "방 참가 성공";
 
         // 모든 룸 참가자 Main 씬 로드
-        PhotonNetwork.LoadLevel("Main");
+        PhotonNetwork.LoadLevel("Combat");
     }
 }
