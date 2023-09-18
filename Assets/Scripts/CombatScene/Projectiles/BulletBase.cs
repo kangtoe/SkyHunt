@@ -25,10 +25,12 @@ public class BulletBase : MonoBehaviourPun
         //if (!photonView.IsMine) return;
 
         rbody = GetComponent<Rigidbody2D>();
-        trail = GetComponentInChildren<TrailRenderer>();
-        Invoke(nameof(DestroySelf), liveTime);
-        rbody.velocity = transform.up * movePower;                
+        trail = GetComponentInChildren<TrailRenderer>();        
+        rbody.velocity = transform.up * movePower;
         //Debug.Log("velocity : " + rbody.velocity);
+
+        if (!photonView.IsMine) return;
+        Invoke(nameof(DestroySelf), liveTime);
     }
 
     virtual protected void OnTriggerEnter2D(Collider2D other)
@@ -70,6 +72,7 @@ public class BulletBase : MonoBehaviourPun
     }
 
     bool destoryProcessing = false;
+
     protected void DestroySelf()
     {
         if (destoryProcessing) return;
@@ -85,6 +88,6 @@ public class BulletBase : MonoBehaviourPun
         //Debug.Log("Instantiate hitEffect");
         if(hitEffect) Instantiate(hitEffect, transform.position, transform.rotation);
 
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
     }
 }
