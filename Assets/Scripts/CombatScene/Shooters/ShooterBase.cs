@@ -22,7 +22,7 @@ public abstract class ShooterBase : MonoBehaviourPun
     // 사격 시도
     protected virtual void TryFire()
     {
-        Debug.Log("TryFire");
+        //Debug.Log("TryFire");
 
         // 마지막 발사로부터 충분한 시간 간격이 있었는가
         if (Time.time >= lastFireTime + fireDelay)
@@ -38,7 +38,7 @@ public abstract class ShooterBase : MonoBehaviourPun
     // 실제 사격 -> shooter의 firePoint 방향대로 projectile을 생성
     protected virtual void Fire()
     {
-        if (!PhotonNetwork.IsMasterClient) return;
+        //if (!PhotonNetwork.IsMasterClient) return;
 
         foreach (Transform firePoint in firePoints)
         {

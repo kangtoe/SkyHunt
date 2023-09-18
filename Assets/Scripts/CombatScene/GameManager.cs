@@ -55,11 +55,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         GameObject go = PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
 
-        // 탄환 프리팹 지정
-        go.GetComponent<ShooterBase>().projectilePrefab = playerBulletPrefabs[localPlayerIndex];
-
-        // 리스트 추가
-        //spwanedPlayerShips.Add(go.transform);
+        // 생성 후 처리        
         AddPlayer_RPC(go.GetPhotonView().ViewID);        
     }
 
@@ -84,18 +80,28 @@ public class GameManager : MonoBehaviourPunCallbacks
     void SetPlayerColors()
     {
         Color _color;
-        for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; i++)
+        for (int i = 0; i < spwanedPlayerShips.Count; i++)
         {
             Debug.Log("spwanedPlayerShips count : " + spwanedPlayerShips.Count);
             Debug.Log("set playership color index : " + i);
 
             // 기체 및 탄환 색 설정                        
-            int tmp = i % 2;
-            if (tmp == 0) _color = Color.blue;
+            //int tmp = i % 2;
+            //if (tmp == 0) _color = Color.blue;
+            //else _color = Color.green;
+            if (photonView.IsMine) _color = Color.blue;
             else _color = Color.green;
 
-            spwanedPlayerShips[i].GetComponent<ColorCtrl>().SetColor(_color);
-            playerBulletPrefabs[i].GetComponent<ColorCtrl>().SetColor(_color);
+             Transform ship = spwanedPlayerShips[i];
+            ShooterBase shooter = ship.GetComponent<ShooterBase>();
+
+            // 탄환 프리팹 지정
+            shooter.projectilePrefab = playerBulletPrefabs[i];
+
+            ColorCtrl shipColor = ship.GetComponent<ColorCtrl>();
+            shipColor.SetColor(_color);
+            ColorCtrl bullectColor = shooter.projectilePrefab.GetComponent<ColorCtrl>();
+            bullectColor.SetColor(_color);            
         }
     }
 

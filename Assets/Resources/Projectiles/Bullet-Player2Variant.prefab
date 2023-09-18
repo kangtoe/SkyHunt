@@ -7,6 +7,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1021294031811240234, guid: 6ed91df594bc6be4f9eeff11a3718909,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021294031811240234, guid: 6ed91df594bc6be4f9eeff11a3718909,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021294031811240234, guid: 6ed91df594bc6be4f9eeff11a3718909,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021294031811240234, guid: 6ed91df594bc6be4f9eeff11a3718909,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4099821310999120964, guid: 6ed91df594bc6be4f9eeff11a3718909,
         type: 3}
       propertyPath: sceneViewId
@@ -66,6 +86,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5452329447425127043, guid: 6ed91df594bc6be4f9eeff11a3718909,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5452329447425127043, guid: 6ed91df594bc6be4f9eeff11a3718909,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5452329447425127044, guid: 6ed91df594bc6be4f9eeff11a3718909,
         type: 3}

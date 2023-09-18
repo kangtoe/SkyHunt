@@ -66,7 +66,7 @@ public class BulletBase : MonoBehaviourPun
     // shooter에서 생성 시 호출 -> 초기화
     public void Init(GameObject hitEffect, LayerMask targetLayer, int damage, int impact, float movePower, float liveTime)
     {
-        Debug.Log("init");
+        //Debug.Log("init");
 
         this.hitEffect = hitEffect;
         this.targetLayer = targetLayer;
