@@ -5,20 +5,33 @@ using UnityEngine;
 
 public class ColorCtrl : MonoBehaviourPun
 {
-    private SpriteRenderer spriteRenderer;
+    Color myColor;
+
+    SpriteRenderer spriteRenderer;
+    TrailRenderer trailRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        trailRenderer = GetComponentInChildren<TrailRenderer>();        
 
         if (!photonView.IsMine)
         {
-            spriteRenderer.color = Color.red;
+            myColor = spriteRenderer.color = Color.green;
         }
         else
         {
-            spriteRenderer.color = Color.blue;
+            myColor = spriteRenderer.color = Color.red;
         }
+
+        spriteRenderer.color = myColor;
+
+        if (trailRenderer)
+        {
+            trailRenderer.startColor = myColor;
+            myColor.a = 0;
+            trailRenderer.endColor = myColor;
+        }        
     }
 }
