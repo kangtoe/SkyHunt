@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2196367081785120603}
   - component: {fileID: 734367197639289462}
   - component: {fileID: 770557204104256601}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ship03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,8 +181,7 @@ MonoBehaviour:
   firePoints:
   - {fileID: 6695857600163221684}
   fireDelay: 0.1
-  projectilePrefab: {fileID: 7742814071415333893, guid: 8418a3444126e544987294605ea844d2,
-    type: 3}
+  projectilePrefab: {fileID: 0}
   hitEffect: {fileID: 0}
   targetLayer:
     serializedVersion: 2
@@ -211,7 +210,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &3667960167769076896
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6695857600163221684}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: firePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

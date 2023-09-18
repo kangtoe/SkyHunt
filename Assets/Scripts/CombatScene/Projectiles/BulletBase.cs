@@ -17,6 +17,8 @@ public class BulletBase : MonoBehaviourPun
     public float liveTime;
 
     protected Rigidbody2D rbody;
+
+    SpriteRenderer sprite;
     TrailRenderer trail;
 
     // Start is called before the first frame update
@@ -24,8 +26,9 @@ public class BulletBase : MonoBehaviourPun
     {
         //if (!photonView.IsMine) return;
 
+        //sprite = GetComponent<SpriteRenderer>();
+        //trail = GetComponentInChildren<TrailRenderer>();        
         rbody = GetComponent<Rigidbody2D>();
-        trail = GetComponentInChildren<TrailRenderer>();        
         rbody.velocity = transform.up * movePower;
         //Debug.Log("velocity : " + rbody.velocity);
 
@@ -63,12 +66,17 @@ public class BulletBase : MonoBehaviourPun
     // shooter에서 생성 시 호출 -> 초기화
     public void Init(GameObject hitEffect, LayerMask targetLayer, int damage, int impact, float movePower, float liveTime)
     {
+        Debug.Log("init");
+
         this.hitEffect = hitEffect;
         this.targetLayer = targetLayer;
         this.damage = damage;
         this.impact = impact;
         this.movePower = movePower;
         this.liveTime = liveTime;
+
+        sprite = GetComponent<SpriteRenderer>();        
+        trail = GetComponentInChildren<TrailRenderer>();        
     }
 
     bool destoryProcessing = false;
