@@ -17,12 +17,12 @@ public abstract class ShooterBase : MonoBehaviourPun
     public int impactPower = 0;
     public int projectileMovePower = 10;
     public float projectileLiveTime = 3f;
-    public Color? projectileColor = null;
+    public Color color; // 발사체 색
 
     // 사격 시도
     protected virtual void TryFire()
     {
-        //Debug.Log("TryFire");
+        //Debug.Log("TryFire");        
 
         // 마지막 발사로부터 충분한 시간 간격이 있었는가
         if (Time.time >= lastFireTime + fireDelay)
@@ -49,7 +49,7 @@ public abstract class ShooterBase : MonoBehaviourPun
             // 발사체 생성
             GameObject go = PhotonNetwork.Instantiate(name, pos, quat);
             go.GetComponent<BulletBase>().Init(
-                hitEffect, targetLayer, damage, impactPower, projectileMovePower, projectileLiveTime);
+                hitEffect, targetLayer, damage, impactPower, projectileMovePower, projectileLiveTime, color);
         }        
     }
 }

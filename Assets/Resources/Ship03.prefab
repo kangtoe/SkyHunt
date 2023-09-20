@@ -181,7 +181,8 @@ MonoBehaviour:
   firePoints:
   - {fileID: 6695857600163221684}
   fireDelay: 0.1
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 7742814071415333893, guid: b6bd1ad98e859854a8cd194247489c3d,
+    type: 3}
   hitEffect: {fileID: 0}
   targetLayer:
     serializedVersion: 2
@@ -190,6 +191,7 @@ MonoBehaviour:
   impactPower: 0
   projectileMovePower: 25
   projectileLiveTime: 3
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &770557204104256601
 Rigidbody2D:
   serializedVersion: 4

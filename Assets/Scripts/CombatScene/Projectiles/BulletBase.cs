@@ -64,7 +64,7 @@ public class BulletBase : MonoBehaviourPun
     }
 
     // shooter에서 생성 시 호출 -> 초기화
-    public void Init(GameObject hitEffect, LayerMask targetLayer, int damage, int impact, float movePower, float liveTime)
+    public void Init(GameObject hitEffect, LayerMask targetLayer, int damage, int impact, float movePower, float liveTime, Color color)
     {
         //Debug.Log("init");
 
@@ -76,7 +76,10 @@ public class BulletBase : MonoBehaviourPun
         this.liveTime = liveTime;
 
         sprite = GetComponent<SpriteRenderer>();        
-        trail = GetComponentInChildren<TrailRenderer>();        
+        trail = GetComponentInChildren<TrailRenderer>();
+
+        ColorCtrl colorCtrl = GetComponent<ColorCtrl>();
+        colorCtrl.SetColor(color);
     }
 
     bool destoryProcessing = false;

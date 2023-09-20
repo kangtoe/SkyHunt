@@ -198,9 +198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6470d628677225c4398f7b04cc28790f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myColor: {r: 1, g: 1, b: 1, a: 1}
-  spriteRenderer: {fileID: 7742814071415333890}
-  trailRenderer: {fileID: 3382992097641740203}
 --- !u!212 &7742814071415333890
 SpriteRenderer:
   m_ObjectHideFlags: 0

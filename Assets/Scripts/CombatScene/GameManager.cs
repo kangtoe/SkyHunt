@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     //public Text scoreText;
     public Transform[] spawnPositions;
-    public GameObject[] playerBulletPrefabs;
+    //public GameObject[] playerBulletPrefabs;
     public GameObject playerPrefab;
 
     //public GameObject ballPrefab;
@@ -81,27 +81,24 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         Color _color;
         for (int i = 0; i < spwanedPlayerShips.Count; i++)
-        {
+        {            
             Debug.Log("spwanedPlayerShips count : " + spwanedPlayerShips.Count);
             Debug.Log("set playership color index : " + i);
 
             // 기체 및 탄환 색 설정                        
             //int tmp = i % 2;
             //if (tmp == 0) _color = Color.blue;
-            //else _color = Color.green;
-            if (photonView.IsMine) _color = Color.blue;
-            else _color = Color.green;
+            //else _color = Color.green;            
 
-             Transform ship = spwanedPlayerShips[i];
-            ShooterBase shooter = ship.GetComponent<ShooterBase>();
-
-            // 탄환 프리팹 지정
-            shooter.projectilePrefab = playerBulletPrefabs[i];
+            Transform ship = spwanedPlayerShips[i];            
+            
+            if (ship.GetComponent<PhotonView>().IsMine) _color = Color.blue;
+            else _color = Color.green;            
 
             ColorCtrl shipColor = ship.GetComponent<ColorCtrl>();
             shipColor.SetColor(_color);
-            ColorCtrl bullectColor = shooter.projectilePrefab.GetComponent<ColorCtrl>();
-            bullectColor.SetColor(_color);            
+            ShooterBase shooter = ship.GetComponent<ShooterBase>();
+            shooter.color = _color;
         }
     }
 
