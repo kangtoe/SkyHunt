@@ -68,7 +68,15 @@ public class GameManager : MonoBehaviourPunCallbacks
         Debug.Log("AddPlayer : " + newObject.name);
 
         // 각 플레이어 기체 색 변경
-        SetPlayerColors_RPC();
+        int i = photonView.OwnerActorNr;       
+        Color _color;
+        int tmp = i % 2;
+        if (tmp == 0) _color = Color.blue;
+        else _color = Color.green;
+        ColorCtrl shipColor = photonView.GetComponent<ColorCtrl>();
+        shipColor.SetColor(_color);
+        ShooterBase shooter = photonView.GetComponent<ShooterBase>();
+        shooter.color = _color;
     }
 
     void AddPlayer_RPC(int viewId)
@@ -76,37 +84,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         photonView.RPC(nameof(AddPlayer), RpcTarget.AllBuffered, viewId);
     }
 
-    [PunRPC]
-    void SetPlayerColors()
-    {
-        Color _color;
-        for (int i = 0; i < spwanedPlayerShips.Count; i++)
-        {            
-            Debug.Log("spwanedPlayerShips count : " + spwanedPlayerShips.Count);
-            Debug.Log("set playership color index : " + i);
-
-            // 기체 및 탄환 색 설정                        
-            //int tmp = i % 2;
-            //if (tmp == 0) _color = Color.blue;
-            //else _color = Color.green;            
-
-            Transform ship = spwanedPlayerShips[i];            
-            
-            if (ship.GetComponent<PhotonView>().IsMine) _color = Color.blue;
-            else _color = Color.green;            
-
-            ColorCtrl shipColor = ship.GetComponent<ColorCtrl>();
-            shipColor.SetColor(_color);
-            ShooterBase shooter = ship.GetComponent<ShooterBase>();
-            shooter.color = _color;
-        }
-    }
-
-    void SetPlayerColors_RPC()
-    {               
-        photonView.RPC(nameof(SetPlayerColors), RpcTarget.All);
-    }
-   
     // 현재 게임 나가기 -> 버튼 이벤트
     public void QuitGame()
     {
