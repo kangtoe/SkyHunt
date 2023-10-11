@@ -183,7 +183,6 @@ MonoBehaviour:
   fireDelay: 0.1
   projectilePrefab: {fileID: 7742814071415333893, guid: b6bd1ad98e859854a8cd194247489c3d,
     type: 3}
-  hitEffect: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 0

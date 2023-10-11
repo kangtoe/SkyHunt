@@ -11,8 +11,8 @@ public abstract class ShooterBase : MonoBehaviourPun
 
     [Header("Projectile Info")]
     public GameObject projectilePrefab; // 발사할 탄환
-    public GameObject hitEffect;
-    public LayerMask targetLayer;
+    //public GameObject hitEffect;// 발사체 프리펨 수동 지정할것 : 동기화 직렬화 불가
+    public LayerMask targetLayer; 
     public int damage = 0;
     public int impactPower = 0;
     public int projectileMovePower = 10;
@@ -48,8 +48,9 @@ public abstract class ShooterBase : MonoBehaviourPun
 
             // 발사체 생성
             GameObject go = PhotonNetwork.Instantiate(name, pos, quat);
-            go.GetComponent<BulletBase>().Init(
-                hitEffect, targetLayer, damage, impactPower, projectileMovePower, projectileLiveTime, color);
+            int _layerMask = targetLayer;
+            go.GetComponent<BulletBase>().Init_RPC(
+                _layerMask, damage, impactPower, projectileMovePower, projectileLiveTime, color.r, color.g, color.b);
         }        
     }
 }

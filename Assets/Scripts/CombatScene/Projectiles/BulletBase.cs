@@ -63,12 +63,18 @@ public class BulletBase : MonoBehaviourPun
         }
     }
 
-    // shooter에서 생성 시 호출 -> 초기화
-    public void Init(GameObject hitEffect, LayerMask targetLayer, int damage, int impact, float movePower, float liveTime, Color color)
+    public void Init_RPC(int targetLayer, int damage, int impact, float movePower, float liveTime, float colorR, float colorG, float colorB)
     {
-        //Debug.Log("init");
+        photonView.RPC(nameof(Init), RpcTarget.All, targetLayer, damage, impact, movePower, liveTime, colorR, colorG, colorB);
+    }
 
-        this.hitEffect = hitEffect;
+    // 탄환 수치를 사격당 설정할필요 있나? -> TODO : 수치변경시만  static한 값을 수정?
+    [PunRPC]
+    // shooter에서 생성 시 호출 -> 초기화
+    // hitEffect는 GameObject 직렬화가 불가능한 관계로 발사체 프리펩에서 지정할 것 
+    public void Init(int targetLayer, int damage, int impact, float movePower, float liveTime, float colorR, float colorG, float colorB)
+    {
+        //Debug.Log("init");        
         this.targetLayer = targetLayer;
         this.damage = damage;
         this.impact = impact;
@@ -79,6 +85,7 @@ public class BulletBase : MonoBehaviourPun
         trail = GetComponentInChildren<TrailRenderer>();
 
         ColorCtrl colorCtrl = GetComponent<ColorCtrl>();
+        Color color = new Color(colorR, colorG, colorB);
         colorCtrl.SetColor(color);
     }
 
