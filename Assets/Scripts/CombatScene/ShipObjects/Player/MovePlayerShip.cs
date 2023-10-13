@@ -15,8 +15,8 @@ public class MovePlayerShip : MonoBehaviourPun
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
-        //trailEffect = GetComponentInChildren<TrailEffect>();
 
+        //trailEffect = GetComponentInChildren<TrailEffect>();
         //flameEffect = GetComponentInChildren<FlameEffect>();
     }
 

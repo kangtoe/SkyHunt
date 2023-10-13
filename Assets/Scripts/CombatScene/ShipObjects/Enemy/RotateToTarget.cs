@@ -33,7 +33,7 @@ public class RotateToTarget : MonoBehaviourPun
 
     void UpdateTarget()
     {
-        target = GameManager.Instance.GetClosestPlayer(transform.position);
+        target = PlayerSpwaner.Instance.GetClosestPlayer(transform.position).transform;
     }
 
     void RotateTo(Vector3 targetPos, float _rotateSpeed)

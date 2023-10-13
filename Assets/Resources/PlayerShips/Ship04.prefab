@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2196367081785120603}
   - component: {fileID: 734367197639289462}
   - component: {fileID: 770557204104256601}
+  - component: {fileID: -2438584852141793439}
   m_Layer: 8
   m_Name: Ship04
   m_TagString: Untagged
@@ -212,6 +213,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!70 &-2438584852141793439
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770557204104256613}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.55, y: 0.24}
+  m_Direction: 0
 --- !u!1 &3667960167769076896
 GameObject:
   m_ObjectHideFlags: 0

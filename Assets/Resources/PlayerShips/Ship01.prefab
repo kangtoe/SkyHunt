@@ -10,15 +10,15 @@ GameObject:
   m_Component:
   - component: {fileID: 770557204104256615}
   - component: {fileID: -8972913176993062236}
-  - component: {fileID: 4748794261729236230}
+  - component: {fileID: 340355501553116040}
   - component: {fileID: 770557204104256614}
   - component: {fileID: 770557204104256602}
   - component: {fileID: 770557204104256600}
-  - component: {fileID: 2196367081785120603}
   - component: {fileID: 734367197639289462}
   - component: {fileID: 770557204104256601}
+  - component: {fileID: -3336114506390016882}
   m_Layer: 8
-  m_Name: Ship02
+  m_Name: Ship01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,11 +58,11 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 340355501553116040}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &4748794261729236230
+--- !u!114 &340355501553116040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ec068a600a74d37439eacddd98f0224a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3329e5568679a0d4f85ade6fdbc186fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -154,18 +154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovePower: 8
---- !u!114 &2196367081785120603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 770557204104256613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6470d628677225c4398f7b04cc28790f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &734367197639289462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,12 +173,12 @@ MonoBehaviour:
     type: 3}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   damage: 0
   impactPower: 0
   projectileMovePower: 25
   projectileLiveTime: 3
-  color: {r: 0, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 1}
 --- !u!50 &770557204104256601
 Rigidbody2D:
   serializedVersion: 4
@@ -212,6 +200,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!70 &-3336114506390016882
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770557204104256613}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.49, y: 0.58}
+  m_Direction: 0
 --- !u!1 &3667960167769076896
 GameObject:
   m_ObjectHideFlags: 0

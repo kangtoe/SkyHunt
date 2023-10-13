@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4898224190547407401}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: firePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3024717565566927242}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 3024717566723551859}
   - component: {fileID: 3024717566723551861}
   - component: {fileID: 3024717566723551860}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4824,15 +4824,14 @@ GameObject:
   m_Component:
   - component: {fileID: 979198242076312780}
   - component: {fileID: 669752357247487644}
+  - component: {fileID: 5524166034369483380}
   - component: {fileID: 2212678391994595042}
   - component: {fileID: 6243478547130218961}
-  - component: {fileID: 8235884547008637211}
   - component: {fileID: 7629227273868904424}
   - component: {fileID: 5139449305642237351}
-  - component: {fileID: 5524166034369483380}
   - component: {fileID: -992580540219104504}
   - component: {fileID: -1996688903512394340}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: EnemyShip-kido
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4905,6 +4904,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &5524166034369483380
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420318343600928982}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!70 &2212678391994595042
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4936,29 +4956,17 @@ MonoBehaviour:
   firePoints:
   - {fileID: 4898224190547407401}
   fireDelay: 2
-  projectilePrefab: {fileID: 2416596311881659746, guid: bc829fa6e159d1946a42351fa6b6c866,
+  projectilePrefab: {fileID: 7742814071415333893, guid: b6bd1ad98e859854a8cd194247489c3d,
     type: 3}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   damage: 5
   impactPower: 5
   projectileMovePower: 5
   projectileLiveTime: 5
   color: {r: 0, g: 0, b: 0, a: 1}
   shootStartDelay: 2
---- !u!114 &8235884547008637211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5420318343600928982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e33fd5429cf88fb4bb1387008b438106, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7629227273868904424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4986,27 +4994,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnSpeed: 1
   target: {fileID: 0}
---- !u!50 &5524166034369483380
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5420318343600928982}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 1
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &-992580540219104504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5055,7 +5042,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 255617520954385891}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: FlameEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

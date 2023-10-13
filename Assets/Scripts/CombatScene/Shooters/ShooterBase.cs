@@ -47,7 +47,7 @@ public abstract class ShooterBase : MonoBehaviourPun
             Quaternion quat = firePoint.rotation;           
 
             // 발사체 생성
-            GameObject go = PhotonNetwork.Instantiate(name, pos, quat);
+            GameObject go = PhotonNetwork.Instantiate(name, pos, quat);            
             int _layerMask = targetLayer;
             go.GetComponent<BulletBase>().Init_RPC(
                 _layerMask, damage, impactPower, projectileMovePower, projectileLiveTime, color.r, color.g, color.b);
