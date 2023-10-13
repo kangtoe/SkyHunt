@@ -65,7 +65,7 @@ public class BulletBase : MonoBehaviourPun
 
     public void Init_RPC(int targetLayer, int damage, int impact, float movePower, float liveTime, float colorR, float colorG, float colorB)
     {
-        Debug.Log("targetLayer :  " + targetLayer);
+        //Debug.Log("targetLayer :  " + targetLayer);
 
         photonView.RPC(nameof(Init), RpcTarget.All, targetLayer, damage, impact, movePower, liveTime, colorR, colorG, colorB);
     }

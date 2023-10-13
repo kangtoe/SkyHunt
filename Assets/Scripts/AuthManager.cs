@@ -87,6 +87,23 @@ public class AuthManager : MonoBehaviour
             LoginTask(task);
         });
     }
+    public void SignUp()
+    {
+        string email = emailField.text;
+        string password = passwordField.text;
+
+        firebaseAuth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWith(task => {
+            if (task.IsCanceled || task.IsFaulted)
+            {
+                // Handle the error
+            }
+            else if (task.IsCompleted)
+            {
+                // User has been created successfully
+                // You can add further logic here, like redirecting to another scene.
+            }
+        });
+    }
 
     // Anonymous login
     public void SignIn_Anonymous()

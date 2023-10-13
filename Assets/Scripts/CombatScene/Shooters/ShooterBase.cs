@@ -1,7 +1,7 @@
-using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public abstract class ShooterBase : MonoBehaviourPun
 {    
@@ -37,9 +37,7 @@ public abstract class ShooterBase : MonoBehaviourPun
 
     // 실제 사격 -> shooter의 firePoint 방향대로 projectile을 생성
     protected virtual void Fire()
-    {
-        //if (!PhotonNetwork.IsMasterClient) return;
-
+    {        
         foreach (Transform firePoint in firePoints)
         {
             string name = "Projectiles/" + projectilePrefab.name;

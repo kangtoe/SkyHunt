@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class ShooterStandard : ShooterBase
 {
@@ -15,5 +16,12 @@ public class ShooterStandard : ShooterBase
         if (shootStartDelay > 0) return;
 
         TryFire();
+    }
+
+    protected override void Fire()
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+
+        base.Fire();
     }
 }
