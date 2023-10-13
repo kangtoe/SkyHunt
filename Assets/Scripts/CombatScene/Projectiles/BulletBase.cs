@@ -27,7 +27,8 @@ public class BulletBase : MonoBehaviourPun
         //if (!photonView.IsMine) return;
 
         //sprite = GetComponent<SpriteRenderer>();
-        //trail = GetComponentInChildren<TrailRenderer>();        
+        //trail = GetComponentInChildren<TrailRenderer>();
+        
         rbody = GetComponent<Rigidbody2D>();
         rbody.velocity = transform.up * movePower;
         //Debug.Log("velocity : " + rbody.velocity);
@@ -38,29 +39,38 @@ public class BulletBase : MonoBehaviourPun
 
     virtual protected void OnTriggerEnter2D(Collider2D other)
     {
-        if (!photonView.IsMine) return;
+        if (!PhotonNetwork.IsMasterClient) return;
         //Debug.Log("other:" + other.name);
 
         // targetLayer 검사
         if (1 << other.gameObject.layer == targetLayer.value)
         {
-            //Debug.Log("name:" + name + ", hit damege:" + damage);
-
-            // 피해주가
-            Damageable damageable = other.GetComponent<Damageable>();
-            if (damageable)
-            {
-                damageable.GetDamaged(damage);
-            }
-
-            Rigidbody2D rbody = other.GetComponent<Rigidbody2D>();
-            if (rbody)
-            {
-                rbody.AddForce(transform.up * impact, ForceMode2D.Impulse);
-            }
-
-            DestroySelf();
+            int id = other.gameObject.GetPhotonView().ViewID;
+            photonView.RPC(nameof(Impact), RpcTarget.AllBuffered, id);
         }
+    }
+
+    [PunRPC]
+    void Impact(int coll_Id)
+    {
+        PhotonView pv = PhotonView.Find(coll_Id);
+        Collider2D coll = pv.gameObject.GetComponent<Collider2D>();
+
+        // 피해주기
+        Damageable damageable = coll.transform.GetComponent<Damageable>();
+        if (damageable)
+        {
+            damageable.GetDamaged(damage);
+        }
+        // 힘 가하기
+        Rigidbody2D rbody = coll.transform.GetComponent<Rigidbody2D>();
+        if (rbody)
+        {
+            Vector2 dir = coll.transform.position - transform.position;
+            rbody.AddForce(dir * impact, ForceMode2D.Impulse);
+        }
+
+        DestroySelf();
     }
 
     public void Init_RPC(int targetLayer, int damage, int impact, float movePower, float liveTime, float colorR, float colorG, float colorB)
