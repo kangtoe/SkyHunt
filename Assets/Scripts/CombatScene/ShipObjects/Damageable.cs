@@ -20,6 +20,8 @@ public class Damageable : MonoBehaviour
 
     virtual public void GetDamaged(float damage)
     {
+        Debug.Log(name + " : GetDamaged = " + damage);
+
         currnetHealth -= damage;
         if (currnetHealth < 0) currnetHealth = 0;
         if (currnetHealth == 0) Die();
@@ -27,7 +29,7 @@ public class Damageable : MonoBehaviour
 
     virtual protected void Die()
     {
-        Instantiate(diePrefab, transform.position, diePrefab.transform.rotation);
+        if(diePrefab) Instantiate(diePrefab, transform.position, diePrefab.transform.rotation);
         Destroy(gameObject);
     }
 }

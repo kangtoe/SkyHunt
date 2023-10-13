@@ -4833,6 +4833,7 @@ GameObject:
   - component: {fileID: -1996688903512394340}
   - component: {fileID: -4375965329333140877}
   - component: {fileID: 8744602682848603885}
+  - component: {fileID: 1813149349633799926}
   m_Layer: 9
   m_Name: EnemyShip-kido
   m_TagString: Untagged
@@ -4981,7 +4982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cded881f7ec40b347bc05c8da16a493f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePower: 1
+  movePower: 2
 --- !u!114 &5139449305642237351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4994,7 +4995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ffd60065294164a9648c8e912b7b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 1
+  turnSpeed: 2
   target: {fileID: 0}
 --- !u!114 &-992580540219104504
 MonoBehaviour:
@@ -5066,6 +5067,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impactDamage: 10
   impactPower: 10
+--- !u!114 &1813149349633799926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420318343600928982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54115f783d39a3c4da246d7e949a18e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diePrefab: {fileID: 0}
+  bumpEffect: {fileID: 0}
+  maxHealth: 100
 --- !u!1 &7896827576808810116
 GameObject:
   m_ObjectHideFlags: 0

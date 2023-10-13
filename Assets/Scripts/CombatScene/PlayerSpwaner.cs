@@ -68,6 +68,8 @@ public class PlayerSpwaner : MonoBehaviourPunCallbacks
 
         foreach (GameObject ship in spwanedPlayerShips)
         {
+            if (ship == null) continue;
+
             // 플레이어 또는 기준 지점과 각 오브젝트 간의 거리를 계산
             float distance = Vector3.Distance(ship.transform.position, pos);
 

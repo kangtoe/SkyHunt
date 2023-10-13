@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 770557204104256601}
   - component: {fileID: 1124859103299627829}
   - component: {fileID: 1970686112680092158}
+  - component: {fileID: 5534838513538907177}
   m_Layer: 8
   m_Name: Ship02
   m_TagString: Untagged
@@ -261,7 +262,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactDamage: 10
-  impactPower: 10
+  impactPower: 5
+--- !u!114 &5534838513538907177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770557204104256613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3296330db14c0b349a8eb34ca0d45080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diePrefab: {fileID: 0}
+  bumpEffect: {fileID: 0}
+  maxHealth: 100
 --- !u!1 &3667960167769076896
 GameObject:
   m_ObjectHideFlags: 0
