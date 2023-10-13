@@ -13,7 +13,7 @@ public class ColorCtrl : MonoBehaviourPun
         if(!spriteRenderer) spriteRenderer = GetComponent<SpriteRenderer>();
         if(!trailRenderer) trailRenderer = GetComponentInChildren<TrailRenderer>();
 
-        Debug.Log(name + " : set color = " + color);
+        //Debug.Log(name + " : set color = " + color);
 
         spriteRenderer.color = color;
 
