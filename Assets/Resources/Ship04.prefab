@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 770557204104256615}
   - component: {fileID: -8972913176993062236}
-  - component: {fileID: 4045295415648898658}
+  - component: {fileID: -6661880493561690211}
   - component: {fileID: 770557204104256614}
   - component: {fileID: 770557204104256602}
   - component: {fileID: 770557204104256600}
@@ -58,11 +58,11 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: -6661880493561690211}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &4045295415648898658
+--- !u!114 &-6661880493561690211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,13 +71,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 770557204104256613}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
-  m_TeleportIfDistanceGreaterThan: 3
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!212 &770557204104256614
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -190,7 +190,7 @@ MonoBehaviour:
   impactPower: 0
   projectileMovePower: 25
   projectileLiveTime: 3
-  color: {r: 0, g: 0, b: 0, a: 0}
+  color: {r: 1, g: 1, b: 0, a: 1}
 --- !u!50 &770557204104256601
 Rigidbody2D:
   serializedVersion: 4

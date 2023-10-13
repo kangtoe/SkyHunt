@@ -4938,7 +4938,6 @@ MonoBehaviour:
   fireDelay: 2
   projectilePrefab: {fileID: 2416596311881659746, guid: bc829fa6e159d1946a42351fa6b6c866,
     type: 3}
-  hitEffect: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -4946,6 +4945,7 @@ MonoBehaviour:
   impactPower: 5
   projectileMovePower: 5
   projectileLiveTime: 5
+  color: {r: 0, g: 0, b: 0, a: 1}
   shootStartDelay: 2
 --- !u!114 &8235884547008637211
 MonoBehaviour:

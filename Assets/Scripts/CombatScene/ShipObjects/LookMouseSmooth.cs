@@ -11,10 +11,7 @@ public class LookMouseSmooth : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-        if (!photonView.IsMine)
-        {
-            return;
-        }
+        if (!photonView.IsMine) return;    
 
         mousePos = GetMouseWorldPos();
         //mousePos.z = 0f;

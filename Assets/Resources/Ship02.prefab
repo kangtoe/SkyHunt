@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 770557204104256615}
   - component: {fileID: -8972913176993062236}
-  - component: {fileID: -1235134806184124470}
+  - component: {fileID: 4748794261729236230}
   - component: {fileID: 770557204104256614}
   - component: {fileID: 770557204104256602}
   - component: {fileID: 770557204104256600}
@@ -62,7 +62,7 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-1235134806184124470
+--- !u!114 &4748794261729236230
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,13 +71,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 770557204104256613}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
-  m_TeleportIfDistanceGreaterThan: 3
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!212 &770557204104256614
 SpriteRenderer:
   m_ObjectHideFlags: 0
