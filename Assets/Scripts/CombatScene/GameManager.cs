@@ -4,7 +4,12 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using Photon.Pun;
 
-// 볼, 플레이어 생성
+public enum GameState
+{ 
+    PlayerWait,
+    Playing
+}
+
 // 점수 관리
 public class GameManager : MonoBehaviourPunCallbacks
 {

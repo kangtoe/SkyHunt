@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 7062285884799048608}
   - component: {fileID: -5378311286369737714}
   - component: {fileID: -4262604370014960778}
+  - component: {fileID: 3816090353417493329}
   m_Layer: 8
   m_Name: Ship03
   m_TagString: Untagged
@@ -62,6 +63,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: -7563364026271183477}
   - {fileID: 6216831299490403273}
   sceneViewId: 0
   InstantiationId: 0
@@ -80,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizeVelocity: 1
   m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
+  m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &6216831299490403273
 MonoBehaviour:
@@ -97,7 +99,7 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
-  m_UseLocal: 1
+  m_UseLocal: 0
 --- !u!212 &770557204104256614
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -277,6 +279,18 @@ MonoBehaviour:
   diePrefab: {fileID: 0}
   bumpEffect: {fileID: 0}
   maxHealth: 100
+--- !u!114 &3816090353417493329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770557204104256613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b463dcb5fa35f42a6c99bfbc221ff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3667960167769076896
 GameObject:
   m_ObjectHideFlags: 0

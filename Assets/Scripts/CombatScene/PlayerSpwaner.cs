@@ -61,11 +61,10 @@ public class PlayerSpwaner : MonoBehaviourPunCallbacks
         spwanedPlayerShips.Add(newObject);
     }
 
-    public GameObject GetClosestPlayer(Vector3 pos)
-    {
+    public Transform GetClosestPlayer(Vector3 pos)
+    {        
         float closestDistance = Mathf.Infinity;
         GameObject closestObject = null;
-
         foreach (GameObject ship in spwanedPlayerShips)
         {
             if (ship == null) continue;
@@ -81,7 +80,8 @@ public class PlayerSpwaner : MonoBehaviourPunCallbacks
             }
         }
 
-        return closestObject;
+        if (closestObject == null) return null;
+        return closestObject.transform;
     }
 }
 

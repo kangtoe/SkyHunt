@@ -118,6 +118,9 @@ public class BulletBase : MonoBehaviourPun
         //Debug.Log("Instantiate hitEffect");
         if(hitEffect) Instantiate(hitEffect, transform.position, transform.rotation);
 
-        Destroy(gameObject);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.Destroy(gameObject);
+        }            
     }
 }
