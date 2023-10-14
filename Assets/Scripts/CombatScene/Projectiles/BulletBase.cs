@@ -9,7 +9,7 @@ using UnityEngine;
 // 3. 물체 충돌
 public class BulletBase : MonoBehaviourPun
 {
-    public GameObject hitEffect;
+    public GameObject hitEffect;    
     public LayerMask targetLayer; // 해당 오브젝트와 충돌을 검사할 레이어        
     public int damage;
     public int impact;
