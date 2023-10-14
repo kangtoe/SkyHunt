@@ -5,9 +5,7 @@ using UnityEngine;
 // 점차 확대되고, 흐릿해짐
 public class Pulse : BulletBase
 {
-    [Header("Pulse Info")]
-    SpriteRenderer sprite; // 투명도를 조절할 렌더러
-    
+    [Header("Pulse Info")]        
     public float expansionSpeed = 1f; // 확대 속도
     public float expansionMax = 1f; // 최대 확대 스케일
     float currentExpansion = 0;

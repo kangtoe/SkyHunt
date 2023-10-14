@@ -22,7 +22,7 @@ public class BulletWave : BulletBase
     {
         MoveWave();
     }
-
+     
     void MoveWave()
     {
         ellapsedTime += moveMult * movePower;

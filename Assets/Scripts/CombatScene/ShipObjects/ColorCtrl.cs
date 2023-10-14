@@ -5,23 +5,27 @@ using UnityEngine;
 
 public class ColorCtrl : MonoBehaviourPun
 {        
-    SpriteRenderer spriteRenderer;    
-    TrailRenderer trailRenderer;
+    [SerializeField]
+    SpriteRenderer[] spriteRenderer;    
+    [SerializeField]
+    TrailRenderer[] trailRenderer;
 
     public void SetColor(Color color)
     {
-        if(!spriteRenderer) spriteRenderer = GetComponent<SpriteRenderer>();
-        if(!trailRenderer) trailRenderer = GetComponentInChildren<TrailRenderer>();
+        //if(!spriteRenderer) spriteRenderer = GetComponent<SpriteRenderer>();
+        //if(!trailRenderer) trailRenderer = GetComponentInChildren<TrailRenderer>();
 
         //Debug.Log(name + " : set color = " + color);
 
-        spriteRenderer.color = color;
-
-        if (trailRenderer)
+        foreach (SpriteRenderer sprite in spriteRenderer)
         {
-            trailRenderer.startColor = color;
+            sprite.color = color;            
+        }
+        foreach (TrailRenderer trail in trailRenderer)
+        {
+            trail.startColor = color;
             color.a = 0;
-            trailRenderer.endColor = color;
+            trail.endColor = color;
         }
     }
 }

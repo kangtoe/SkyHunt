@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1400609840292312152}
   - component: {fileID: 1996311182214960426}
-  - component: {fileID: 1600758645986725011}
+  - component: {fileID: 8927121710508659462}
   m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
@@ -48,7 +48,6 @@ TrailRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -130,7 +129,7 @@ TrailRenderer:
   m_MinVertexDistance: 0
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &1600758645986725011
+--- !u!114 &8927121710508659462
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,7 +138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3282610402820053974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2efddf193b78794fa61a805f17bbf77, type: 3}
+  m_Script: {fileID: 11500000, guid: 80ec59716ccc94e44b162cd7a661f255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   livetime: 5
@@ -155,9 +154,13 @@ GameObject:
   - component: {fileID: 6787662741938685571}
   - component: {fileID: 6787662741938685570}
   - component: {fileID: 5672055537110511746}
-  - component: {fileID: 9149965742255060915}
+  - component: {fileID: 667753891920452334}
+  - component: {fileID: 5326641445425380359}
+  - component: {fileID: -7036696241533897367}
+  - component: {fileID: -3074952534166465974}
+  - component: {fileID: 860256899319712051}
   m_Layer: 0
-  m_Name: bullet-red-wave(Inverse)
+  m_Name: bullet-wave(Inverse)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,7 +196,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -218,8 +220,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: de11bd1558e42cc439c349b444c13bb3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -266,7 +268,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &9149965742255060915
+--- !u!114 &667753891920452334
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,17 +277,89 @@ MonoBehaviour:
   m_GameObject: {fileID: 6787662741938685572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fa28e30ce20ac64c846b46fc484deb3, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fcb2cc963983b648822769223c2d21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffect: {fileID: 5397861632007149258, guid: f5e65d09961d30d4cba3159a0ed7bf89, type: 3}
+  hitEffect: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
   damage: 1
   impact: 1
   movePower: 5
-  liveTime: 999
+  liveTime: 99
   width: 40
   height: 40
   waveInverse: 1
+--- !u!114 &5326641445425380359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6787662741938685572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: -3074952534166465974}
+  - {fileID: 860256899319712051}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &-7036696241533897367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6787662741938685572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6470d628677225c4398f7b04cc28790f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer:
+  - {fileID: 6787662741938685571}
+  trailRenderer:
+  - {fileID: 1996311182214960426}
+--- !u!114 &-3074952534166465974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6787662741938685572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 0
+--- !u!114 &860256899319712051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6787662741938685572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3

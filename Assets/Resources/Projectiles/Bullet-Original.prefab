@@ -141,9 +141,9 @@ GameObject:
   - component: {fileID: 7742814071415333890}
   - component: {fileID: 7742814071415333891}
   - component: {fileID: -292259642154561021}
+  - component: {fileID: -5221436857880844192}
   - component: {fileID: 1746250019077069509}
   - component: {fileID: 1447246029960915959}
-  - component: {fileID: -5221436857880844192}
   - component: {fileID: -7326885226569440673}
   m_Layer: 0
   m_Name: Bullet-Original
@@ -274,6 +274,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &-5221436857880844192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7742814071415333893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6470d628677225c4398f7b04cc28790f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: []
+  trailRenderer: []
 --- !u!114 &1746250019077069509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,18 +328,6 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
---- !u!114 &-5221436857880844192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7742814071415333893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6470d628677225c4398f7b04cc28790f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-7326885226569440673
 MonoBehaviour:
   m_ObjectHideFlags: 0

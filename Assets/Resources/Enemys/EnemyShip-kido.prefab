@@ -4826,12 +4826,12 @@ GameObject:
   - component: {fileID: 669752357247487644}
   - component: {fileID: 5524166034369483380}
   - component: {fileID: 2212678391994595042}
-  - component: {fileID: 6243478547130218961}
-  - component: {fileID: 7629227273868904424}
-  - component: {fileID: 5139449305642237351}
   - component: {fileID: -992580540219104504}
   - component: {fileID: -1996688903512394340}
   - component: {fileID: -4375965329333140877}
+  - component: {fileID: 6243478547130218961}
+  - component: {fileID: 7629227273868904424}
+  - component: {fileID: 5139449305642237351}
   - component: {fileID: 8744602682848603885}
   - component: {fileID: 1813149349633799926}
   - component: {fileID: 1408331654070734062}
@@ -4946,59 +4946,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.0034366257}
   m_Size: {x: 0.62904173, y: 0.3218898}
   m_Direction: 1
---- !u!114 &6243478547130218961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5420318343600928982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e328b9f5dc20d2d4696046d2bbe0fea4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoints:
-  - {fileID: 4898224190547407401}
-  fireDelay: 2
-  projectilePrefab: {fileID: 7742814071415333893, guid: b6bd1ad98e859854a8cd194247489c3d,
-    type: 3}
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  damage: 5
-  impactPower: 5
-  projectileMovePower: 5
-  projectileLiveTime: 5
-  color: {r: 1, g: 0, b: 0, a: 1}
-  shootStartDelay: 2
---- !u!114 &7629227273868904424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5420318343600928982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cded881f7ec40b347bc05c8da16a493f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movePower: 2
---- !u!114 &5139449305642237351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5420318343600928982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ffd60065294164a9648c8e912b7b3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnSpeed: 2
-  target: {fileID: 0}
 --- !u!114 &-992580540219104504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5055,6 +5002,59 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &6243478547130218961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420318343600928982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e328b9f5dc20d2d4696046d2bbe0fea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoints:
+  - {fileID: 4898224190547407401}
+  fireDelay: 2
+  projectilePrefab: {fileID: 7742814071415333893, guid: b6bd1ad98e859854a8cd194247489c3d,
+    type: 3}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  damage: 5
+  impactPower: 5
+  projectileMovePower: 5
+  projectileLiveTime: 5
+  color: {r: 1, g: 0, b: 0, a: 1}
+  shootStartDelay: 2
+--- !u!114 &7629227273868904424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420318343600928982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cded881f7ec40b347bc05c8da16a493f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movePower: 2
+--- !u!114 &5139449305642237351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420318343600928982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ffd60065294164a9648c8e912b7b3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnSpeed: 2
+  target: {fileID: 0}
 --- !u!114 &8744602682848603885
 MonoBehaviour:
   m_ObjectHideFlags: 0

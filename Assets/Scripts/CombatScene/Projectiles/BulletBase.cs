@@ -17,8 +17,7 @@ public class BulletBase : MonoBehaviourPun
     public float liveTime;
 
     protected Rigidbody2D rbody;
-
-    SpriteRenderer sprite;
+    protected SpriteRenderer sprite;
     TrailRenderer trail;
 
     // Start is called before the first frame update
@@ -51,7 +50,7 @@ public class BulletBase : MonoBehaviourPun
     }
 
     [PunRPC]
-    void Impact(int coll_Id)
+    protected void Impact(int coll_Id)
     {
         PhotonView pv = PhotonView.Find(coll_Id);
         Collider2D coll = pv.gameObject.GetComponent<Collider2D>();
