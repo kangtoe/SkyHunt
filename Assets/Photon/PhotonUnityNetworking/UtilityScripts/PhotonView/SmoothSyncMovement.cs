@@ -22,7 +22,11 @@ namespace Photon.Pun.UtilityScripts
     public class SmoothSyncMovement : Photon.Pun.MonoBehaviourPun, IPunObservable
     {
         public float SmoothingDelay = 5;
+
+        public bool canTeleport = true;
         public float teleportPos = 3;
+
+        Rigidbody2D rb;
 
         public void Awake()
         {
@@ -37,8 +41,10 @@ namespace Photon.Pun.UtilityScripts
             }
             if (!observed)
             {
-                Debug.LogWarning(this + " is not observed by this object's photonView! OnPhotonSerializeView() in this class won't be used.");
+                Debug.LogWarning(this + " is not observed by this object's photonView! OnPhotonSerializeView() in this class won't be used."); 
             }
+
+            rb = GetComponent<Rigidbody2D>();
         }
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -48,17 +54,20 @@ namespace Photon.Pun.UtilityScripts
                 //We own this player: send the others our data
                 stream.SendNext(transform.position);
                 stream.SendNext(transform.rotation);
+                stream.SendNext(rb.velocity);
             }
             else
             {
                 //Network player, receive data
                 correctPlayerPos = (Vector3)stream.ReceiveNext();
                 correctPlayerRot = (Quaternion)stream.ReceiveNext();
+                correctPlayerVel = (Vector2)stream.ReceiveNext();
             }
         }
 
-        private Vector3 correctPlayerPos = Vector3.zero; //We lerp towards this
+        private Vector3 correctPlayerPos = Vector3.zero; //We lerp towards this        
         private Quaternion correctPlayerRot = Quaternion.identity; //We lerp towards this
+        private Vector2 correctPlayerVel = Vector3.zero; //We lerp towards this
 
         public void Update()
         {
@@ -66,11 +75,18 @@ namespace Photon.Pun.UtilityScripts
             {
                 //Update remote player (smooth this, this looks good, at the cost of some accuracy)
 
-                // 너무 먼 거리는 보간 없이 즉시 이동
-                float dist = Vector3.Distance(transform.position, correctPlayerPos);
-                if (teleportPos < dist) transform.position = correctPlayerPos;
+                if (canTeleport)
+                {
+                    // 너무 먼 거리는 보간 없이 즉시 이동
+                    float dist = Vector3.Distance(transform.position, correctPlayerPos);
+                    if (teleportPos < dist) transform.position = correctPlayerPos;
+                    else transform.position = Vector3.Lerp(transform.position, correctPlayerPos, Time.deltaTime * this.SmoothingDelay);
+                }
                 else transform.position = Vector3.Lerp(transform.position, correctPlayerPos, Time.deltaTime * this.SmoothingDelay);
+
                 transform.rotation = Quaternion.Lerp(transform.rotation, correctPlayerRot, Time.deltaTime * this.SmoothingDelay);
+
+                rb.velocity = Vector2.Lerp(rb.velocity, correctPlayerVel, Time.deltaTime * this.SmoothingDelay);
             }
         }
 

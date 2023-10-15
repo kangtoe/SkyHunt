@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: -4262604370014960778}
   - component: {fileID: 3816090353417493329}
   - component: {fileID: -8972913176993062236}
-  - component: {fileID: -700386843068602892}
+  - component: {fileID: -5156363362301115583}
   m_Layer: 8
   m_Name: Ship03
   m_TagString: Untagged
@@ -240,11 +240,11 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: -700386843068602892}
+  - {fileID: -5156363362301115583}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-700386843068602892
+--- !u!114 &-5156363362301115583
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -256,8 +256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35144820bcc25444bb8f0fd767d9423e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SmoothingDelay: 20
-  teleportPos: 5
+  SmoothingDelay: 5
+  canTeleport: 1
+  teleportPos: 3
 --- !u!1 &3667960167769076896
 GameObject:
   m_ObjectHideFlags: 0

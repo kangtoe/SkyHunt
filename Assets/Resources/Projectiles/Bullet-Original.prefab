@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2749843570431727321
 Transform:
   m_ObjectHideFlags: 0
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: -292259642154561021}
   - component: {fileID: -5221436857880844192}
   - component: {fileID: 1746250019077069509}
-  - component: {fileID: 3178389786301263970}
+  - component: {fileID: 4086720670052318707}
   m_Layer: 0
   m_Name: Bullet-Original
   m_TagString: Untagged
@@ -160,7 +160,7 @@ Transform:
   m_GameObject: {fileID: 7742814071415333893}
   m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 2749843570431727321}
   m_Father: {fileID: 0}
@@ -287,8 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer:
   - {fileID: 7742814071415333890}
-  trailRenderer:
-  - {fileID: 3382992097641740203}
+  trailRenderer: []
 --- !u!114 &1746250019077069509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,11 +307,11 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 3178389786301263970}
+  - {fileID: 4086720670052318707}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &3178389786301263970
+--- !u!114 &4086720670052318707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -325,4 +324,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SmoothingDelay: 5
-  teleportPos: 5
+  canTeleport: 0
+  teleportPos: 3
