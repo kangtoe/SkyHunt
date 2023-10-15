@@ -20,8 +20,7 @@ GameObject:
   - component: {fileID: 6554191212329134231}
   - component: {fileID: -4425716004303782117}
   - component: {fileID: 6930861181614412334}
-  - component: {fileID: 643493686840416794}
-  - component: {fileID: 1300179847988702459}
+  - component: {fileID: -2953757854201131485}
   m_Layer: 7
   m_Name: EnemyShip-sniper
   m_TagString: Untagged
@@ -274,12 +273,11 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 643493686840416794}
-  - {fileID: 1300179847988702459}
+  - {fileID: -2953757854201131485}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &643493686840416794
+--- !u!114 &-2953757854201131485
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -288,29 +286,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 555077730964168208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Script: {fileID: 11500000, guid: 35144820bcc25444bb8f0fd767d9423e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 0
---- !u!114 &1300179847988702459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 555077730964168208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 1
-  m_TeleportIfDistanceGreaterThan: 3
+  SmoothingDelay: 5
 --- !u!1 &2385769010570854466
 GameObject:
   m_ObjectHideFlags: 0
