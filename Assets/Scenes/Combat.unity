@@ -169,9 +169,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPosition1: {fileID: 1553184914}
   spawnPosition2: {fileID: 630810841}
-  player1ShipPrefab: {fileID: 770557204104256613, guid: 166435bf47c3c7243a7c01f246ee2d9e,
+  player1ShipPrefab: {fileID: 770557204104256613, guid: 29dabe9515df09749b63523c7ddec0a8,
     type: 3}
-  player2ShipPrefab: {fileID: 770557204104256613, guid: 145ece2e2f6612e449d9a74e292419c7,
+  player2ShipPrefab: {fileID: 770557204104256613, guid: 166435bf47c3c7243a7c01f246ee2d9e,
     type: 3}
   spwanedPlayerShips: []
 --- !u!114 &11160344
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spwanUnits:
-  - {fileID: 555077730964168208, guid: c88f4807bf29f674e97f84c0ec915d10, type: 3}
+  - {fileID: 4726771413586711471, guid: 51b463e087c72f64183c51c5f51d3eb3, type: 3}
 --- !u!114 &250813887
 MonoBehaviour:
   m_ObjectHideFlags: 0

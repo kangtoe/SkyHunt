@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SmoothingDelay: 20
+  teleportPos: 5
 --- !u!1 &3667960167769076896
 GameObject:
   m_ObjectHideFlags: 0

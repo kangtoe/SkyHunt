@@ -285,8 +285,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6470d628677225c4398f7b04cc28790f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: []
-  trailRenderer: []
+  spriteRenderer:
+  - {fileID: 7742814071415333890}
+  trailRenderer:
+  - {fileID: 3382992097641740203}
 --- !u!114 &1746250019077069509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,7 +307,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 3178389786301263970}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -322,3 +325,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SmoothingDelay: 5
+  teleportPos: 5

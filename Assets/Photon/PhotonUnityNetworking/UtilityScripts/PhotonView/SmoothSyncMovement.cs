@@ -22,6 +22,8 @@ namespace Photon.Pun.UtilityScripts
     public class SmoothSyncMovement : Photon.Pun.MonoBehaviourPun, IPunObservable
     {
         public float SmoothingDelay = 5;
+        public float teleportPos = 3;
+
         public void Awake()
         {
             bool observed = false;
@@ -63,7 +65,11 @@ namespace Photon.Pun.UtilityScripts
             if (!photonView.IsMine)
             {
                 //Update remote player (smooth this, this looks good, at the cost of some accuracy)
-                transform.position = Vector3.Lerp(transform.position, correctPlayerPos, Time.deltaTime * this.SmoothingDelay);
+
+                // 너무 먼 거리는 보간 없이 즉시 이동
+                float dist = Vector3.Distance(transform.position, correctPlayerPos);
+                if (teleportPos < dist) transform.position = correctPlayerPos;
+                else transform.position = Vector3.Lerp(transform.position, correctPlayerPos, Time.deltaTime * this.SmoothingDelay);
                 transform.rotation = Quaternion.Lerp(transform.rotation, correctPlayerRot, Time.deltaTime * this.SmoothingDelay);
             }
         }
