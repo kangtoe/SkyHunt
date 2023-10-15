@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPosition1: {fileID: 1553184914}
   spawnPosition2: {fileID: 630810841}
-  player1ShipPrefab: {fileID: 770557204104256613, guid: 29dabe9515df09749b63523c7ddec0a8,
+  player1ShipPrefab: {fileID: 770557204104256613, guid: 166435bf47c3c7243a7c01f246ee2d9e,
     type: 3}
   player2ShipPrefab: {fileID: 770557204104256613, guid: 145ece2e2f6612e449d9a74e292419c7,
     type: 3}

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ÀÚµ¿ »èÁ¦ ±â´ÉÀÌ ¿Ã¹Ù¸£°Ô µ¿ÀÛÇÏÁö ¾Ê´Â °ÍÀ» º¸¿ÏÇÏ±â À§ÇØ »ç¿ë
+// ìë™ ì‚­ì œ ê¸°ëŠ¥ì´ ì˜¬ë°”ë¥´ê²Œ ë™ì‘í•˜ì§€ ì•ŠëŠ” ê²ƒì„ ë³´ì™„í•˜ê¸° ìœ„í•´ ì‚¬ìš©
 public class ManualDestroy : MonoBehaviour
 {
     public float livetime = 5f;
