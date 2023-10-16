@@ -157,7 +157,6 @@ GameObject:
   - component: {fileID: 667753891920452334}
   - component: {fileID: -7036696241533897367}
   - component: {fileID: 5326641445425380359}
-  - component: {fileID: -3697010009113195263}
   m_Layer: 0
   m_Name: bullet-wave(Inverse)
   m_TagString: Untagged
@@ -324,22 +323,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: -3697010009113195263}
+  - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-3697010009113195263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6787662741938685572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35144820bcc25444bb8f0fd767d9423e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SmoothingDelay: 5
-  canTeleport: 1
-  teleportPos: 5

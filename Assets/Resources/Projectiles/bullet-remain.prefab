@@ -222,7 +222,6 @@ GameObject:
   - component: {fileID: -7946775393683608532}
   - component: {fileID: 7592591485008825209}
   - component: {fileID: 1885662892677533479}
-  - component: {fileID: 8566496338622034171}
   m_Layer: 0
   m_Name: bullet-remain
   m_TagString: Untagged
@@ -339,21 +338,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 8566496338622034171}
+  - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &8566496338622034171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7742814071415333893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35144820bcc25444bb8f0fd767d9423e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SmoothingDelay: 5
-  teleportPos: 5
