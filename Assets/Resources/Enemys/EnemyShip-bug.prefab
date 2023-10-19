@@ -9847,7 +9847,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SmoothingDelay: 5
-  teleportPos: 5
+  canTeleport: 1
+  teleportPos: 3
 --- !u!114 &-5542869221579522518
 MonoBehaviour:
   m_ObjectHideFlags: 0

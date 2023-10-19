@@ -6,47 +6,51 @@ using UnityEngine;
 public class RotateToTarget : MonoBehaviourPun
 {
     public float turnSpeed = 1;
-    public Transform target;
+
+    FindTarget Ft
+    {
+        get
+        {
+            if (!ft) ft = GetComponent<FindTarget>();
+            return ft;
+        }
+    }
+    FindTarget ft;
+    Transform Target => Ft.target;
 
     // Start is called before the first frame update
     void Start()
     {
         if (!PhotonNetwork.IsMasterClient) return;
-        //target = GameManager.instance.GetCurrentPlayer();
+        //target = GameManager.instance.GetCurrentPlayer();        
 
-        // °³Ã¼ º° È¸Àü½Ã°£¿¡ ¾à°£ÀÇ Â÷ÀÌ¸¦ µĞ´Ù.
+        // ê°œì²´ ë³„ íšŒì „ì‹œê°„ì— ì•½ê°„ì˜ ì°¨ì´ë¥¼ ë‘”ë‹¤.
         float minMult = 0.9f;
         float maxMult = 1.1f;
 
         float randomMultiplier = Random.Range(minMult, maxMult);
         turnSpeed *= randomMultiplier;
-
-        InvokeRepeating(nameof(UpdateTarget), 0, 1); // ÁÖ±â¸¶´Ù Å¸°Ù Á¤º¸ °»½Å
     }
 
     void Update()
     {
         if (!PhotonNetwork.IsMasterClient) return;
 
-        if (target) RotateTo(target.position, turnSpeed);
+        if (Target) RotateTo(Target.position, turnSpeed);
     }
 
-    void UpdateTarget()
-    {
-        target = PlayerSpwaner.Instance.GetClosestPlayer(transform.position);
-    }
 
     void RotateTo(Vector3 targetPos, float _rotateSpeed)
     {
-        if (!target) return;
+        if (!Target) return;
 
         Vector3 dir = targetPos - transform.position;
 
-        // È¸Àü°¢ ±¸ÇÏ±â
+        // íšŒì „ê° êµ¬í•˜ê¸°
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        // È¸Àü °ª ±¸ÇÏ±â
+        // íšŒì „ ê°’ êµ¬í•˜ê¸°
         Quaternion quat = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-        // È¸Àü º¸°£
+        // íšŒì „ ë³´ê°„
         transform.rotation = Quaternion.Lerp(transform.rotation, quat, Time.deltaTime * _rotateSpeed);
     }
 }

@@ -4829,7 +4829,9 @@ GameObject:
   - component: {fileID: 8564303897589815779}
   - component: {fileID: 8055179617956611808}
   - component: {fileID: 1359514344261302357}
+  - component: {fileID: 6965498679211637974}
   - component: {fileID: 1320815389303159990}
+  - component: {fileID: -114477337680786306}
   m_Layer: 0
   m_Name: bullet-red-chase
   m_TagString: Untagged
@@ -4930,7 +4932,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 1
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -4952,7 +4954,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSpeed: 5
-  target: {fileID: 0}
 --- !u!114 &1359514344261302357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4965,15 +4966,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fd0bcfb37b8e87409bc703ea8343f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 7742814071415333893, guid: 55f6fa63b601bfb468ef39a72939c516,
+    type: 3}
   targetLayer:
     serializedVersion: 2
     m_Bits: 256
   damage: 0
   impact: 0
-  movePower: 20
-  liveTime: 10
+  movePower: 6
+  liveTime: 3
   target: {fileID: 0}
+--- !u!114 &6965498679211637974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7376661153922887653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6470d628677225c4398f7b04cc28790f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer:
+  - {fileID: 7376661153922887650}
+  trailRenderer: []
 --- !u!114 &1320815389303159990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4996,3 +5013,16 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-114477337680786306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7376661153922887653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4852c712128a44e479196b9e50abaa89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}

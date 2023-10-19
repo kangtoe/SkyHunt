@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class EnemyInfo : MonoBehaviour
 {
     public int point = 100;
-    public int spwanMinWave = 0; // ÀÌ ÀÌÈÄÀÇ wave¿¡¸¸ µîÀå °¡´É
+    public int spwanMinWave = 0; // ì´ ì´í›„ì˜ waveì—ë§Œ ë“±ì¥ ê°€ëŠ¥
 }
