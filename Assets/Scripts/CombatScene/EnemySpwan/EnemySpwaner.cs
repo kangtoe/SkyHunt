@@ -11,7 +11,7 @@ public enum Edge
     Left
 }
 
-// ÁÖ¾îÁø °¡ÀåÀÚ¸® ¸é¿¡¼­, Àû ½ºÆù ÁöÁ¡°ú È¸ÀüÀ» Á¤ÇØ¼­ ½ºÆù
+// ì£¼ì–´ì§„ ê°€ì¥ìë¦¬ ë©´ì—ì„œ, ì  ìŠ¤í° ì§€ì ê³¼ íšŒì „ì„ ì •í•´ì„œ ìŠ¤í°
 public class EnemySpwaner : MonoBehaviourPun
 {
     public static EnemySpwaner instance;
@@ -28,7 +28,7 @@ public class EnemySpwaner : MonoBehaviourPun
         //SpwanEnemy(enemy, 12, Edge.Up);
     }
 
-    // ÁÖ¾îÁø °¡ÀåÀÚ¸®¸é¿¡¼­, count¸¸Å­ °°Àº °£°İÀ¸·Î »ı¼º
+    // ì£¼ì–´ì§„ ê°€ì¥ìë¦¬ë©´ì—ì„œ, countë§Œí¼ ê°™ì€ ê°„ê²©ìœ¼ë¡œ ìƒì„±
     public void SpwanEnemy(GameObject enemyPrefab, int count, Edge spwanSide)
     {
         if (!PhotonNetwork.IsMasterClient)
@@ -48,19 +48,24 @@ public class EnemySpwaner : MonoBehaviourPun
         }
     }
 
-    // ¹«ÀÛÀ§ ÁöÁ¡¿¡¼­ »ı¼º
+    // ë¬´ì‘ìœ„ ì§€ì ì—ì„œ ìƒì„±
     public GameObject SpwanEnemyRandomPos(GameObject enemyPrefab)
     {
+        if (enemyPrefab == null)
+        {
+            Debug.Log("enemyPrefab is null");
+        }
+
         if (!PhotonNetwork.IsMasterClient)
         {
             Debug.Log("!PhotonNetwork.IsMasterClient");
             return null;
         }
 
-        // »ı¼ºÇÒ ¸éÀ» ¹«ÀÛÀ§·Î °í¸¥´Ù.
+        // ìƒì„±í•  ë©´ì„ ë¬´ì‘ìœ„ë¡œ ê³ ë¥¸ë‹¤.
         Edge randomEdge = GetRandomEdge();
 
-        // ½ºÆù Á¤º¸
+        // ìŠ¤í° ì •ë³´
         string str = "Enemys/" + enemyPrefab.name;
         Vector2 pos = GetSpwanPoint(randomEdge);
         Quaternion rot = GetSpwanRot(randomEdge);
@@ -69,21 +74,21 @@ public class EnemySpwaner : MonoBehaviourPun
         return go;
     }
 
-    // ¹«ÀÛÀ§ ÁöÁ¡¿¡¼­ »ı¼º + ¸®½ºÆ®ÀÇ ´Ù¸¥ ¿ÀºêÁ§Æ®¿Í ³Ê¹« °¡±õ´Ù¸é Àç¹èÄ¡
+    // ë¬´ì‘ìœ„ ì§€ì ì—ì„œ ìƒì„± + ë¦¬ìŠ¤íŠ¸ì˜ ë‹¤ë¥¸ ì˜¤ë¸Œì íŠ¸ì™€ ë„ˆë¬´ ê°€ê¹ë‹¤ë©´ ì¬ë°°ì¹˜
     public GameObject SpwanEnemyRandomPos(GameObject enemyPrefab, List<GameObject> others)
     {
         GameObject go = SpwanEnemyRandomPos(enemyPrefab);
 
-        float closeMin = 2; // ³Ê¹« °¡±î¿îÁö Ã¼Å©ÇÒ °Å¸®
+        float closeMin = 2; // ë„ˆë¬´ ê°€ê¹Œìš´ì§€ ì²´í¬í•  ê±°ë¦¬
 
         int tryCount = 100;
-        // ³Ê¹« °¡±î¿ì¸é Àç¹èÄ¡
+        // ë„ˆë¬´ ê°€ê¹Œìš°ë©´ ì¬ë°°ì¹˜
         while (IsCloseToOthers(go, others, closeMin))
         {
             if (tryCount <= 0) break;
             tryCount--;
 
-            // »ı¼ºÇÒ ¸éÀ» ¹«ÀÛÀ§·Î °í¸¥´Ù.
+            // ìƒì„±í•  ë©´ì„ ë¬´ì‘ìœ„ë¡œ ê³ ë¥¸ë‹¤.
             Edge randomEdge = GetRandomEdge();
             go.transform.position = GetSpwanPoint(randomEdge);
             go.transform.rotation = GetSpwanRot(randomEdge);
@@ -92,7 +97,7 @@ public class EnemySpwaner : MonoBehaviourPun
         return go;
     }
 
-    // ÇÑ °ÔÀÓ ¿ÀºêÁ§Æ®°¡ ´Ù¸¥ ¸®½ºÆ®ÀÇ °ÔÀÓ ¿ÀºêÁ§Æ®µé°ú dist °Å¸® ¾È¿¡ ÀÖ´Â°¡?
+    // í•œ ê²Œì„ ì˜¤ë¸Œì íŠ¸ê°€ ë‹¤ë¥¸ ë¦¬ìŠ¤íŠ¸ì˜ ê²Œì„ ì˜¤ë¸Œì íŠ¸ë“¤ê³¼ dist ê±°ë¦¬ ì•ˆì— ìˆëŠ”ê°€?
     bool IsCloseToOthers(GameObject go, List<GameObject> others, float dist)
     {
         foreach (GameObject other in others)
@@ -103,7 +108,7 @@ public class EnemySpwaner : MonoBehaviourPun
         return false;
     }
 
-    // Edge enum Áß ÇÏ³ª¸¦ ¹«ÀÛÀ§·Î ±¸ÇÑ´Ù.
+    // Edge enum ì¤‘ í•˜ë‚˜ë¥¼ ë¬´ì‘ìœ„ë¡œ êµ¬í•œë‹¤.
     Edge GetRandomEdge()
     {
         int i = System.Enum.GetNames(typeof(Edge)).Length;
@@ -111,8 +116,8 @@ public class EnemySpwaner : MonoBehaviourPun
         return edge;
     }
 
-    // °¡ÀåÀÚ¸® ¸é¿¡¼­ viewPoint ÁÂÇ¥°è¿¡¼­ between¿¡ ÇØ´çÇÏ´Â ¿ùµå ÁÂÇ¥ ¹İÈ¯
-    // between == nullÀÌ¸é, °¡ÀåÀÚ¸® ¸é À§ ¹«ÀÛÀ§ ÇÑ Á¡À» ¹İÈ¯
+    // ê°€ì¥ìë¦¬ ë©´ì—ì„œ viewPoint ì¢Œí‘œê³„ì—ì„œ betweenì— í•´ë‹¹í•˜ëŠ” ì›”ë“œ ì¢Œí‘œ ë°˜í™˜
+    // between == nullì´ë©´, ê°€ì¥ìë¦¬ ë©´ ìœ„ ë¬´ì‘ìœ„ í•œ ì ì„ ë°˜í™˜
     Vector2 GetSpwanPoint(Edge spwanSide, float? between = null)
     {
         if(between == null) between = Random.Range(0f, 1f);
@@ -120,19 +125,19 @@ public class EnemySpwaner : MonoBehaviourPun
 
         switch (spwanSide)
         {
-            // »óºÎ °¡ÀåÀÚ¸®
+            // ìƒë¶€ ê°€ì¥ìë¦¬
             case Edge.Up:
                 viewPos = new Vector3(between.Value, 1f, 1f);
                 break;
-            // ÇÏºÎ °¡ÀåÀÚ¸®
+            // í•˜ë¶€ ê°€ì¥ìë¦¬
             case Edge.Down:
                 viewPos = new Vector3(between.Value, 0, 1f);
                 break;
-            // ¿À¸¥ÂÊ °¡ÀåÀÚ¸®
+            // ì˜¤ë¥¸ìª½ ê°€ì¥ìë¦¬
             case Edge.Right:
                 viewPos = new Vector3(1, between.Value, 1f);
                 break;
-            // ¿ŞÂÊ °¡ÀåÀÚ¸®
+            // ì™¼ìª½ ê°€ì¥ìë¦¬
             case Edge.Left:
                 viewPos = new Vector3(0, between.Value, 1f);
                 break;
@@ -147,19 +152,19 @@ public class EnemySpwaner : MonoBehaviourPun
 
         switch (spwanSide)
         {
-            // »óºÎ °¡ÀåÀÚ¸®
+            // ìƒë¶€ ê°€ì¥ìë¦¬
             case Edge.Up:
                 angle = 180;
                 break;
-            // ÇÏºÎ °¡ÀåÀÚ¸®
+            // í•˜ë¶€ ê°€ì¥ìë¦¬
             case Edge.Down:
                 angle = 0;
                 break;
-            // ¿À¸¥ÂÊ °¡ÀåÀÚ¸®
+            // ì˜¤ë¥¸ìª½ ê°€ì¥ìë¦¬
             case Edge.Right:
                 angle = 90;
                 break;
-            // ¿ŞÂÊ °¡ÀåÀÚ¸®
+            // ì™¼ìª½ ê°€ì¥ìë¦¬
             case Edge.Left:
                 angle = 270;
                 break;
