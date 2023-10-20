@@ -24,12 +24,12 @@ public class RotateToTarget : MonoBehaviourPun
         if (!PhotonNetwork.IsMasterClient) return;
         //target = GameManager.instance.GetCurrentPlayer();        
 
-        // 개체 별 회전시간에 약간의 차이를 둔다.
-        float minMult = 0.9f;
-        float maxMult = 1.1f;
+        // 개체 별 회전시간에 약간의 차이를 둔다. // 멀티 환경에서 적용하고 싶은 경우 RPC 통신으로 함수 호출 필요(귀찮아서 안함)
+        //float minMult = 0.9f;
+        //float maxMult = 1.1f;
 
-        float randomMultiplier = Random.Range(minMult, maxMult);
-        turnSpeed *= randomMultiplier;
+        //float randomMultiplier = Random.Range(minMult, maxMult);
+        //turnSpeed *= randomMultiplier;
     }
 
     void Update()

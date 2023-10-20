@@ -19,7 +19,7 @@ namespace Photon.Pun.UtilityScripts
     /// Smoothed out movement for network gameobjects
     /// </summary>
     [RequireComponent(typeof(PhotonView))]
-    public class SmoothSyncMovement : Photon.Pun.MonoBehaviourPun, IPunObservable
+    public class SmoothSyncMovement : MonoBehaviourPun, IPunObservable
     {
         public float SmoothingDelay = 5;
 
@@ -44,7 +44,7 @@ namespace Photon.Pun.UtilityScripts
                 Debug.LogWarning(this + " is not observed by this object's photonView! OnPhotonSerializeView() in this class won't be used."); 
             }
 
-            rb = GetComponent<Rigidbody2D>();
+            rb = GetComponent<Rigidbody2D>();            
         }
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -65,14 +65,17 @@ namespace Photon.Pun.UtilityScripts
             }
         }
 
-        private Vector3 correctPlayerPos = Vector3.zero; //We lerp towards this        
+        private Vector3 correctPlayerPos = Vector3.positiveInfinity; //We lerp towards this        
         private Quaternion correctPlayerRot = Quaternion.identity; //We lerp towards this
-        private Vector2 correctPlayerVel = Vector3.zero; //We lerp towards this
+        private Vector2 correctPlayerVel = Vector3.zero; //We lerp towards this        
 
         public void Update()
         {
             if (!photonView.IsMine)
-            {
+            {                
+                // OnPhotonSerializeView에서 초기화된 적 없는 경우 스킵
+                if (float.IsInfinity(correctPlayerPos.x)) return;
+
                 //Update remote player (smooth this, this looks good, at the cost of some accuracy)
 
                 if (canTeleport)

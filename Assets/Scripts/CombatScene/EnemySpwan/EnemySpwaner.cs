@@ -28,6 +28,15 @@ public class EnemySpwaner : MonoBehaviourPun
         //SpwanEnemy(enemy, 12, Edge.Up);
     }
 
+    [PunRPC]
+    public void SetPos(int viewID, float posX, float posY)
+    {
+        GameObject go = PhotonNetwork.GetPhotonView(viewID).gameObject;
+        go.SetActive(false);
+        //go.transform.position = new Vector2(posX, posY);
+        go.SetActive(true);
+    }
+
     // 주어진 가장자리면에서, count만큼 같은 간격으로 생성
     public void SpwanEnemy(GameObject enemyPrefab, int count, Edge spwanSide)
     {
@@ -71,6 +80,8 @@ public class EnemySpwaner : MonoBehaviourPun
         Quaternion rot = GetSpwanRot(randomEdge);
         
         GameObject go = PhotonNetwork.Instantiate(str, pos, rot);
+        //int id = go.GetComponent<PhotonView>().ViewID;
+        //photonView.RPC(nameof(SetPos), RpcTarget.AllBuffered, id, pos.x, pos.y);
         return go;
     }
 

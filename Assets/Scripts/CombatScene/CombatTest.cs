@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class CombatTest : MonoBehaviour
+public class CombatTest : MonoBehaviourPun
 {
     [SerializeField]
     Text txt;
@@ -88,6 +89,7 @@ public class CombatTest : MonoBehaviour
     private void OnValidate()
     {
         string str = "";
+        str += "IsMasterClient : " + PhotonNetwork.IsMasterClient + "\n";
         str += "Enemy 1 : " + (enemy1 ? enemy1.name : "") + "\n";
         str += "Enemy 2 : " + (enemy2 ? enemy2.name : "") + "\n";
         str += "Enemy 3 : " + (enemy3 ? enemy3.name : "") + "\n";

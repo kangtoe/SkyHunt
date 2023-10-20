@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 250813886}
   - component: {fileID: 250813885}
   - component: {fileID: 250813888}
+  - component: {fileID: 250813889}
   m_Layer: 0
   m_Name: EnemySpwan
   m_TagString: Untagged
@@ -351,15 +352,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txt: {fileID: 1774028263}
   enemy1: {fileID: 4726771413586711471, guid: 51b463e087c72f64183c51c5f51d3eb3, type: 3}
-  enemy2: {fileID: 60937272169027393, guid: bec944ac2d4c0304c869c2e1f20d5e46, type: 3}
-  enemy3: {fileID: 5420318343600928982, guid: 1e1e0af68375d0d4abfb132a210824bb, type: 3}
-  enemy4: {fileID: 0}
-  enemy5: {fileID: 0}
+  enemy2: {fileID: 2596540624177372448, guid: 70d28366a21a3b54ca21d362c430beaa, type: 3}
+  enemy3: {fileID: 60937272169027393, guid: bec944ac2d4c0304c869c2e1f20d5e46, type: 3}
+  enemy4: {fileID: 5420318343600928982, guid: 1e1e0af68375d0d4abfb132a210824bb, type: 3}
+  enemy5: {fileID: 555077730964168208, guid: c88f4807bf29f674e97f84c0ec915d10, type: 3}
   enemy6: {fileID: 0}
   enemy7: {fileID: 0}
   enemy8: {fileID: 0}
   enemy9: {fileID: 0}
   enemy0: {fileID: 0}
+--- !u!114 &250813889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250813883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 2
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &630810840
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,10 +461,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -769,8 +792,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Enemy 1 : EnemyShip-bug\nEnemy 2 : EnemyShip-gunship\nEnemy 3 : EnemyShip-kido\nEnemy
-    4 : \nEnemy 5 : \nEnemy 6 : \nEnemy 7 : \nEnemy 8 : \nEnemy 9 : \nEnemy 0 : \n"
+  m_Text: "IsMasterClient : False\nEnemy 1 : EnemyShip-bug\nEnemy 2 : EnemyShip-child\nEnemy
+    3 : EnemyShip-gunship\nEnemy 4 : EnemyShip-kido\nEnemy 5 : EnemyShip-sniper\nEnemy
+    6 : \nEnemy 7 : \nEnemy 8 : \nEnemy 9 : \nEnemy 0 : \n"
 --- !u!222 &1774028264
 CanvasRenderer:
   m_ObjectHideFlags: 0
