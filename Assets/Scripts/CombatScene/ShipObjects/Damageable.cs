@@ -1,25 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Damageable : MonoBehaviour
+public class Damageable : MonoBehaviourPun
 {
     public GameObject diePrefab;
-    public GameObject bumpEffect; // √Êµπ Ω√ Impactableø°º≠ »£√‚    
+    public GameObject bumpEffect; // Ï∂©Îèå Ïãú ImpactableÏóêÏÑú Ìò∏Ï∂ú    
     public float maxHealth = 100;    
     protected float currnetHealth;
-    Rigidbody2D rbody;
-
+    //Rigidbody2D rbody;
 
     // Start is called before the first frame update
     void Start()
     {
         currnetHealth = maxHealth;
-        rbody = GetComponent<Rigidbody2D>();
+        //rbody = GetComponent<Rigidbody2D>();
     }
 
     virtual public void GetDamaged(float damage)
     {
+        if (!PhotonNetwork.IsMasterClient) return;
+
         Debug.Log(name + " : GetDamaged = " + damage);
 
         currnetHealth -= damage;
@@ -29,7 +31,14 @@ public class Damageable : MonoBehaviour
 
     virtual protected void Die()
     {
-        if(diePrefab) Instantiate(diePrefab, transform.position, diePrefab.transform.rotation);
-        Destroy(gameObject);
+        if (!PhotonNetwork.IsMasterClient) return;
+       
+        if (diePrefab)
+        {
+            string str = "Projectiles/" + diePrefab.name;
+            PhotonNetwork.Instantiate(str, transform.position, diePrefab.transform.rotation);
+        }
+        
+        PhotonNetwork.Destroy(photonView);        
     }
 }

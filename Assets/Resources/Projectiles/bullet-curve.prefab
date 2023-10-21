@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4003980198090630448
 Transform:
   m_ObjectHideFlags: 0
@@ -156,6 +156,7 @@ GameObject:
   - component: {fileID: 7658434429713097194}
   - component: {fileID: 869146075180127747}
   - component: {fileID: -8801249519094653201}
+  - component: {fileID: 1384475917870128997}
   m_Layer: 0
   m_Name: bullet-curve
   m_TagString: Untagged
@@ -277,7 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08b32e225b8aef4c9aa9be9a0f74511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 5397861632007149258, guid: 2412e0714df397643b9179bcb37e4992,
+    type: 3}
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -286,7 +288,7 @@ MonoBehaviour:
   movePower: 0
   liveTime: 0
   curveRightOrLeft: 0
-  curveAmount: 10
+  curveAmount: 180
 --- !u!114 &-8801249519094653201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,8 +307,22 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents:
-  - {fileID: 0}
+  ObservedComponents: []
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1384475917870128997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8848894530628425708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6470d628677225c4398f7b04cc28790f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer:
+  - {fileID: 8848894530628425707}
+  trailRenderer: []

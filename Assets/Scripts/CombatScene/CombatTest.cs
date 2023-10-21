@@ -10,7 +10,6 @@ public class CombatTest : MonoBehaviourPun
     Text txt;
     
     [Space]
-
     [SerializeField]
     GameObject enemy1;
     [SerializeField]
@@ -30,7 +29,13 @@ public class CombatTest : MonoBehaviourPun
     [SerializeField]
     GameObject enemy9;
     [SerializeField]
-    GameObject enemy0;
+    GameObject enemy0;    
+    [SerializeField]
+    GameObject enemyP;
+    [SerializeField]
+    GameObject enemyU;
+    [SerializeField]
+    GameObject enemyY;
 
     // Update is called once per frame
     void Update()
@@ -84,12 +89,27 @@ public class CombatTest : MonoBehaviourPun
         {
             EnemySpwaner.instance.SpwanEnemyRandomPos(enemy0);
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            EnemySpwaner.instance.SpwanEnemyRandomPos(enemyP);
+        }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            EnemySpwaner.instance.SpwanEnemyRandomPos(enemyU);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            EnemySpwaner.instance.SpwanEnemyRandomPos(enemyY);
+        }
     }
 
     private void OnValidate()
     {
         string str = "";
-        str += "IsMasterClient : " + PhotonNetwork.IsMasterClient + "\n";
+        str += "IsMasterClient : " + PhotonNetwork.IsMasterClient + "\n";        
         str += "Enemy 1 : " + (enemy1 ? enemy1.name : "") + "\n";
         str += "Enemy 2 : " + (enemy2 ? enemy2.name : "") + "\n";
         str += "Enemy 3 : " + (enemy3 ? enemy3.name : "") + "\n";
@@ -99,7 +119,10 @@ public class CombatTest : MonoBehaviourPun
         str += "Enemy 7 : " + (enemy7 ? enemy7.name : "") + "\n";
         str += "Enemy 8 : " + (enemy8 ? enemy8.name : "") + "\n";
         str += "Enemy 9 : " + (enemy9 ? enemy9.name : "") + "\n";
-        str += "Enemy 0 : " + (enemy0 ? enemy0.name : "") + "\n";
+        str += "Enemy 0 : " + (enemy0 ? enemy0.name : "") + "\n";        
+        str += "Enemy P : " + (enemyP ? enemyP.name : "") + "\n";
+        str += "Enemy U : " + (enemyU ? enemyU.name : "") + "\n";
+        str += "Enemy Y : " + (enemyY ? enemyY.name : "") + "\n";
 
         txt.text = str;
     }

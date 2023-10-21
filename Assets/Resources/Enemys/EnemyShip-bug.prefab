@@ -9776,7 +9776,6 @@ MonoBehaviour:
   fireDelay: 1
   projectilePrefab: {fileID: 7742814071415333893, guid: 4d429c49709a6374dad3e92cadcd24fd,
     type: 3}
-  hitEffect: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -9862,7 +9861,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54115f783d39a3c4da246d7e949a18e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diePrefab: {fileID: 0}
+  diePrefab: {fileID: 8453916313859941413, guid: be4f42f73043c554dae90cc3711f9937,
+    type: 3}
   bumpEffect: {fileID: 0}
   maxHealth: 100
 --- !u!114 &4782594924991305519

@@ -137,12 +137,12 @@ MonoBehaviour:
     type: 3}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   damage: 5
   impactPower: 5
   projectileMovePower: 25
   projectileLiveTime: 3
-  color: {r: 0, g: 0, b: 0, a: 0}
+  color: {r: 1, g: 0, b: 1, a: 0}
 --- !u!50 &770557204104256601
 Rigidbody2D:
   serializedVersion: 4

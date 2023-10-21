@@ -360,7 +360,10 @@ MonoBehaviour:
   enemy7: {fileID: 69640197652471162, guid: 4227efc7903e8e049a6b5b7cbcf01bf8, type: 3}
   enemy8: {fileID: 0}
   enemy9: {fileID: 0}
-  enemy0: {fileID: 0}
+  enemy0: {fileID: 2921335271155450531, guid: c87482d2e993b604a80f5166a2954f09, type: 3}
+  enemyP: {fileID: 4387479503353827147, guid: c9eb139aaa39fdf4a826456606ca9ef2, type: 3}
+  enemyU: {fileID: 0}
+  enemyY: {fileID: 0}
 --- !u!114 &250813889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -795,7 +798,7 @@ MonoBehaviour:
   m_Text: "IsMasterClient : False\nEnemy 1 : EnemyShip-bug\nEnemy 2 : EnemyShip-child\nEnemy
     3 : EnemyShip-gunship\nEnemy 4 : EnemyShip-kido\nEnemy 5 : EnemyShip-sniper\nEnemy
     6 : EnemyShip-hornet\nEnemy 7 : EnemyShip-knight\nEnemy 8 : \nEnemy 9 : \nEnemy
-    0 : \n"
+    0 : EnemyShip-spiral\nEnemy P : EnemyShip-star\nEnemy U : \nEnemy Y : \n"
 --- !u!222 &1774028264
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -104,6 +104,8 @@ public class BulletBase : MonoBehaviourPun
 
     protected void DestroySelf()
     {
+        //if (!photonView.IsMine) return;
+        if (!PhotonNetwork.IsMasterClient) return;
         if (destoryProcessing) return;
         destoryProcessing = true;
 
@@ -113,17 +115,24 @@ public class BulletBase : MonoBehaviourPun
             trail.transform.parent = null;
             trail.autodestruct = true;                                 
         }
-                
-        if (PhotonNetwork.IsMasterClient)
-        {
-            if (hitEffect)
-            {
-                //Debug.Log("Instantiate hitEffect");
-                string str = "Projectiles/" + hitEffect.name;
-                GameObject go = PhotonNetwork.Instantiate(str, transform.position, transform.rotation);
-            }
 
-            PhotonNetwork.Destroy(gameObject);
-        }            
+        if (hitEffect)
+        {
+            //Debug.Log("Instantiate hitEffect");
+            string str = "Projectiles/" + hitEffect.name;
+            GameObject go = PhotonNetwork.Instantiate(str, transform.position, transform.rotation);
+        }
+
+        //PhotonNetwork.Destroy(gameObject);
+        photonView.RPC(nameof(Destroy_Custom), RpcTarget.AllBuffered, photonView.ViewID);
+    }
+
+    [PunRPC]
+    protected void Destroy_Custom(int viewID)
+    {
+        Debug.Log("Destroy_Custom : " + viewID);
+
+        PhotonView pv = PhotonNetwork.GetPhotonView(viewID);
+        if(pv.IsMine) PhotonNetwork.Destroy(pv);
     }
 }
