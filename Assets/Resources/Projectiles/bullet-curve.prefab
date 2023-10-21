@@ -278,6 +278,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08b32e225b8aef4c9aa9be9a0f74511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 8848894530628425707}
+  pss: []
   hitEffect: {fileID: 5397861632007149258, guid: 2412e0714df397643b9179bcb37e4992,
     type: 3}
   targetLayer:

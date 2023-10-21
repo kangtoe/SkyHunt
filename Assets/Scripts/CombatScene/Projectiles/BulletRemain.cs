@@ -13,7 +13,7 @@ public class BulletRemain : BulletBase
 
         if (rbody.velocity.magnitude <= remainVelocity)
         {
-            DestroySelf();
+            DestroyGolbal();
         }
     }
 }

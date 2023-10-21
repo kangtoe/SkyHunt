@@ -9,16 +9,22 @@ using UnityEngine;
 // 3. 물체 충돌
 public class BulletBase : MonoBehaviourPun
 {
+    [Header("임시 비활성화 컴포넌트들")]    
+    public Renderer[] renderers;
+    //public ParticleSystem[] pss;
+    bool isDestroyed = false;
+
+    [Space]
     public GameObject hitEffect;    
     public LayerMask targetLayer; // 해당 오브젝트와 충돌을 검사할 레이어        
     public int damage;
     public int impact;
     public float movePower;
     public float liveTime;
-
+     
     protected Rigidbody2D rbody;
     protected SpriteRenderer sprite;
-    TrailRenderer trail;
+    TrailRenderer trail;    
 
     // Start is called before the first frame update
     virtual protected void Start()
@@ -33,20 +39,34 @@ public class BulletBase : MonoBehaviourPun
         //Debug.Log("velocity : " + rbody.velocity);
 
         if (!photonView.IsMine) return;
-        Invoke(nameof(DestroySelf), liveTime);
+        Invoke(nameof(DestroyGolbal), liveTime);        
     }
 
     virtual protected void OnTriggerEnter2D(Collider2D other)
     {
-        if (!PhotonNetwork.IsMasterClient) return;
-        //Debug.Log("other:" + other.name);
+        if (isDestroyed) return;
 
         // targetLayer 검사
         if (1 << other.gameObject.layer == targetLayer.value)
-        {
+        {            
+            if (photonView.IsMine)
+            {
+                DestroyGolbal();
+            }
+            else
+            {
+                DestroyLocal();
+            }
+
             int id = other.gameObject.GetPhotonView().ViewID;
             photonView.RPC(nameof(Impact), RpcTarget.AllBuffered, id);
         }
+    }
+
+    private void OnValidate()
+    {
+        renderers = GetComponentsInChildren<Renderer>();
+        //pss = GetComponentsInChildren<ParticleSystem>();
     }
 
     [PunRPC]
@@ -67,9 +87,7 @@ public class BulletBase : MonoBehaviourPun
         {
             Vector2 dir = coll.transform.position - transform.position;
             rbody.AddForce(dir * impact, ForceMode2D.Impulse);
-        }
-
-        DestroySelf();
+        }        
     }
 
     public void Init_RPC(int targetLayer, int damage, int impact, float movePower, float liveTime, float colorR, float colorG, float colorB)
@@ -98,16 +116,28 @@ public class BulletBase : MonoBehaviourPun
         ColorCtrl colorCtrl = GetComponent<ColorCtrl>();
         Color color = new Color(colorR, colorG, colorB);
         colorCtrl.SetColor(color);
+    }    
+
+    // photonView.IsMine 아닌 경우 호출
+    protected void DestroyLocal()
+    {
+        isDestroyed = true;
+
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.enabled = false;
+        }
+        //foreach (ParticleSystem ps in pss)
+        //{
+        //    ParticleSystem.EmissionModule emission = ps.emission;
+        //    emission.rateOverTime = 0;
+        //}        
     }
 
-    bool destoryProcessing = false;
-
-    protected void DestroySelf()
+    // photonView.IsMine 경우 호출
+    protected void DestroyGolbal()
     {
-        //if (!photonView.IsMine) return;
-        if (!PhotonNetwork.IsMasterClient) return;
-        if (destoryProcessing) return;
-        destoryProcessing = true;
+        isDestroyed = true;        
 
         if (trail)
         {
@@ -123,16 +153,6 @@ public class BulletBase : MonoBehaviourPun
             GameObject go = PhotonNetwork.Instantiate(str, transform.position, transform.rotation);
         }
 
-        //PhotonNetwork.Destroy(gameObject);
-        photonView.RPC(nameof(Destroy_Custom), RpcTarget.AllBuffered, photonView.ViewID);
-    }
-
-    [PunRPC]
-    protected void Destroy_Custom(int viewID)
-    {
-        Debug.Log("Destroy_Custom : " + viewID);
-
-        PhotonView pv = PhotonNetwork.GetPhotonView(viewID);
-        if(pv.IsMine) PhotonNetwork.Destroy(pv);
+        PhotonNetwork.Destroy(gameObject);        
     }
 }
