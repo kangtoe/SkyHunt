@@ -356,8 +356,8 @@ MonoBehaviour:
   enemy3: {fileID: 60937272169027393, guid: bec944ac2d4c0304c869c2e1f20d5e46, type: 3}
   enemy4: {fileID: 5420318343600928982, guid: 1e1e0af68375d0d4abfb132a210824bb, type: 3}
   enemy5: {fileID: 555077730964168208, guid: c88f4807bf29f674e97f84c0ec915d10, type: 3}
-  enemy6: {fileID: 0}
-  enemy7: {fileID: 0}
+  enemy6: {fileID: 7861236254039107535, guid: 13de268246cda0e42b5752198e6e6a56, type: 3}
+  enemy7: {fileID: 69640197652471162, guid: 4227efc7903e8e049a6b5b7cbcf01bf8, type: 3}
   enemy8: {fileID: 0}
   enemy9: {fileID: 0}
   enemy0: {fileID: 0}
@@ -794,7 +794,8 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "IsMasterClient : False\nEnemy 1 : EnemyShip-bug\nEnemy 2 : EnemyShip-child\nEnemy
     3 : EnemyShip-gunship\nEnemy 4 : EnemyShip-kido\nEnemy 5 : EnemyShip-sniper\nEnemy
-    6 : \nEnemy 7 : \nEnemy 8 : \nEnemy 9 : \nEnemy 0 : \n"
+    6 : EnemyShip-hornet\nEnemy 7 : EnemyShip-knight\nEnemy 8 : \nEnemy 9 : \nEnemy
+    0 : \n"
 --- !u!222 &1774028264
 CanvasRenderer:
   m_ObjectHideFlags: 0

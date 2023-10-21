@@ -6,28 +6,28 @@ using Photon.Pun;
 public abstract class ShooterBase : MonoBehaviourPun
 {    
     public Transform[] firePoints;
-    public float fireDelay; // ±‚∫ª ≈∫»Ø πﬂªÁ∞£∞› (Ω∫≈ËΩ¥≈Õø°º≠ ∑π∫ß¿Ã ø¿∏¶ ºˆ∑œ ∞£∞›¿Ã ¡ŸæÓµÍ)
-    protected float lastFireTime = 0f; // ∏∂¡ˆ∏∑ ≈∫»Ø ªÁ∞› Ω√¡°
+    public float fireDelay; // Í∏∞Î≥∏ ÌÉÑÌôò Î∞úÏÇ¨Í∞ÑÍ≤© (Ïä§ÌÜ∞ÏäàÌÑ∞ÏóêÏÑú Î†àÎ≤®Ïù¥ Ïò§Î•º ÏàòÎ°ù Í∞ÑÍ≤©Ïù¥ Ï§ÑÏñ¥Îì¶)
+    protected float lastFireTime = 0f; // ÎßàÏßÄÎßâ ÌÉÑÌôò ÏÇ¨Í≤© ÏãúÏ†ê
 
     [Header("Projectile Info")]
-    public GameObject projectilePrefab; // πﬂªÁ«“ ≈∫»Ø
-    //public GameObject hitEffect;// πﬂªÁ√º «¡∏Æ∆Ë ºˆµø ¡ˆ¡§«“∞Õ : µø±‚»≠ ¡˜∑ƒ»≠ ∫“∞°
+    public GameObject projectilePrefab; // Î∞úÏÇ¨Ìï† ÌÉÑÌôò
+    //public GameObject hitEffect;// Î∞úÏÇ¨Ï≤¥ ÌîÑÎ¶¨Ìé©ÏóêÏÑú ÏßÄÏ†ïÌï†Í≤É : ÎèôÍ∏∞Ìôî ÏßÅÎ†¨Ìôî Î∂àÍ∞Ä
     public LayerMask targetLayer; 
     public int damage = 0;
     public int impactPower = 0;
     public int projectileMovePower = 10;
     public float projectileLiveTime = 3f;
-    public Color color; // πﬂªÁ√º ªˆ
+    public Color color; // Î∞úÏÇ¨Ï≤¥ ÏÉâ
 
-    // ªÁ∞› Ω√µµ
+    // ÏÇ¨Í≤© ÏãúÎèÑ
     protected virtual void TryFire()
     {
         //Debug.Log("TryFire");        
 
-        // ∏∂¡ˆ∏∑ πﬂªÁ∑Œ∫Œ≈Õ √Ê∫–«— Ω√∞£ ∞£∞›¿Ã ¿÷æ˙¥¬∞°
+        // ÎßàÏßÄÎßâ Î∞úÏÇ¨Î°úÎ∂ÄÌÑ∞ Ï∂©Î∂ÑÌïú ÏãúÍ∞Ñ Í∞ÑÍ≤©Ïù¥ ÏûàÏóàÎäîÍ∞Ä
         if (Time.time >= lastFireTime + fireDelay)
         {
-            // ∏∂¡ˆ∏∑ πﬂªÁΩ√¡° ∞ªΩ≈
+            // ÎßàÏßÄÎßâ Î∞úÏÇ¨ÏãúÏ†ê Í∞±Ïã†
             lastFireTime = Time.time;
 
             //Debug.Log("fire!");
@@ -35,20 +35,26 @@ public abstract class ShooterBase : MonoBehaviourPun
         }
     }
 
-    // Ω«¡¶ ªÁ∞› -> shooter¿« firePoint πÊ«‚¥Î∑Œ projectile¿ª ª˝º∫
+    protected virtual GameObject CreateBullet(Vector3 pos, Quaternion rot)
+    {
+        // Î∞úÏÇ¨Ï≤¥ ÏÉùÏÑ±
+        string str = "Projectiles/" + projectilePrefab.name;
+        GameObject go = PhotonNetwork.Instantiate(str, pos, rot);
+        return go;        
+    }
+
+    // Ïã§Ï†ú ÏÇ¨Í≤© -> shooterÏùò firePoint Î∞©Ìñ•ÎåÄÎ°ú projectileÏùÑ ÏÉùÏÑ±
     protected virtual void Fire()
     {        
         foreach (Transform firePoint in firePoints)
-        {
-            string name = "Projectiles/" + projectilePrefab.name;
+        {            
             Vector3 pos = firePoint.position;
-            Quaternion quat = firePoint.rotation;           
+            Quaternion quat = firePoint.rotation;
 
-            // πﬂªÁ√º ª˝º∫
-            GameObject go = PhotonNetwork.Instantiate(name, pos, quat);            
-            int _layerMask = targetLayer;
+            GameObject go = CreateBullet(pos, quat);
+            
             go.GetComponent<BulletBase>().Init_RPC(
-                _layerMask, damage, impactPower, projectileMovePower, projectileLiveTime, color.r, color.g, color.b);
+                targetLayer, damage, impactPower, projectileMovePower, projectileLiveTime, color.r, color.g, color.b);
         }        
     }
 }

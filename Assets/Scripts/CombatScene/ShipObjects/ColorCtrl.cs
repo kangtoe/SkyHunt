@@ -1,4 +1,4 @@
-﻿using Photon.Pun;
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +8,7 @@ public class ColorCtrl : MonoBehaviourPun
     [SerializeField]
     SpriteRenderer[] spriteRenderer;    
     [SerializeField]
-    TrailRenderer[] trailRenderer;
+    TrailRenderer[] trailRenderer;    
 
     public void SetColor(Color color)
     {
@@ -26,6 +26,6 @@ public class ColorCtrl : MonoBehaviourPun
             trail.startColor = color;
             color.a = 0;
             trail.endColor = color;
-        }
+        }       
     }
 }

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 6930861181614412334}
   - component: {fileID: -7397447515589370825}
   - component: {fileID: 2782861938900707648}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: EnemyShip-sniper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,6 +149,7 @@ MonoBehaviour:
   fireDelay: 1
   projectilePrefab: {fileID: 8848894530628425708, guid: 6e9fa34fdad096e47b69aa97db62d435,
     type: 3}
+  hitEffect: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -175,6 +176,7 @@ MonoBehaviour:
   fireDelay: 1
   projectilePrefab: {fileID: 6787662741938685572, guid: 001b2305d4bfbb14384f642bf04b1bdc,
     type: 3}
+  hitEffect: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -314,7 +316,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5692827376130360101}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: FlameEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +348,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2575157052227675262}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: firepoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +380,7 @@ GameObject:
   - component: {fileID: 7310795784783680693}
   - component: {fileID: 7310795784783680691}
   - component: {fileID: 7310795784783680690}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5129,7 +5131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7310795785942394700}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5162,7 +5164,7 @@ GameObject:
   - component: {fileID: 8886102729374603105}
   - component: {fileID: 8886102729374603111}
   - component: {fileID: 8886102729374603104}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9913,7 +9915,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8886102730717452417}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

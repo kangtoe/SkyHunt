@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 4580718291961733125}
   - component: {fileID: 1482336855587389229}
   - component: {fileID: -3765046951386806343}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: EnemyShip-gunship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5218698037516339828}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: FlameEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6145656491371575802}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: firePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6145656493167433651}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: firePoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ GameObject:
   - component: {fileID: 7068782696655904228}
   - component: {fileID: 7068782696655904226}
   - component: {fileID: 7068782696655904227}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5173,7 +5173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7068782697709760029}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

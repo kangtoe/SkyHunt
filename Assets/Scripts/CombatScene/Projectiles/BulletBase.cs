@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ÅºÈ¯ÀÌ »ç¶óÁö´Â Á¶°Ç 3°¡Áö
-// 1. »ı¼º ÈÄ ÀÏÁ¤ ½Ã°£ÀÌ °æ°ú.
-// 2. È­¸é ¹ÛÀ¸·Î ³ª°¨
-// 3. ¹°Ã¼ Ãæµ¹
+// íƒ„í™˜ì´ ì‚¬ë¼ì§€ëŠ” ì¡°ê±´ 3ê°€ì§€
+// 1. ìƒì„± í›„ ì¼ì • ì‹œê°„ì´ ê²½ê³¼.
+// 2. í™”ë©´ ë°–ìœ¼ë¡œ ë‚˜ê°
+// 3. ë¬¼ì²´ ì¶©ëŒ
 public class BulletBase : MonoBehaviourPun
 {
     public GameObject hitEffect;    
-    public LayerMask targetLayer; // ÇØ´ç ¿ÀºêÁ§Æ®¿Í Ãæµ¹À» °Ë»çÇÒ ·¹ÀÌ¾î        
+    public LayerMask targetLayer; // í•´ë‹¹ ì˜¤ë¸Œì íŠ¸ì™€ ì¶©ëŒì„ ê²€ì‚¬í•  ë ˆì´ì–´        
     public int damage;
     public int impact;
     public float movePower;
@@ -41,7 +41,7 @@ public class BulletBase : MonoBehaviourPun
         if (!PhotonNetwork.IsMasterClient) return;
         //Debug.Log("other:" + other.name);
 
-        // targetLayer °Ë»ç
+        // targetLayer ê²€ì‚¬
         if (1 << other.gameObject.layer == targetLayer.value)
         {
             int id = other.gameObject.GetPhotonView().ViewID;
@@ -55,13 +55,13 @@ public class BulletBase : MonoBehaviourPun
         PhotonView pv = PhotonView.Find(coll_Id);
         Collider2D coll = pv.gameObject.GetComponent<Collider2D>();
 
-        // ÇÇÇØÁÖ±â
+        // í”¼í•´ì£¼ê¸°
         Damageable damageable = coll.transform.GetComponent<Damageable>();
         if (damageable)
         {
             damageable.GetDamaged(damage);
         }
-        // Èû °¡ÇÏ±â
+        // í˜ ê°€í•˜ê¸°
         Rigidbody2D rbody = coll.transform.GetComponent<Rigidbody2D>();
         if (rbody)
         {
@@ -79,10 +79,10 @@ public class BulletBase : MonoBehaviourPun
         photonView.RPC(nameof(Init), RpcTarget.All, targetLayer, damage, impact, movePower, liveTime, colorR, colorG, colorB);
     }
 
-    // ÅºÈ¯ ¼öÄ¡¸¦ »ç°İ´ç ¼³Á¤ÇÒÇÊ¿ä ÀÖ³ª? -> TODO : ¼öÄ¡º¯°æ½Ã¸¸  staticÇÑ °ªÀ» ¼öÁ¤?
+    // íƒ„í™˜ ìˆ˜ì¹˜ë¥¼ ì‚¬ê²©ë‹¹ ì„¤ì •í• í•„ìš” ìˆë‚˜? -> TODO : ìˆ˜ì¹˜ë³€ê²½ì‹œë§Œ  staticí•œ ê°’ì„ ìˆ˜ì •?
     [PunRPC]
-    // shooter¿¡¼­ »ı¼º ½Ã È£Ãâ -> ÃÊ±âÈ­
-    // hitEffect´Â GameObject Á÷·ÄÈ­°¡ ºÒ°¡´ÉÇÑ °ü°è·Î ¹ß»çÃ¼ ÇÁ¸®Æé¿¡¼­ ÁöÁ¤ÇÒ °Í 
+    // shooterì—ì„œ ìƒì„± ì‹œ í˜¸ì¶œ -> ì´ˆê¸°í™”
+    // hitEffectëŠ” GameObject ì§ë ¬í™”ê°€ ë¶ˆê°€ëŠ¥í•œ ê´€ê³„ë¡œ ë°œì‚¬ì²´ í”„ë¦¬í©ì—ì„œ ì§€ì •í•  ê²ƒ 
     public void Init(int targetLayer, int damage, int impact, float movePower, float liveTime, float colorR, float colorG, float colorB)
     {
         //Debug.Log("init");        
@@ -113,12 +113,16 @@ public class BulletBase : MonoBehaviourPun
             trail.transform.parent = null;
             trail.autodestruct = true;                                 
         }
-
-        //Debug.Log("Instantiate hitEffect");
-        if(hitEffect) Instantiate(hitEffect, transform.position, transform.rotation);
-
+                
         if (PhotonNetwork.IsMasterClient)
         {
+            if (hitEffect)
+            {
+                //Debug.Log("Instantiate hitEffect");
+                string str = "Projectiles/" + hitEffect.name;
+                GameObject go = PhotonNetwork.Instantiate(str, transform.position, transform.rotation);
+            }
+
             PhotonNetwork.Destroy(gameObject);
         }            
     }

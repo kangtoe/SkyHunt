@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Æø¹ßÀûÀÎ ÈûÀ» ÇÑ¹ø¿¡ °¡ÇÔ -> °¨¼ÓÇÏ¿© ¼Ó·ÂÀÌ 0¿¡ °¡±î¿ö Áö¸é ´Ù½Ã Æø¹ßÀûÀ¸·Î ÀÌµ¿
+// í­ë°œì ì¸ í˜ì„ í•œë²ˆì— ê°€í•¨ -> ê°ì†í•˜ì—¬ ì†ë ¥ì´ 0ì— ê°€ê¹Œì›Œ ì§€ë©´ ë‹¤ì‹œ í­ë°œì ìœ¼ë¡œ ì´ë™
 public class MoveImpulse : MonoBehaviour
 {
     public float movePower = 1f;
-    public float minVelocity = 0.1f; // ÀÌ ÀÌÇÏ·Î ¼Ó·ÂÀÌ ¶³¾îÁö¸é ±Ş°¡¼Ó
+    public float minVelocity = 0.1f; // ì´ ì´í•˜ë¡œ ì†ë ¥ì´ ë–¨ì–´ì§€ë©´ ê¸‰ê°€ì†
     
     float minInterval = 1f;
     float lastImpulsedTime = 0;
@@ -15,24 +15,23 @@ public class MoveImpulse : MonoBehaviour
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
-        AdjustStat();
+        //AdjustStat();
 
         rbody.AddForce(transform.up * movePower, ForceMode2D.Impulse);
     }
 
-    // ¿òÁ÷ÀÓ¿¡ °³Ã¼ º° ¾à°£ÀÇ Â÷ÀÌ¸¦ µĞ´Ù.
+    // ì›€ì§ì„ì— ê°œì²´ ë³„ ì•½ê°„ì˜ ì°¨ì´ë¥¼ ë‘”ë‹¤.
     void AdjustStat()
     {
         float minMult = 0.9f;
         float maxMult = 1.1f;
-
         float randomMultiplier = Random.Range(minMult, maxMult);
         movePower *= randomMultiplier;
     }
 
     private void FixedUpdate()
     {
-        // ÀÌÀü ÈûÀ» °¡ÇÑ ÀÌ·¡·Î ÀÏÁ¤½Ã°£ °æ°ú
+        // ì´ì „ í˜ì„ ê°€í•œ ì´ë˜ë¡œ ì¼ì •ì‹œê°„ ê²½ê³¼
         if (Time.time < lastImpulsedTime + minInterval) return;
 
         if (rbody.velocity.magnitude < minVelocity)

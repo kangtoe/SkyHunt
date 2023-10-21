@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7835198919644626965}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: FlameEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: -1265861609872568835}
   - component: {fileID: -5244298483555220352}
   - component: {fileID: -1632004761991919509}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: EnemyShip-child
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 5100856240299022213}
   - component: {fileID: 5100856240299022211}
   - component: {fileID: 5100856240299022210}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5027,7 +5027,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5100856241327645820}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
