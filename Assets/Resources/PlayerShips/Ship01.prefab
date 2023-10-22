@@ -209,6 +209,9 @@ MonoBehaviour:
   diePrefab: {fileID: 0}
   bumpEffect: {fileID: 0}
   maxHealth: 100
+  onDead:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2599891361606295989
 MonoBehaviour:
   m_ObjectHideFlags: 0

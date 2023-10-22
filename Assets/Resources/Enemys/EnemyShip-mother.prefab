@@ -13,8 +13,7 @@ GameObject:
   - component: {fileID: 5802370659177532223}
   - component: {fileID: 187723623400157097}
   - component: {fileID: 3258675138192253814}
-  - component: {fileID: 7451182561352591582}
-  - component: {fileID: -910303754931517997}
+  - component: {fileID: -1914723409101829364}
   - component: {fileID: -4600262395806841282}
   - component: {fileID: -5803973384940834361}
   - component: {fileID: 4941693827878946483}
@@ -22,7 +21,8 @@ GameObject:
   - component: {fileID: -1414078895429688010}
   - component: {fileID: 7578308710435076854}
   - component: {fileID: -748480714921385291}
-  m_Layer: 7
+  - component: {fileID: 687671060346849889}
+  m_Layer: 9
   m_Name: EnemyShip-mother
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impactDamage: 10
   impactPower: 10
---- !u!114 &7451182561352591582
+--- !u!114 &-1914723409101829364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,24 +161,9 @@ MonoBehaviour:
     type: 3}
   bumpEffect: {fileID: 0}
   maxHealth: 100
---- !u!114 &-910303754931517997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363662138401998091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98b4ecf8c4aca9c4cb0ec29f88db9a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 2596540624177372448, guid: 70d28366a21a3b54ca21d362c430beaa,
-    type: 3}
-  createStartDelay: 1
-  createDelay: 2
-  createAngle: 90
-  createPower: 1
+  onDead:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-4600262395806841282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +267,25 @@ MonoBehaviour:
   SmoothingDelay: 5
   canTeleport: 1
   teleportPos: 3
+--- !u!114 &687671060346849889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363662138401998091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b4ecf8c4aca9c4cb0ec29f88db9a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 2596540624177372448, guid: 70d28366a21a3b54ca21d362c430beaa,
+    type: 3}
+  createStartDelay: 3
+  createDelay: 2
+  createAngle: 90
+  createPower: 1
+  createOnDie: 3
 --- !u!1 &2568178576404421465
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5602206213475539006}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: FlameEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +328,7 @@ GameObject:
   - component: {fileID: 7479034774956855214}
   - component: {fileID: 7479034774956855208}
   - component: {fileID: 7479034774956855209}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5075,7 +5079,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7479034776161647703}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

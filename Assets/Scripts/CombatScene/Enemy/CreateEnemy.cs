@@ -15,6 +15,25 @@ public class CreateEnemy : MonoBehaviourPun
     public float createAngle = 90;
     public float createPower = 1;
 
+    [Header("사망 시 오브젝트 생성 수")]
+    public int createOnDie = 3;
+
+    private void Start()
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+
+        // 사망 시 오브젝트 생성
+        Damageable damageable = GetComponent<Damageable>();
+        damageable.onDead.AddListener(delegate
+        {            
+            while (createOnDie > 0)
+            {
+                createOnDie--;
+                Create();
+            }
+        });
+    }
+
     // Update is called once per frame
     void Update()
     {

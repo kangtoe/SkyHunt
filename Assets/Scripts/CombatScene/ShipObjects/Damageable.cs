@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Photon.Pun;
 
 public class Damageable : MonoBehaviourPun
@@ -10,6 +11,9 @@ public class Damageable : MonoBehaviourPun
     public float maxHealth = 100;    
     protected float currnetHealth;
     //Rigidbody2D rbody;
+
+    [HideInInspector]
+    public UnityEvent onDead;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +42,8 @@ public class Damageable : MonoBehaviourPun
             string str = "Projectiles/" + diePrefab.name;
             PhotonNetwork.Instantiate(str, transform.position, diePrefab.transform.rotation);
         }
-        
+
+        onDead.Invoke();
         PhotonNetwork.Destroy(photonView);        
     }
 }
