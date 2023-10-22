@@ -34,7 +34,7 @@ public class RotateToTarget : MonoBehaviourPun
 
     void Update()
     {
-        if (!PhotonNetwork.IsMasterClient) return;
+        //if (!PhotonNetwork.IsMasterClient) return;
 
         if (Target) RotateTo(Target.position, turnSpeed);
     }

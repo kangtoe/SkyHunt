@@ -33,7 +33,8 @@ public class FindTarget : MonoBehaviourPun
     [PunRPC]
     // Update is called once per frame
     void UpdateTarget(int id)
-    {        
+    {
+        Debug.Log("UpdateTarget");
         target = PhotonView.Find(id).transform;
     }
 }

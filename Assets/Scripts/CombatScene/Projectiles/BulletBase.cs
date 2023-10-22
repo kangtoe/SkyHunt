@@ -48,7 +48,10 @@ public class BulletBase : MonoBehaviourPun
 
         // targetLayer 검사
         if (1 << other.gameObject.layer == targetLayer.value)
-        {            
+        {
+            int id = other.gameObject.GetPhotonView().ViewID;
+            photonView.RPC(nameof(Impact), RpcTarget.AllBuffered, id);
+
             if (photonView.IsMine)
             {
                 DestroyGolbal();
@@ -56,10 +59,7 @@ public class BulletBase : MonoBehaviourPun
             else
             {
                 DestroyLocal();
-            }
-
-            int id = other.gameObject.GetPhotonView().ViewID;
-            photonView.RPC(nameof(Impact), RpcTarget.AllBuffered, id);
+            }           
         }
     }
 
