@@ -7,8 +7,18 @@ public class PlayerDamageable : Damageable
     override public void GetDamaged(float damage, int hitObjOwner)
     {
         base.GetDamaged(damage, hitObjOwner);
+
         float healthRatio = currnetHealth / maxHealth;
-        //UiManager.instance.SetHealthBar(healthRatio);
+        if (photonView.IsMine)
+        {            
+            UiManager.Instance.UpdateMyHpGage(healthRatio);
+        }
+        else
+        {
+            UiManager.Instance.UpdateOtherHpGage(healthRatio);
+        }
+
+
     }
 
     override protected void Die()
