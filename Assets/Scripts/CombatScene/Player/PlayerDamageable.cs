@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerDamageable : Damageable
 {
-    override public void GetDamaged(float damage)
+    override public void GetDamaged(float damage, int hitObjOwner)
     {
-        base.GetDamaged(damage);
+        base.GetDamaged(damage, hitObjOwner);
         float healthRatio = currnetHealth / maxHealth;
         //UiManager.instance.SetHealthBar(healthRatio);
     }

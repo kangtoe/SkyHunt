@@ -144,6 +144,7 @@ MonoBehaviour:
   impact: 6
   movePower: 0
   liveTime: 0
+  ownerActor: 0
   expansionSpeed: 10
   expansionMax: 4
 --- !u!114 &-3691628580214561249

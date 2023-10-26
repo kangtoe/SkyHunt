@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -32,12 +32,16 @@ public class GameManager : MonoBehaviourPunCallbacks
     // 현재 게임 나가기 -> 버튼 이벤트
     public void QuitGame()
     {
-        PhotonNetwork.LeaveRoom(); // OnLeftRoom 자동실행 (콜백)
+        PhotonNetwork.LeaveRoom(); 
     }
 
+    // 룸을 떠날 때 자동실행 (콜백)
     public override void OnLeftRoom()
     {
+        // 마스터 클라이언트면 게임 종료
+
         SceneManager.LoadScene("Lobby");
     }
+
 
 }

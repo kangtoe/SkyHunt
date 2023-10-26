@@ -20,7 +20,7 @@ public class DroneMaster : MonoBehaviourPun
 
         // 사망 시, 제어 드론 파괴
         Damageable damageable = GetComponent<Damageable>();
-        damageable.onDead.AddListener(delegate
+        damageable.onDeadGlobal.AddListener(delegate
         {
             DestoryDrones();
         });

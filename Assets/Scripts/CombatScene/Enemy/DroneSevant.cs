@@ -26,6 +26,6 @@ public class DroneSevant : MonoBehaviourPun
         yield return new WaitForSeconds(f);
 
         // 즉사에 해당하는 피해
-        GetComponent<Damageable>().GetDamaged(10000);
+        GetComponent<Damageable>().GetDamaged(10000, photonView.OwnerActorNr);
     }
 }

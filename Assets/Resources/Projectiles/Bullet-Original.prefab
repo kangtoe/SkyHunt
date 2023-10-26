@@ -188,6 +188,7 @@ MonoBehaviour:
   impact: 1
   movePower: 10
   liveTime: 10
+  ownerActor: 0
 --- !u!212 &7742814071415333890
 SpriteRenderer:
   m_ObjectHideFlags: 0

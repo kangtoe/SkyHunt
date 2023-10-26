@@ -24,7 +24,7 @@ public class CreateEnemy : MonoBehaviourPun
 
         // 사망 시 오브젝트 생성
         Damageable damageable = GetComponent<Damageable>();
-        damageable.onDead.AddListener(delegate
+        damageable.onDeadGlobal.AddListener(delegate
         {            
             while (createOnDie > 0)
             {

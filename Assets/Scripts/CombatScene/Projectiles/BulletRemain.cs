@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ≈∫»Ø¿Ã ∏ÿ√ﬂ∏È ªË¡¶
+// ÌÉÑÌôòÏù¥ Î©àÏ∂îÎ©¥ ÏÇ≠Ï†ú
 public class BulletRemain : BulletBase
 {
     public float remainVelocity = 0.2f;
@@ -10,6 +10,8 @@ public class BulletRemain : BulletBase
     private void LateUpdate()
     {
         //Debug.Log("velocity : " + rbody.velocity.magnitude);
+
+        if (!photonView.IsMine) return;
 
         if (rbody.velocity.magnitude <= remainVelocity)
         {

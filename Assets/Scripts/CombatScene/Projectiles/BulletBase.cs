@@ -24,7 +24,9 @@ public class BulletBase : MonoBehaviourPun
      
     protected Rigidbody2D rbody;
     protected SpriteRenderer sprite;
-    TrailRenderer trail;    
+    TrailRenderer trail;
+
+    public int ownerActor;
 
     // Start is called before the first frame update
     virtual protected void Start()
@@ -39,7 +41,8 @@ public class BulletBase : MonoBehaviourPun
         //Debug.Log("velocity : " + rbody.velocity);
 
         if (!photonView.IsMine) return;
-        Invoke(nameof(DestroyGolbal), liveTime);        
+        Invoke(nameof(DestroyGolbal), liveTime);
+        ownerActor = photonView.OwnerActorNr;
     }
 
     virtual protected void OnTriggerEnter2D(Collider2D other)
@@ -49,14 +52,17 @@ public class BulletBase : MonoBehaviourPun
         // targetLayer 검사
         if (1 << other.gameObject.layer == targetLayer.value)
         {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                int id = other.gameObject.GetPhotonView().ViewID;
-                photonView.RPC(nameof(Impact), RpcTarget.AllBuffered, id);
-            }            
+            //if (PhotonNetwork.IsMasterClient)
+            //{
+            //    int id = other.gameObject.GetPhotonView().ViewID;
+            //    photonView.RPC(nameof(Impact), RpcTarget.AllBuffered, id);
+            //}            
 
             if (photonView.IsMine)
-            {                
+            {
+                int id = other.gameObject.GetPhotonView().ViewID;
+                photonView.RPC(nameof(Impact), RpcTarget.AllBuffered, id, photonView.OwnerActorNr);
+
                 DestroyGolbal();
             }
             else
@@ -73,7 +79,7 @@ public class BulletBase : MonoBehaviourPun
     }
 
     [PunRPC]
-    protected void Impact(int coll_Id)
+    protected void Impact(int coll_Id, int ownerActorNr)
     {
         PhotonView pv = PhotonView.Find(coll_Id);
         Collider2D coll = pv.gameObject.GetComponent<Collider2D>();
@@ -82,7 +88,7 @@ public class BulletBase : MonoBehaviourPun
         Damageable damageable = coll.transform.GetComponent<Damageable>();
         if (damageable)
         {
-            damageable.GetDamaged(damage);
+            damageable.GetDamaged(damage, ownerActorNr);
         }
         // 힘 가하기
         Rigidbody2D rbody = coll.transform.GetComponent<Rigidbody2D>();

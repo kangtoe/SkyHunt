@@ -20,7 +20,7 @@ public class ShooterToPlayer : ShooterStandard
     // 실제 사격 -> shooter의 firePoint에서 target 방향대로 projectile을 생성
     override protected void Fire()
     {
-        if (!PhotonNetwork.IsMasterClient) return;
+        if (!photonView.IsMine) return;
 
         foreach (Transform firePoint in firePoints)
         {            

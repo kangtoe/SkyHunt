@@ -1,32 +1,45 @@
-﻿using Photon.Pun;
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreManager : MonoBehaviourPunCallbacks
+public class ScoreManager : MonoBehaviourPun
 {
-    private int[] playerScores;
-    public Text scoreText;
+    public static ScoreManager Instance
+    {
+        get
+        {
+            if (instance == null) instance = FindObjectOfType<ScoreManager>();
+
+            return instance;
+        }
+    }
+    private static ScoreManager instance;
+
+    int currScore = 0;
 
     private void Start()
     {
-        playerScores = new[] { 0, 0 };
+        
     }
 
-    public void AddScore(int playerNumber, int score)
+    public void AddScore(int score)
     {
-        if (!PhotonNetwork.IsMasterClient) return; // 호스트만 점수 증가 제어
+        Debug.Log("AddScore : " + score + " || player " + photonView.OwnerActorNr);
 
-        playerScores[playerNumber - 1] += score;
+        // 내 로컬 점수 증가
+        currScore += score;
+        UiManager.Instance.UpdateMyScoreText(currScore);
 
-        photonView.RPC(nameof(RPCUpdateScoreText), RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
+        // 다른 로컬에서 내 점수 업데이트
+        photonView.RPC(nameof(UpdateOtherScore), RpcTarget.OthersBuffered, currScore);
     }
 
-    // 실행 : 마스터 -> 다른 모든 로컬로 전파
+    // 다른 로컬에서 내 로컬의 점수를 갱신
     [PunRPC]
-    private void RPCUpdateScoreText(string player1ScoreText, string player2ScoreText)
-    {
-        scoreText.text = $"{player1ScoreText} : {player2ScoreText}";
+    public void UpdateOtherScore(int score)
+    {        
+        UiManager.Instance.UpdateOtherScoreText(score);
     }
 }

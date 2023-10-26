@@ -10,7 +10,7 @@ public class ShooterSpread : ShooterStandard
 
     override protected void Fire()
     {
-        if (!PhotonNetwork.IsMasterClient) return;
+        if (!photonView.IsMine) return;
 
         foreach (Transform firePoint in firePoints)
         {

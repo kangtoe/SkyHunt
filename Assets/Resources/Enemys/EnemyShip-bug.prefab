@@ -9865,6 +9865,13 @@ MonoBehaviour:
     type: 3}
   bumpEffect: {fileID: 0}
   maxHealth: 100
+  onDeadGlobal:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeadLocal:
+    m_PersistentCalls:
+      m_Calls: []
+  lastHitObjOwner: 0
 --- !u!114 &4782594924991305519
 MonoBehaviour:
   m_ObjectHideFlags: 0

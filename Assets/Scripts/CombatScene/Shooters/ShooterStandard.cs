@@ -6,7 +6,7 @@ using Photon.Pun;
 public class ShooterStandard : ShooterBase
 {
     [Header("Fire Info")]
-    // µîÀå ÈÄ Ã¹ »ç°Ý±îÁö ´ë±â½Ã°£
+    // ë“±ìž¥ í›„ ì²« ì‚¬ê²©ê¹Œì§€ ëŒ€ê¸°ì‹œê°„
     public float shootStartDelay = 3f;
 
     // Update is called once per frame
@@ -20,7 +20,7 @@ public class ShooterStandard : ShooterBase
 
     protected override void Fire()
     {
-        if (!PhotonNetwork.IsMasterClient) return;
+        if (!photonView.IsMine) return;
 
         base.Fire();
     }

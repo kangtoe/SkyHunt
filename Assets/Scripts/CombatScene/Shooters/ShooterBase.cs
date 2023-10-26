@@ -51,7 +51,7 @@ public abstract class ShooterBase : MonoBehaviourPun
             Vector3 pos = firePoint.position;
             Quaternion quat = firePoint.rotation;
 
-            GameObject go = CreateBullet(pos, quat);
+            GameObject go = CreateBullet(pos, quat);            
             
             go.GetComponent<BulletBase>().Init_RPC(
                 targetLayer, damage, impactPower, projectileMovePower, projectileLiveTime, color.r, color.g, color.b);

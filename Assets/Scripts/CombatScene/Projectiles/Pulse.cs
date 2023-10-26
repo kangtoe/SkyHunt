@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Á¡Â÷ È®´ëµÇ°í, Èå¸´ÇØÁü
+// ì ì°¨ í™•ëŒ€ë˜ê³ , íë¦¿í•´ì§
 public class Pulse : BulletBase
 {
     [Header("Pulse Info")]        
-    public float expansionSpeed = 1f; // È®´ë ¼Óµµ
-    public float expansionMax = 1f; // ÃÖ´ë È®´ë ½ºÄÉÀÏ
+    public float expansionSpeed = 1f; // í™•ëŒ€ ì†ë„
+    public float expansionMax = 1f; // ìµœëŒ€ í™•ëŒ€ ìŠ¤ì¼€ì¼
     float currentExpansion = 0;
-    float attackableRatio = 0.8f; // ¾î´ÀÁ¤µµ  È®´ë ÈÄ, Èñ¹ÌÇÏ°Ô »ç¶óÁ® °¥¶§ ÂëÀº °ø°İ ÆÇÁ¤À» Áö¿î´Ù.
+    float attackableRatio = 0.8f; // ì–´ëŠì •ë„  í™•ëŒ€ í›„, í¬ë¯¸í•˜ê²Œ ì‚¬ë¼ì ¸ ê°ˆë•Œ ì¯¤ì€ ê³µê²© íŒì •ì„ ì§€ìš´ë‹¤.
 
     // Start is called before the first frame update
     override protected void Start()
@@ -53,16 +53,16 @@ public class Pulse : BulletBase
 
         //Debug.Log("other:" + other.name);
 
-        // targetLayer °Ë»ç
+        // targetLayer ê²€ì‚¬
         if (1 << other.gameObject.layer == targetLayer.value)
         {
             //Debug.Log("name:" + name + ", hit damege:" + damage);
 
-            // ÇÇÇØÁÖ°¡
+            // í”¼í•´ì£¼ê°€
             Damageable damageable = other.GetComponent<Damageable>();
             if (damageable)
             {
-                damageable.GetDamaged(damage);
+                damageable.GetDamaged(damage, photonView.OwnerActorNr);
             }
 
             Rigidbody2D rbody = other.GetComponent<Rigidbody2D>();

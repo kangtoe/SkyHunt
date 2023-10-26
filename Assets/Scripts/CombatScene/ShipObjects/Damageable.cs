@@ -10,23 +10,34 @@ public class Damageable : MonoBehaviourPun
     public GameObject bumpEffect; // 충돌 시 Impactable에서 호출    
     public float maxHealth = 100;    
     protected float currnetHealth;
-    //Rigidbody2D rbody;
+    //Rigidbody2D rbody;    
 
     [HideInInspector]
-    public UnityEvent onDead;
+    public UnityEvent onDeadGlobal;
+    [HideInInspector]
+    public UnityEvent onDeadLocal;
+
+    public int lastHitObjOwner;
 
     // Start is called before the first frame update
     void Start()
     {
         currnetHealth = maxHealth;
         //rbody = GetComponent<Rigidbody2D>();
+
+        onDeadLocal.AddListener(delegate { Debug.Log("onDeadLocal"); });        
     }
 
-    virtual public void GetDamaged(float damage)
+    virtual public void GetDamaged(float damage, int hitObjOwner)
     {
-        if (!PhotonNetwork.IsMasterClient) return;
+        lastHitObjOwner = hitObjOwner;
+        Debug.Log(name + " : GetDamaged = " + damage + "( by : player " + hitObjOwner + ")");
 
-        Debug.Log(name + " : GetDamaged = " + damage);
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            // TODO :  마스터 클라이언트와 체력 동기화
+            //return;
+        } 
 
         currnetHealth -= damage;
         if (currnetHealth < 0) currnetHealth = 0;
@@ -35,6 +46,7 @@ public class Damageable : MonoBehaviourPun
 
     virtual protected void Die()
     {
+        onDeadLocal.Invoke();
         if (!PhotonNetwork.IsMasterClient) return;
        
         if (diePrefab)
@@ -43,7 +55,7 @@ public class Damageable : MonoBehaviourPun
             PhotonNetwork.Instantiate(str, transform.position, diePrefab.transform.rotation);
         }
 
-        onDead.Invoke();
+        onDeadGlobal.Invoke();
         PhotonNetwork.Destroy(photonView);        
     }
 }

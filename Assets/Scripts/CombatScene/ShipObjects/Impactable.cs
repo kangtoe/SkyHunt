@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-// collider - collider Ãæµ¹ ½Ã, ºÎµúÈù ´ë»ó¿¡°Ô ÇÇÇØ¿Í ÈûÀ» °¡ÇÑ´Ù.
+// collider - collider ì¶©ëŒ ì‹œ, ë¶€ë”ªíŒ ëŒ€ìƒì—ê²Œ í”¼í•´ì™€ í˜ì„ ê°€í•œë‹¤.
 public class Impactable : MonoBehaviourPun
 {
     public float impactDamage = 10;
@@ -26,13 +26,13 @@ public class Impactable : MonoBehaviourPun
         PhotonView pv = PhotonView.Find(coll_Id);
         Collider2D coll = pv.gameObject.GetComponent<Collider2D>();
 
-        // ÇÇÇØÁÖ±â
+        // í”¼í•´ì£¼ê¸°
         Damageable damageable = coll.transform.GetComponent<Damageable>();
         if (damageable)
         {
-            damageable.GetDamaged(impactDamage);
+            damageable.GetDamaged(impactDamage, photonView.OwnerActorNr);
 
-            // Ãæµ¹ È¿°ú ÇÁ¸®ÆÕ ºÒ·¯¿À±â
+            // ì¶©ëŒ íš¨ê³¼ í”„ë¦¬íŒ¹ ë¶ˆëŸ¬ì˜¤ê¸°
             GameObject bumpEffect = damageable.bumpEffect;
             if (bumpEffect)
             {
@@ -40,7 +40,7 @@ public class Impactable : MonoBehaviourPun
                 Instantiate(bumpEffect, vec, bumpEffect.transform.rotation);
             }
         }
-        // Èû °¡ÇÏ±â
+        // í˜ ê°€í•˜ê¸°
         Rigidbody2D rbody = coll.transform.GetComponent<Rigidbody2D>();
         if (rbody)
         {
