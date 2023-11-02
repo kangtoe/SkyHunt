@@ -280,7 +280,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderers:
   - {fileID: 8848894530628425707}
-  pss: []
   hitEffect: {fileID: 5397861632007149258, guid: 2412e0714df397643b9179bcb37e4992,
     type: 3}
   targetLayer:
@@ -290,6 +289,7 @@ MonoBehaviour:
   impact: 0
   movePower: 0
   liveTime: 0
+  ownerActor: 0
   curveRightOrLeft: 0
   curveAmount: 180
 --- !u!114 &-8801249519094653201
@@ -308,7 +308,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents: []
   sceneViewId: 0

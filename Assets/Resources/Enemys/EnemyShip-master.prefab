@@ -157,9 +157,13 @@ MonoBehaviour:
   diePrefab: {fileID: 0}
   bumpEffect: {fileID: 0}
   maxHealth: 10
-  onDead:
+  onDeadGlobal:
     m_PersistentCalls:
       m_Calls: []
+  onDeadLocal:
+    m_PersistentCalls:
+      m_Calls: []
+  lastHitObjOwner: 0
 --- !u!114 &4204121062905342695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +197,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: -7044175407468643740}

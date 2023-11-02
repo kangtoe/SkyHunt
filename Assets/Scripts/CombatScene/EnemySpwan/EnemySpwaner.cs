@@ -25,7 +25,7 @@ public class EnemySpwaner : MonoBehaviourPun
 
     private void Start()
     {
-        //SpwanEnemy(enemy, 12, Edge.Up);
+        //SpwanEnemy(enemy, 12, Edge.Up);        
     }
 
     [PunRPC]

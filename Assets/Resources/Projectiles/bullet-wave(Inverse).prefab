@@ -278,6 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fcb2cc963983b648822769223c2d21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 6787662741938685571}
   hitEffect: {fileID: 0}
   targetLayer:
     serializedVersion: 2
@@ -286,6 +288,7 @@ MonoBehaviour:
   impact: 1
   movePower: 5
   liveTime: 99
+  ownerActor: 0
   width: 40
   height: 40
   waveInverse: 1
@@ -320,10 +323,9 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
-  ObservedComponents:
-  - {fileID: 0}
+  ObservedComponents: []
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

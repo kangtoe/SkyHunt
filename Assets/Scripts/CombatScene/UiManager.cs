@@ -33,6 +33,9 @@ public class UiManager : MonoBehaviour
     [SerializeField]
     GameObject optionPanel;
 
+    [SerializeField]
+    GameObject overPanel;
+
     bool isOnOption = false; // 옵션 판넬 활성화 중? 
 
     // Start is called before the first frame update
@@ -47,10 +50,21 @@ public class UiManager : MonoBehaviour
         // 옵션 버튼 황성화 중, UI 제외한 어느 클릭이라도 있으면 판넬 닫기
     }
 
+    public void ActiveOverPanel()
+    {
+        overPanel.SetActive(true);
+    }
+
     public void ActiveOptionPanel()
     {
         optionPanel.SetActive(true);
         isOnOption = true;
+    }
+
+    public void InactiveOptionPanel()
+    {
+        optionPanel.SetActive(false);
+        isOnOption = false;
     }
 
     public void UpdateMyScoreText(int i)

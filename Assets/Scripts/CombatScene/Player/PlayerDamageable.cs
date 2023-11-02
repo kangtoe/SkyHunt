@@ -24,6 +24,7 @@ public class PlayerDamageable : Damageable
     override protected void Die()
     {
         //GameManager.instance.GameOver();
+        UiManager.Instance.ActiveOverPanel();
         base.Die();
     }
 }
