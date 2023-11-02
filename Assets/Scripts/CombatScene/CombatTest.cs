@@ -37,7 +37,11 @@ public class CombatTest : MonoBehaviourPun
     [SerializeField]
     GameObject enemyY;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        InitText();
+    }
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -108,8 +112,13 @@ public class CombatTest : MonoBehaviourPun
 
     private void OnValidate()
     {
+        InitText();
+    }
+
+    void InitText()
+    {
         string str = "";
-        str += "IsMasterClient : " + PhotonNetwork.IsMasterClient + "\n";        
+        str += "IsMasterClient : " + PhotonNetwork.IsMasterClient + "\n";
         str += "Enemy 1 : " + (enemy1 ? enemy1.name : "") + "\n";
         str += "Enemy 2 : " + (enemy2 ? enemy2.name : "") + "\n";
         str += "Enemy 3 : " + (enemy3 ? enemy3.name : "") + "\n";
@@ -119,7 +128,7 @@ public class CombatTest : MonoBehaviourPun
         str += "Enemy 7 : " + (enemy7 ? enemy7.name : "") + "\n";
         str += "Enemy 8 : " + (enemy8 ? enemy8.name : "") + "\n";
         str += "Enemy 9 : " + (enemy9 ? enemy9.name : "") + "\n";
-        str += "Enemy 0 : " + (enemy0 ? enemy0.name : "") + "\n";        
+        str += "Enemy 0 : " + (enemy0 ? enemy0.name : "") + "\n";
         str += "Enemy P : " + (enemyP ? enemyP.name : "") + "\n";
         str += "Enemy U : " + (enemyU ? enemyU.name : "") + "\n";
         str += "Enemy Y : " + (enemyY ? enemyY.name : "") + "\n";
