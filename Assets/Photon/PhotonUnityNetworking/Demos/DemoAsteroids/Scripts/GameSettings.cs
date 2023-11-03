@@ -12,6 +12,9 @@ public class GameSettings
     public const string PLAYER_READY = "IsPlayerReady";
     public const string PLAYER_LOADED_LEVEL = "PlayerLoadedLevel";
 
+    public const string LobbyScene = "LobbyNew";
+    public const string CambatScene = "Combat";
+
     public static Color GetColor(int colorChoice)
     {
         switch (colorChoice)

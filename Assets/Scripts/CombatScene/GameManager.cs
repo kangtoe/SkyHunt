@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.CurrentRoom.IsOpen = false; // 방을 닫습니다.
         PhotonNetwork.CurrentRoom.IsVisible = false; // 무작위 매치 메이킹에 공간이 보이지 않게 만듭니다.
-        PhotonNetwork.LoadLevel("Lobby");
+        PhotonNetwork.LoadLevel(GameSettings.LobbyScene);
     }
 
     // 현재 게임 나가기 -> 버튼 이벤트
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         // 마스터 클라이언트면 게임 종료
         //OnwershipTrans();
-        SceneManager.LoadScene("Lobby");
+        SceneManager.LoadScene(GameSettings.LobbyScene);
     }
 
     void OnwershipTrans()

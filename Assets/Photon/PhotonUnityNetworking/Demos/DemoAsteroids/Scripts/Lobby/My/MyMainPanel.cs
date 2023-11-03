@@ -50,6 +50,11 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
         roomListEntries = new Dictionary<string, GameObject>();
 
         PlayerNameInput.text = "Player " + Random.Range(1000, 10000);
+
+        if (PhotonNetwork.IsConnectedAndReady)
+        {
+            OnConnectedToMaster();
+        }
     }
 
     #endregion
@@ -214,10 +219,32 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
         SetActivePanel(SelectionPanel.name);
     }
 
-    public void OnCreateRoomButtonClicked()
+    public void OnLoginButtonClicked()
+    {
+        string playerName = PlayerNameInput.text;
+
+        if (!playerName.Equals(""))
+        {
+            PhotonNetwork.LocalPlayer.NickName = playerName;
+            PhotonNetwork.ConnectUsingSettings();
+        }
+        else
+        {
+            Debug.LogError("Player Name is invalid.");
+        }
+    }
+
+    public void OnCreateRoomButtonClicked_OnSelection()
+    {
+        SetActivePanel("CreateRoomPanel");
+        string roomName = "Room " + Random.Range(1000, 10000);
+        RoomNameInputField.text = roomName;
+    }
+
+    public void OnCreateRoomButtonClicked_OnRoomSetting()
     {
         string roomName = RoomNameInputField.text;
-        roomName = (roomName.Equals(string.Empty)) ? "Room " + Random.Range(1000, 10000) : roomName;
+        roomName = (roomName.Equals(string.Empty)) ? "Room " + Random.Range(1000, 10000) : roomName;        
 
         byte maxPlayers;
         //byte.TryParse(MaxPlayersInputField.text, out maxPlayers);
@@ -239,22 +266,7 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
     public void OnLeaveGameButtonClicked()
     {
         PhotonNetwork.LeaveRoom();
-    }
-
-    public void OnLoginButtonClicked()
-    {
-        string playerName = PlayerNameInput.text;
-
-        if (!playerName.Equals(""))
-        {
-            PhotonNetwork.LocalPlayer.NickName = playerName;
-            PhotonNetwork.ConnectUsingSettings();
-        }
-        else
-        {
-            Debug.LogError("Player Name is invalid.");
-        }
-    }
+    }  
 
     public void OnRoomListButtonClicked()
     {
