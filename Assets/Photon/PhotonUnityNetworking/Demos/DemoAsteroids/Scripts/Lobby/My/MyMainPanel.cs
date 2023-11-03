@@ -220,8 +220,9 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
         roomName = (roomName.Equals(string.Empty)) ? "Room " + Random.Range(1000, 10000) : roomName;
 
         byte maxPlayers;
-        byte.TryParse(MaxPlayersInputField.text, out maxPlayers);
-        maxPlayers = (byte)Mathf.Clamp(maxPlayers, 2, 8);
+        //byte.TryParse(MaxPlayersInputField.text, out maxPlayers);
+        //maxPlayers = (byte)Mathf.Clamp(maxPlayers, 2, 8);
+        maxPlayers = 2;
 
         RoomOptions options = new RoomOptions { MaxPlayers = maxPlayers, PlayerTtl = 10000 };
 
@@ -270,7 +271,8 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
 
-        PhotonNetwork.LoadLevel("DemoAsteroids-GameScene");
+        // 모든 룸 참가자 Main 씬 로드
+        PhotonNetwork.LoadLevel("Combat");        
     }
 
     #endregion
