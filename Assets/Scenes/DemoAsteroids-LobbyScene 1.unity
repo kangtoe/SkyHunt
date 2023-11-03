@@ -3157,7 +3157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c61067fb237bf344a8b4963c853d377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConnectionStatusText: {fileID: 0}
+  ConnectionStatusText: {fileID: 759308736}
 --- !u!1 &1251081872
 GameObject:
   m_ObjectHideFlags: 0
@@ -3263,6 +3263,7 @@ GameObject:
   - component: {fileID: 1310044696}
   - component: {fileID: 1310044698}
   - component: {fileID: 1310044697}
+  - component: {fileID: 1310044700}
   - component: {fileID: 1310044699}
   m_Layer: 5
   m_Name: MainPanel
@@ -3303,7 +3304,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1310044695}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84fd812a67908014cb408f749ca7a55e, type: 3}
   m_Name: 
@@ -3343,6 +3344,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
+--- !u!114 &1310044700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310044695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9decf453aa686134a8c5e23c528eaa65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoginPanel: {fileID: 964844637}
+  PlayerNameInput: {fileID: 328590478}
+  SelectionPanel: {fileID: 1771933899}
+  CreateRoomPanel: {fileID: 1406502566}
+  RoomNameInputField: {fileID: 1541721128}
+  MaxPlayersInputField: {fileID: 1856119463}
+  JoinRandomRoomPanel: {fileID: 751292280}
+  RoomListPanel: {fileID: 953796484}
+  RoomListContent: {fileID: 889509550}
+  RoomListEntryPrefab: {fileID: 114706, guid: 03c5e15309335324fba99d68e38cb08b, type: 3}
+  InsideRoomPanel: {fileID: 1370510199}
+  StartGameButton: {fileID: 800069350}
+  PlayerListEntryPrefab: {fileID: 195212, guid: d68bf8413681d9b4aa7328277e632e3f,
+    type: 3}
 --- !u!1 &1370510199
 GameObject:
   m_ObjectHideFlags: 0
@@ -3792,7 +3819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1496080348
 RectTransform:
   m_ObjectHideFlags: 0
