@@ -17,4 +17,9 @@ public class MyTopPanel : MonoBehaviour
     }
 
     #endregion
+
+    public void OnExitButtonClicked()
+    {
+        Application.Quit();
+    }
 }

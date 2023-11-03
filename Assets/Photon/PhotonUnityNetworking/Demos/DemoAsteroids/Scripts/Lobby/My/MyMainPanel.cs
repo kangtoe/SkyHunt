@@ -1,9 +1,9 @@
 using ExitGames.Client.Photon;
+using Photon.Pun;
 using Photon.Realtime;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Photon.Pun;
 
 public class MyMainPanel : MonoBehaviourPunCallbacks
 {
@@ -33,6 +33,10 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
     [Header("Inside Room Panel")]
     public GameObject InsideRoomPanel;
 
+    [Header("User Name Text")]
+    public Text userNameUi;
+
+    [Space(20)]
     public Button StartGameButton;
     public GameObject PlayerListEntryPrefab;
 
@@ -51,6 +55,7 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
 
         PlayerNameInput.text = "Player " + Random.Range(1000, 10000);
 
+        UpdateUserNameUi();
         if (PhotonNetwork.IsConnectedAndReady)
         {
             OnConnectedToMaster();
@@ -225,8 +230,9 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
 
         if (!playerName.Equals(""))
         {
-            PhotonNetwork.LocalPlayer.NickName = playerName;
+            PhotonNetwork.LocalPlayer.NickName = playerName;            
             PhotonNetwork.ConnectUsingSettings();
+            UpdateUserNameUi();
         }
         else
         {
@@ -288,6 +294,14 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
     }
 
     #endregion
+
+    void UpdateUserNameUi()
+    {
+        string str = PhotonNetwork.LocalPlayer.NickName;
+        Debug.Log("UpdateUserNameUi : " + str);
+        if (str == "") userNameUi.text = "";
+        else userNameUi.text = "USER : " + str;        
+    }
 
     private bool CheckPlayersReady()
     {
