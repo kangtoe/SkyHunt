@@ -1,4 +1,4 @@
-﻿using Photon.Pun;
+using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 
@@ -23,19 +23,25 @@ public class LobbyManager : MonoBehaviourPunCallbacks // PunCallback (포톤 pun
     
     // 마스터 서버 접속 시
     public override void OnConnectedToMaster()
-    {        
-        joinButton.interactable = true;     
-        connectionInfoText.text = "온라인 : 마스터 서버와 연결됨";
+    {
+        SetReadyUi(true);
     }
     
     // 서버 접속 해제됨 -> 재접속 시도
     public override void OnDisconnected(DisconnectCause cause)
     {
-        joinButton.interactable = false;
-        connectionInfoText.text = "오프라인 : 마스터 서버와 연결되지 않음\n접속 재시도 중...";
+        SetReadyUi(false);
 
         // 재접속 시도
         PhotonNetwork.ConnectUsingSettings();                                
+    }
+
+    // 연결 되어 있는 지 ui 표시
+    void SetReadyUi(bool ready)
+    {
+        joinButton.interactable = ready;
+        if(ready) connectionInfoText.text = "온라인 : 마스터 서버와 연결됨";
+        else connectionInfoText.text = "오프라인 : 마스터 서버와 연결되지 않음\n접속 재시도 중...";
     }
     
     // join 버튼 클릭시 접속 시도-> 버튼 이벤트로 호출
@@ -53,7 +59,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks // PunCallback (포톤 pun
         }
         else // 마스터 서버에 접속중이 아니라면
         {
-            connectionInfoText.text = "오프라인 : 마스터 서버와 연결되지 않음\n접속 재시도 중...";
+            SetReadyUi(false);
 
             // 마스터 서버에 접속 시도
             PhotonNetwork.ConnectUsingSettings();                             

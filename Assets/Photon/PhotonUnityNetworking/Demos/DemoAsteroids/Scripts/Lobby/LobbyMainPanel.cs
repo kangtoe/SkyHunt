@@ -1,4 +1,4 @@
-﻿using ExitGames.Client.Photon;
+using ExitGames.Client.Photon;
 using Photon.Realtime;
 using System.Collections.Generic;
 using UnityEngine;
