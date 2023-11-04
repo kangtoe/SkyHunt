@@ -57,8 +57,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     // 룸을 떠날 때 자동실행 (콜백)
     public override void OnLeftRoom()
     {
-        Debug.Log("OnLeftRoom");        
-        SceneManager.LoadScene(GameSettings.LobbyScene);
+        Debug.Log("OnLeftRoom");
+        // 다른 플레이어에서 현재 플레이어에 대한 UI 표시 비활성화
+
+        SceneManager.LoadScene(GameSettings.LobbyScene);                
     }
 
     public void OnwershipTrans()

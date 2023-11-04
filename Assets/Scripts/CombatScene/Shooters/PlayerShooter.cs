@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerShooter : ShooterBase
 {
-    //public int shooterLevel = 1; // ³ôÀº ·¹º§ÀÇ ½´ÅÍ´Â ´õ °­ÇÑ °ø°İÀ» ÇÔ
-    //protected int maxShooterLevel = 5; // ½´ÅÍ ·¹º§ÀÇ ÃÖ°í »óÇÑ
+    public int shooterLevel = 1; // ë†’ì€ ë ˆë²¨ì˜ ìŠˆí„°ëŠ” ë” ê°•í•œ ê³µê²©ì„ í•¨
+    //protected int maxShooterLevel = 5; // ìŠˆí„° ë ˆë²¨ì˜ ìµœê³  ìƒí•œ
 
     private void Start()
     {
@@ -21,5 +21,60 @@ public class PlayerShooter : ShooterBase
         {
             TryFire();
         }        
+    }
+
+    protected override void Fire()
+    {
+        int numberOfBullets = shooterLevel; // ìƒì„±í•  ì´ì•Œì˜ ê°œìˆ˜        
+        float interval = 0.5f;
+
+        Transform tf = firePoints[0];
+        Vector3 pos = tf.position;
+        Quaternion rot = tf.rotation;
+
+        float intervalX = 0.2f;
+        float intervalY = 0.2f;
+
+        // ì´ì•Œ ìƒì„±
+        for (int i = 0; i < numberOfBullets; i++)
+        {
+            float adjustX;
+            float adjustY;
+
+            if (numberOfBullets == 1)
+            {
+                adjustX = 0;                
+            }
+            else
+            {                
+                if (numberOfBullets % 2 == 1)
+                {
+                    // ë°œì‚¬ì²´ ìƒì„± ê°œìˆ˜ í™€ìˆ˜
+                    int centerIdx = numberOfBullets / 2;
+                    adjustX = centerIdx - i; adjustY = Mathf.Abs(adjustX);
+                }
+                else
+                {
+                    // ë°œì‚¬ì²´ ìƒì„± ê°œìˆ˜ ì§ìˆ˜
+                    int centerIdxUp = numberOfBullets / 2;
+                    int centerIdxDown = centerIdxUp - 1;
+                    if (i <= centerIdxDown) adjustX = i - centerIdxDown - 0.5f;
+                    else adjustX = i - centerIdxUp + 0.5f;
+
+                    Debug.Log("i : "+ i +" || adjust : " + adjustX);
+                }                
+            }
+
+            // ìœ„ì¹˜ ì¡°ì •
+            adjustY = -Mathf.Abs(adjustX);
+            pos = tf.TransformPoint(tf.localPosition + new Vector3(adjustX * intervalX, adjustY * intervalY, 0));
+
+            // ë°œì‚¬ì²´ ìƒì„±
+            GameObject go = CreateBullet(pos, rot);
+            
+            go.GetComponent<BulletBase>().Init_RPC(
+            targetLayer, damage, impactPower, projectileMovePower, projectileLiveTime, color.r, color.g, color.b);
+
+        }
     }
 }

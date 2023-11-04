@@ -143,6 +143,7 @@ MonoBehaviour:
   projectileMovePower: 25
   projectileLiveTime: 3
   color: {r: 0, g: 1, b: 0, a: 1}
+  shooterLevel: 1
 --- !u!50 &770557204104256601
 Rigidbody2D:
   serializedVersion: 4
