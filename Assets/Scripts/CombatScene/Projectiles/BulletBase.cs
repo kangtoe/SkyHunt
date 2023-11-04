@@ -20,7 +20,9 @@ public class BulletBase : MonoBehaviourPun
     public int damage;
     public int impact;
     public float movePower;
+
     public float liveTime;
+    float spwanedTime = 0;
      
     protected Rigidbody2D rbody;
     protected SpriteRenderer sprite;
@@ -40,9 +42,17 @@ public class BulletBase : MonoBehaviourPun
         rbody.velocity = transform.up * movePower;
         //Debug.Log("velocity : " + rbody.velocity);
 
-        if (!photonView.IsMine) return;
-        Invoke(nameof(DestroyGolbal), liveTime);
+        if (!photonView.IsMine) return;        
         ownerActor = photonView.OwnerActorNr;
+    }
+
+    private void Update()
+    {
+        spwanedTime += Time.deltaTime;
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (liveTime > spwanedTime) DestroyGolbal();
+        }
     }
 
     virtual protected void OnTriggerEnter2D(Collider2D other)
