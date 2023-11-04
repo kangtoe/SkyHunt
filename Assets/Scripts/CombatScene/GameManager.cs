@@ -39,11 +39,21 @@ public class GameManager : MonoBehaviourPunCallbacks
         }        
     }
 
+    // 디버그용
     public void EndRoom()
     {
         PhotonNetwork.CurrentRoom.IsOpen = false; // 방을 닫습니다.
         PhotonNetwork.CurrentRoom.IsVisible = false; // 무작위 매치 메이킹에 공간이 보이지 않게 만듭니다.
+        PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel(GameSettings.LobbyScene);
+    }
+
+    public void GameOver()
+    {
+        UiManager.Instance.ActiveOverPanel();
+        // 취득 점수 표시 
+        // 최고 점수 표시
+        // 비교하여 신기록 표기 여부 결정 및 저장
     }
 
     // 현재 게임 나가기 -> 버튼 이벤트

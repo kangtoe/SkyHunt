@@ -66,6 +66,7 @@ public class UiManager : MonoBehaviour
 
     public void ActiveOverPanel()
     {
+        InactiveOptionPanel();
         overPanel.SetActive(true);
     }
 
