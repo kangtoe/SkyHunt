@@ -39,20 +39,21 @@ public class GameManager : MonoBehaviourPunCallbacks
     // 현재 게임 나가기 -> 버튼 이벤트
     public void QuitGame()
     {
+        //PhotonNetwork.AutomaticallySyncScene = false;      
+        OnwershipTrans();
         PhotonNetwork.LeaveRoom(); 
     }
 
     // 룸을 떠날 때 자동실행 (콜백)
     public override void OnLeftRoom()
     {
-        // 마스터 클라이언트면 게임 종료
-        //OnwershipTrans();
+        Debug.Log("OnLeftRoom");        
         SceneManager.LoadScene(GameSettings.LobbyScene);
     }
 
-    void OnwershipTrans()
+    public void OnwershipTrans()
     {
-        Debug.Log("OnLeftRoom");
+        //roomOptions.CleanupCacheOnLeave = false;
 
         // 현재 방에 있는 플레이어 리스트를 가져옵니다.
         Photon.Realtime.Player[] players = PhotonNetwork.PlayerList;
@@ -75,6 +76,8 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
         }
 
+        Debug.Log("OnwershipTrans to : " + otherPlayerActorNumber);
+
         if (PhotonNetwork.IsMasterClient)
         {
             // 마스터 클라이언트 권한을 다른 플레이어에게 이전
@@ -91,7 +94,11 @@ public class GameManager : MonoBehaviourPunCallbacks
             if (photonView.IsMine)
             {
                 // 플레이어 기체는 소유권 이전 안함
-                if (photonView.GetComponent<MovePlayerShip>()) continue;
+                if (photonView.GetComponent<MovePlayerShip>())
+                {
+                    Debug.Log("not TransferOwnership : " + photonView.name);
+                    continue;
+                } 
 
                 // 소유권을 다른 플레이어에게 이전합니다.
                 photonView.TransferOwnership(otherPlayerActorNumber);

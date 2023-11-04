@@ -174,7 +174,7 @@ public class BulletBase : MonoBehaviourPun
         {
             //Debug.Log("Instantiate hitEffect");
             string str = "Projectiles/" + hitEffect.name;
-            GameObject go = PhotonNetwork.InstantiateRoomObject(str, transform.position, transform.rotation);
+            GameObject go = PhotonNetwork.Instantiate(str, transform.position, transform.rotation);
         }
 
         PhotonNetwork.Destroy(gameObject);        

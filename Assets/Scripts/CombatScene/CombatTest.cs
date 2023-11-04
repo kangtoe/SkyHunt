@@ -108,6 +108,8 @@ public class CombatTest : MonoBehaviourPun
         {
             EnemySpwaner.instance.SpwanEnemyRandomPos(enemyY);
         }
+
+        InitText();
     }
 
     private void OnValidate()
