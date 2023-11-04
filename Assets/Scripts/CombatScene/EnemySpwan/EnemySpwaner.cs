@@ -51,7 +51,7 @@ public class EnemySpwaner : MonoBehaviourPun
             Vector2 pos = GetSpwanPoint(spwanSide, (float)i / (count + 1));
             Quaternion rot = GetSpwanRot(spwanSide);
 
-            PhotonNetwork.Instantiate(enemyPrefab.name, pos, rot);            
+            PhotonNetwork.InstantiateRoomObject(enemyPrefab.name, pos, rot);            
 
             //lastSpwanTime = Time.time;
         }
@@ -79,7 +79,7 @@ public class EnemySpwaner : MonoBehaviourPun
         Vector2 pos = GetSpwanPoint(randomEdge);
         Quaternion rot = GetSpwanRot(randomEdge);
         
-        GameObject go = PhotonNetwork.Instantiate(str, pos, rot);
+        GameObject go = PhotonNetwork.InstantiateRoomObject(str, pos, rot);
         //int id = go.GetComponent<PhotonView>().ViewID;
         //photonView.RPC(nameof(SetPos), RpcTarget.AllBuffered, id, pos.x, pos.y);
         return go;

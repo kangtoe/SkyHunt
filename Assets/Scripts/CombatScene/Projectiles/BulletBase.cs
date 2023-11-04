@@ -48,6 +48,7 @@ public class BulletBase : MonoBehaviourPun
 
     private void Update()
     {
+        if (isDestroyed) return;
         spwanedTime += Time.deltaTime;
         if (photonView.IsMine)
         {
@@ -173,7 +174,7 @@ public class BulletBase : MonoBehaviourPun
         {
             //Debug.Log("Instantiate hitEffect");
             string str = "Projectiles/" + hitEffect.name;
-            GameObject go = PhotonNetwork.Instantiate(str, transform.position, transform.rotation);
+            GameObject go = PhotonNetwork.InstantiateRoomObject(str, transform.position, transform.rotation);
         }
 
         PhotonNetwork.Destroy(gameObject);        
