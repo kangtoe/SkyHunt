@@ -21,7 +21,7 @@ public class BulletBase : MonoBehaviourPun
     public int impact;
     public float movePower;
 
-    public float liveTime;
+    public float liveTime = 10;
     float spwanedTime = 0;
      
     protected Rigidbody2D rbody;
@@ -49,9 +49,9 @@ public class BulletBase : MonoBehaviourPun
     private void Update()
     {
         spwanedTime += Time.deltaTime;
-        if (PhotonNetwork.IsMasterClient)
+        if (photonView.IsMine)
         {
-            if (liveTime > spwanedTime) DestroyGolbal();
+            if (liveTime < spwanedTime) DestroyGolbal();
         }
     }
 
@@ -140,6 +140,8 @@ public class BulletBase : MonoBehaviourPun
     // photonView.IsMine 아닌 경우 호출
     protected void DestroyLocal()
     {
+        //Debug.Log("DestroyLocal : " + name);
+
         isDestroyed = true;
 
         foreach (Renderer renderer in renderers)
@@ -156,6 +158,8 @@ public class BulletBase : MonoBehaviourPun
     // photonView.IsMine 경우 호출
     protected void DestroyGolbal()
     {
+        //Debug.Log("DestroyGolbal : " + name);
+
         isDestroyed = true;        
 
         if (trail)
