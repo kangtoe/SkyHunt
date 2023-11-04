@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class WaveManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class WaveManager : MonoBehaviour
     SpwanInfo  SpwanInfo => SpwanInfo.instance;
     EnemySpwaner Spwaner => EnemySpwaner.instance;
 
-    // ÇöÀç waveÀÇ °¡¿ë Æ÷ÀÎÆ® -> currentWave * pointMult
+    // í˜„ì¬ waveì˜ ê°€ìš© í¬ì¸íŠ¸ -> currentWave * pointMult
     public int currentWave = 10;
     int pointMult = 500;
 
@@ -29,7 +30,9 @@ public class WaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ¸ğµç Àû ½ºÆù ¿Ï·á, ³²¾ÆÀÖ´Â Àû ¾øÀ½ -> ¸ğµç Àû °İÆÄ
+        if (!PhotonNetwork.IsMasterClient) return;
+
+        // ëª¨ë“  ì  ìŠ¤í° ì™„ë£Œ, ë‚¨ì•„ìˆëŠ” ì  ì—†ìŒ -> ëª¨ë“  ì  ê²©íŒŒ
         if (!spwaning && CurrentEnemyCount == 0)
         {            
             StartNextWave();
@@ -44,49 +47,49 @@ public class WaveManager : MonoBehaviour
     IEnumerator SpwanCr()
     {
         spwaning = true;
-        // ÀÏÁ¤ ½Ã°£ ÈÄ »ı¼º ½ÃÀÛ
+        // ì¼ì • ì‹œê°„ í›„ ìƒì„± ì‹œì‘
         yield return new WaitForSeconds(waveInterval);        
         currentWave++;
 
         //Debug.Log("Spwan start");
         //UiManager.instance.ShowWaveUi("WAVE 0" + currentWave.ToString());
 
-        // ½ºÆùÇÒ Àû Á¾·ù¿Í ¼ö·®
+        // ìŠ¤í°í•  ì  ì¢…ë¥˜ì™€ ìˆ˜ëŸ‰
         Dictionary<GameObject, int> enemys = SpwanInfo.GetSpwanableEnemys(CurrentWavePoint, currentWave);
 
-        // ½ºÆùµÈ Àû ¸®½ºÆ®
+        // ìŠ¤í°ëœ ì  ë¦¬ìŠ¤íŠ¸
         List<GameObject> spwaned = new List<GameObject>();
 
         foreach (KeyValuePair<GameObject, int> pair in enemys)
         {
-            // °°Àº Á¾·ùÀÇ ÀûÀ» ÀÏÁ¤ ½Ã°£À» µÎ°í »ı¼º
+            // ê°™ì€ ì¢…ë¥˜ì˜ ì ì„ ì¼ì • ì‹œê°„ì„ ë‘ê³  ìƒì„±
             for (int i = 0; i < pair.Value; i++)
             {
-                // »ı¼ºÇÒ Àû
+                // ìƒì„±í•  ì 
                 GameObject enemy = pair.Key;
 
-                // ´ÙÀ½ »ı¼º±îÁö ½Ã°£Â÷ µÎ±â
+                // ë‹¤ìŒ ìƒì„±ê¹Œì§€ ì‹œê°„ì°¨ ë‘ê¸°
                 float interval = GetUnitInterval(enemy.GetComponent<EnemyInfo>());
                 yield return new WaitForSeconds(interval);
 
-                // nullÀÎ ¿ä¼Ò list¿¡¼­ »èÁ¦
+                // nullì¸ ìš”ì†Œ listì—ì„œ ì‚­ì œ
                 spwaned.RemoveAll(e => e == null);
 
                 GameObject go = Spwaner.SpwanEnemyRandomPos(enemy, spwaned);
                 spwaned.Add(go);
             }
 
-            // ´Ù¸¥ Á¾·ùÀÇ ÀûÀ» »ı¼ºÇÒ ¶§ Ãß°¡ÀûÀÎ »ç°Ç °£°İÀ» µÒ
+            // ë‹¤ë¥¸ ì¢…ë¥˜ì˜ ì ì„ ìƒì„±í•  ë•Œ ì¶”ê°€ì ì¸ ì‚¬ê±´ ê°„ê²©ì„ ë‘ 
             //yield return new WaitForSeconds(sortInterval);
         }
 
         spwaning = false;
     }
 
-    // ÀûÀÇ Á¡¼ö¿¡ µû¶ó »ı¼º ±âÁØ °£°İÀ» ¹İÈ¯ 
+    // ì ì˜ ì ìˆ˜ì— ë”°ë¼ ìƒì„± ê¸°ì¤€ ê°„ê²©ì„ ë°˜í™˜ 
     float GetUnitInterval(EnemyInfo enemy)
     {
-        // Àû±â Á¡¼ö / PointPerSec -> »ı¼º °£°İ
+        // ì ê¸° ì ìˆ˜ / PointPerSec -> ìƒì„± ê°„ê²©
         float PointPerSec = 100; 
         return enemy.point / PointPerSec;
     }

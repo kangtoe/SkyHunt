@@ -12,14 +12,16 @@ GameObject:
   - component: {fileID: 6665017967656352383}
   - component: {fileID: 5440513246676255233}
   - component: {fileID: 1845439017892980375}
-  - component: {fileID: 7158299312043463614}
-  - component: {fileID: 4305803180733988029}
-  - component: {fileID: 4204121062905342695}
   - component: {fileID: -2430697317241205178}
   - component: {fileID: -7044175407468643740}
+  - component: {fileID: 2343003684149436984}
+  - component: {fileID: 7158299312043463614}
+  - component: {fileID: 4305803180733988029}
+  - component: {fileID: -9188465841436249170}
   - component: {fileID: 4165448204887014476}
   - component: {fileID: -925379865593888438}
   - component: {fileID: -5018156843497066851}
+  - component: {fileID: 4204121062905342695}
   m_Layer: 9
   m_Name: EnemyShip-master
   m_TagString: Untagged
@@ -128,59 +130,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7158299312043463614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2165457843689016373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15265918ed62ca2498a7eb8768f03e62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  impactDamage: 10
-  impactPower: 10
---- !u!114 &4305803180733988029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2165457843689016373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54115f783d39a3c4da246d7e949a18e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  diePrefab: {fileID: 0}
-  bumpEffect: {fileID: 0}
-  maxHealth: 10
-  onDeadGlobal:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeadLocal:
-    m_PersistentCalls:
-      m_Calls: []
-  lastHitObjOwner: 0
---- !u!114 &4204121062905342695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2165457843689016373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11d77d705ce3e464eb0f6cb2ecebc3ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dronePrefab: {fileID: 8465670207888477691, guid: 0c9ec3f1238c476449fe870d55d3f9e1,
-    type: 3}
-  createDroneCount: 8
-  droneMoveSpeed: 30
-  halfRadius: 1
 --- !u!114 &-2430697317241205178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +168,68 @@ MonoBehaviour:
   SmoothingDelay: 5
   canTeleport: 1
   teleportPos: 3
+--- !u!114 &2343003684149436984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2165457843689016373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b463dcb5fa35f42a6c99bfbc221ff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7158299312043463614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2165457843689016373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15265918ed62ca2498a7eb8768f03e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactDamage: 10
+  impactPower: 10
+--- !u!114 &4305803180733988029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2165457843689016373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54115f783d39a3c4da246d7e949a18e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diePrefab: {fileID: 0}
+  bumpEffect: {fileID: 0}
+  maxHealth: 10
+  onDeadGlobal:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeadLocal:
+    m_PersistentCalls:
+      m_Calls: []
+  lastHitObjOwner: 0
+--- !u!114 &-9188465841436249170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2165457843689016373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6f235ab3d09fa4cad3dae0ae4ba152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  point: 100
+  spwanMinWave: 0
 --- !u!114 &4165448204887014476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,3 +269,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!114 &4204121062905342695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2165457843689016373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11d77d705ce3e464eb0f6cb2ecebc3ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dronePrefab: {fileID: 8465670207888477691, guid: 0c9ec3f1238c476449fe870d55d3f9e1,
+    type: 3}
+  createDroneCount: 8
+  droneMoveSpeed: 30
+  halfRadius: 1

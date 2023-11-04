@@ -4824,17 +4824,17 @@ GameObject:
   m_Component:
   - component: {fileID: 979198242076312780}
   - component: {fileID: 669752357247487644}
-  - component: {fileID: 5524166034369483380}
   - component: {fileID: 2212678391994595042}
+  - component: {fileID: 5524166034369483380}
   - component: {fileID: -992580540219104504}
   - component: {fileID: -6857587647179846534}
-  - component: {fileID: 6243478547130218961}
-  - component: {fileID: 7629227273868904424}
-  - component: {fileID: 5139449305642237351}
+  - component: {fileID: 3436041245697086348}
   - component: {fileID: 8744602682848603885}
   - component: {fileID: 1813149349633799926}
   - component: {fileID: 1408331654070734062}
-  - component: {fileID: 3436041245697086348}
+  - component: {fileID: 6243478547130218961}
+  - component: {fileID: 7629227273868904424}
+  - component: {fileID: 5139449305642237351}
   - component: {fileID: -4765209794558880383}
   m_Layer: 9
   m_Name: EnemyShip-kido
@@ -4909,6 +4909,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &2212678391994595042
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420318343600928982}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.0034366257}
+  m_Size: {x: 0.62904173, y: 0.3218898}
+  m_Direction: 1
 --- !u!50 &5524166034369483380
 Rigidbody2D:
   serializedVersion: 4
@@ -4930,22 +4946,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &2212678391994595042
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5420318343600928982}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0034366257}
-  m_Size: {x: 0.62904173, y: 0.3218898}
-  m_Direction: 1
 --- !u!114 &-992580540219104504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4984,6 +4984,69 @@ MonoBehaviour:
   SmoothingDelay: 5
   canTeleport: 1
   teleportPos: 3
+--- !u!114 &3436041245697086348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420318343600928982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b463dcb5fa35f42a6c99bfbc221ff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8744602682848603885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420318343600928982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15265918ed62ca2498a7eb8768f03e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactDamage: 10
+  impactPower: 10
+--- !u!114 &1813149349633799926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420318343600928982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54115f783d39a3c4da246d7e949a18e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diePrefab: {fileID: 8453916313859941413, guid: be4f42f73043c554dae90cc3711f9937,
+    type: 3}
+  bumpEffect: {fileID: 0}
+  maxHealth: 100
+  onDeadGlobal:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeadLocal:
+    m_PersistentCalls:
+      m_Calls: []
+  lastHitObjOwner: 0
+--- !u!114 &1408331654070734062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420318343600928982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6f235ab3d09fa4cad3dae0ae4ba152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  point: 100
+  spwanMinWave: 0
 --- !u!114 &6243478547130218961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5036,69 +5099,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSpeed: 2
---- !u!114 &8744602682848603885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5420318343600928982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15265918ed62ca2498a7eb8768f03e62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  impactDamage: 10
-  impactPower: 10
---- !u!114 &1813149349633799926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5420318343600928982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54115f783d39a3c4da246d7e949a18e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  diePrefab: {fileID: 8453916313859941413, guid: be4f42f73043c554dae90cc3711f9937,
-    type: 3}
-  bumpEffect: {fileID: 0}
-  maxHealth: 100
-  onDeadGlobal:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeadLocal:
-    m_PersistentCalls:
-      m_Calls: []
-  lastHitObjOwner: 0
---- !u!114 &1408331654070734062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5420318343600928982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d6f235ab3d09fa4cad3dae0ae4ba152, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  point: 100
-  spwanMinWave: 0
---- !u!114 &3436041245697086348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5420318343600928982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7b463dcb5fa35f42a6c99bfbc221ff3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-4765209794558880383
 MonoBehaviour:
   m_ObjectHideFlags: 0

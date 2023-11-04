@@ -42,12 +42,12 @@ GameObject:
   - component: {fileID: 8465670207888477666}
   - component: {fileID: 8465670207888477695}
   - component: {fileID: 8030831674937123114}
-  - component: {fileID: 3407627003018439092}
   - component: {fileID: -3690849731008589504}
-  - component: {fileID: 1859183593925594982}
-  - component: {fileID: 5172696338509140534}
   - component: {fileID: -7956919218238996288}
+  - component: {fileID: 5172696338509140534}
   - component: {fileID: 345010854899068332}
+  - component: {fileID: 1859183593925594982}
+  - component: {fileID: 3407627003018439092}
   m_Layer: 9
   m_Name: EnemyShip-slave
   m_TagString: Untagged
@@ -149,18 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSpeed: 5
---- !u!114 &3407627003018439092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8465670207888477691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b5fa9a1415d8b4eb1afaa1aef86636, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-3690849731008589504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,7 +171,7 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &1859183593925594982
+--- !u!114 &-7956919218238996288
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,10 +180,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8465670207888477691}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4852c712128a44e479196b9e50abaa89, type: 3}
+  m_Script: {fileID: 11500000, guid: 15265918ed62ca2498a7eb8768f03e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  impactDamage: 1
+  impactPower: 10
 --- !u!114 &5172696338509140534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,20 +208,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   lastHitObjOwner: 0
---- !u!114 &-7956919218238996288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8465670207888477691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15265918ed62ca2498a7eb8768f03e62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  impactDamage: 1
-  impactPower: 10
 --- !u!114 &345010854899068332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,3 +234,28 @@ MonoBehaviour:
   projectileLiveTime: 10
   color: {r: 1, g: 0, b: 0, a: 0}
   shootStartDelay: 2
+--- !u!114 &1859183593925594982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8465670207888477691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4852c712128a44e479196b9e50abaa89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+--- !u!114 &3407627003018439092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8465670207888477691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b5fa9a1415d8b4eb1afaa1aef86636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -12,15 +12,14 @@ GameObject:
   - component: {fileID: 4793184107284900656}
   - component: {fileID: 6159443190130742094}
   - component: {fileID: 533245589600286680}
-  - component: {fileID: 5960953159930055252}
-  - component: {fileID: 6944262865114476014}
   - component: {fileID: 596862718581759245}
   - component: {fileID: 7468786672892108335}
   - component: {fileID: 1675318591793172413}
+  - component: {fileID: 5960953159930055252}
+  - component: {fileID: 6944262865114476014}
   - component: {fileID: 992923601132073500}
-  - component: {fileID: 2035255293796984712}
-  - component: {fileID: 4566769953627421745}
   - component: {fileID: 564139049502904139}
+  - component: {fileID: 2035255293796984712}
   - component: {fileID: 1053987712804022998}
   - component: {fileID: -6994072380501696912}
   m_Layer: 9
@@ -134,43 +133,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5960953159930055252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69640197652471162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15265918ed62ca2498a7eb8768f03e62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  impactDamage: 1
-  impactPower: 5
---- !u!114 &6944262865114476014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69640197652471162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54115f783d39a3c4da246d7e949a18e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  diePrefab: {fileID: 8453916313859941413, guid: be4f42f73043c554dae90cc3711f9937,
-    type: 3}
-  bumpEffect: {fileID: 0}
-  maxHealth: 100
-  onDeadGlobal:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeadLocal:
-    m_PersistentCalls:
-      m_Calls: []
-  lastHitObjOwner: 0
 --- !u!114 &596862718581759245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +183,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b463dcb5fa35f42a6c99bfbc221ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5960953159930055252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69640197652471162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15265918ed62ca2498a7eb8768f03e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactDamage: 1
+  impactPower: 5
+--- !u!114 &6944262865114476014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69640197652471162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54115f783d39a3c4da246d7e949a18e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diePrefab: {fileID: 8453916313859941413, guid: be4f42f73043c554dae90cc3711f9937,
+    type: 3}
+  bumpEffect: {fileID: 0}
+  maxHealth: 100
+  onDeadGlobal:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeadLocal:
+    m_PersistentCalls:
+      m_Calls: []
+  lastHitObjOwner: 0
 --- !u!114 &992923601132073500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,32 +234,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point: 100
   spwanMinWave: 0
---- !u!114 &2035255293796984712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69640197652471162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ed5f63e243b6ac44a857b15ce4d5efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movePower: 5
-  minVelocity: 2
---- !u!114 &4566769953627421745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69640197652471162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7b463dcb5fa35f42a6c99bfbc221ff3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &564139049502904139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +261,20 @@ MonoBehaviour:
   projectileLiveTime: 10
   color: {r: 1, g: 0, b: 0, a: 1}
   shootStartDelay: 3
+--- !u!114 &2035255293796984712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69640197652471162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed5f63e243b6ac44a857b15ce4d5efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movePower: 5
+  minVelocity: 2
 --- !u!114 &1053987712804022998
 MonoBehaviour:
   m_ObjectHideFlags: 0
