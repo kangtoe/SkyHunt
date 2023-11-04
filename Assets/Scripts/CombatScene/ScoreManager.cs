@@ -34,6 +34,11 @@ public class ScoreManager : MonoBehaviourPun
 
         // 다른 로컬에서 내 점수 업데이트
         photonView.RPC(nameof(UpdateOtherScore), RpcTarget.OthersBuffered, currScore);
+
+        // 슈터 경험치 획득
+        GameObject myShip = PlayerSpwaner.Instance.GetMyPlayer();
+        PlayerShooter shooter = myShip.GetComponent<PlayerShooter>();
+        shooter.GetExp(score);
     }
 
     // 다른 로컬에서 내 로컬의 점수를 갱신

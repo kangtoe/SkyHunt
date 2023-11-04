@@ -4,29 +4,70 @@ using UnityEngine;
 
 public class PlayerShooter : ShooterBase
 {
+    int currentExp;
+    int NextLevelExp => shooterLevel * 1100;    
+
     public int shooterLevel = 1; // 높은 레벨의 슈터는 더 강한 공격을 함
-    //protected int maxShooterLevel = 5; // 슈터 레벨의 최고 상한
+    protected int maxShooterLevel = 5; // 슈터 레벨의 최고 상한
+    public bool IsMaxLevel => shooterLevel == maxShooterLevel;
 
     private void Start()
     {
-        if (!photonView.IsMine) return; 
+        GetExp(0);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (!photonView.IsMine) return;
 
         if (Input.GetMouseButton(0))
         {
             TryFire();
-        }        
+        }
+    }
+
+    public void GetExp(int i)
+    {
+        currentExp += i;
+        if (currentExp >= NextLevelExp)
+        {
+            LevelUp();     
+            int leftExp = currentExp - NextLevelExp;
+            currentExp = leftExp;
+        }
+
+        float ratio;
+        if (IsMaxLevel)
+        {
+            ratio = 1;
+        }
+        else
+        {
+            ratio = (float)currentExp / NextLevelExp;
+        }
+        UiManager.Instance.UpdateExpGage(ratio);
+    }
+
+    void LevelUp()
+    {
+        shooterLevel++;
+        shooterLevel = Mathf.Clamp(shooterLevel, 1, maxShooterLevel);
+
+        string str;
+        if (IsMaxLevel)
+        {            
+            str = "MAX";
+        }
+        else
+        {
+            str = shooterLevel.ToString();
+        }
+        UiManager.Instance.UpdateLevelText(str);
     }
 
     protected override void Fire()
     {
-        int numberOfBullets = shooterLevel; // 생성할 총알의 개수        
-        float interval = 0.5f;
+        int numberOfBullets = shooterLevel; // 생성할 총알의 개수                
 
         Transform tf = firePoints[0];
         Vector3 pos = tf.position;

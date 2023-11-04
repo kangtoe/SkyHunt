@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 199946020}
   - component: {fileID: 199946019}
   m_Layer: 5
-  m_Name: HpFill
+  m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1851,8 +1851,8 @@ MonoBehaviour:
   otherScoreText: {fileID: 642814753}
   myNameText: {fileID: 1267224557}
   otherNameText: {fileID: 1355505726}
-  levelText: {fileID: 0}
-  expImage: {fileID: 0}
+  levelText: {fileID: 1727907884}
+  expImage: {fileID: 199946019}
   optionPanel: {fileID: 1773894855}
   overPanel: {fileID: 758637433}
 --- !u!1 &930862606

@@ -120,9 +120,9 @@ public class UiManager : MonoBehaviour
         expImage.fillAmount = ratio;
     }
 
-    public void UpdateLevelText(int i)
+    public void UpdateLevelText(string str)
     {
-        levelText.text = "LV. " + i;
+        levelText.text = "LV. " + str;
     }
 
     public void UpdateMyNameText(string str)

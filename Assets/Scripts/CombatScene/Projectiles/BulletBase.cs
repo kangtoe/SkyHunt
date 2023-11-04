@@ -92,6 +92,8 @@ public class BulletBase : MonoBehaviourPun
     [PunRPC]
     protected void Impact(int coll_Id, int ownerActorNr)
     {
+        if (isDestroyed) return;
+
         PhotonView pv = PhotonView.Find(coll_Id);
         Collider2D coll = pv.gameObject.GetComponent<Collider2D>();
 
