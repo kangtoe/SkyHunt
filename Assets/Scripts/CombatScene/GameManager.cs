@@ -26,7 +26,17 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        
+        UiManager.Instance.UpdateMyNameText(PhotonNetwork.LocalPlayer.NickName);
+
+        if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
+        {
+            UiManager.Instance.InactiveOtherUi();
+        }
+        else
+        {
+            Photon.Realtime.Player other = PhotonNetwork.PlayerListOthers[0];
+            UiManager.Instance.UpdateOtherNameText(other.NickName);
+        }        
     }
 
     public void EndRoom()

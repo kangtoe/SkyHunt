@@ -21,6 +21,9 @@ public class UiManager : MonoBehaviour
     private static UiManager instance;
 
     [SerializeField]
+    Text otherDeathText;
+
+    [SerializeField]
     Image myHpImage;
     [SerializeField]
     Image otherHpImage;
@@ -31,8 +34,19 @@ public class UiManager : MonoBehaviour
     Text otherScoreText;
 
     [SerializeField]
-    GameObject optionPanel;
+    Text myNameText;
+    [SerializeField]
+    Text otherNameText;
 
+    [Header("level info")]
+    [SerializeField]
+    Text levelText;
+    [SerializeField]
+    Image expImage;
+
+    [Header("Panels")]
+    [SerializeField]
+    GameObject optionPanel;
     [SerializeField]
     GameObject overPanel;
 
@@ -41,7 +55,7 @@ public class UiManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -65,6 +79,20 @@ public class UiManager : MonoBehaviour
     {
         optionPanel.SetActive(false);
         isOnOption = false;
+    }    
+
+    public void InactiveOtherUi()
+    {
+        otherNameText.transform.parent.gameObject.SetActive(false);
+        //otherHpImage.enabled = false;
+        //otherNameText.enabled = false;
+        //otherScoreText.enabled = false;
+        //otherDeathText.enabled = false;
+    }
+
+    public void ActiveOtherDeathUi()
+    {
+        otherDeathText.enabled = true;
     }
 
     public void UpdateMyScoreText(int i)
@@ -85,5 +113,25 @@ public class UiManager : MonoBehaviour
     public void UpdateOtherHpGage(float ratio)
     {
         otherHpImage.fillAmount = ratio;
+    }
+
+    public void UpdateExpGage(float ratio)
+    {
+        expImage.fillAmount = ratio;
+    }
+
+    public void UpdateLevelText(int i)
+    {
+        levelText.text = "LV. " + i;
+    }
+
+    public void UpdateMyNameText(string str)
+    {
+        myNameText.text = str;        
+    }
+
+    public void UpdateOtherNameText(string str)
+    {
+        otherNameText.text = str;    
     }
 }
