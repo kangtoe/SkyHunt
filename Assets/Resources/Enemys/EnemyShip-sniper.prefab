@@ -232,8 +232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d6f235ab3d09fa4cad3dae0ae4ba152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  point: 450
-  spwanMinWave: 0
+  point: 800
+  spwanMinWave: 4
 --- !u!114 &2431802545757360935
 MonoBehaviour:
   m_ObjectHideFlags: 0

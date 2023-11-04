@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: 350
-  spwanMinWave: 0
+  spwanMinWave: 3
 --- !u!114 &4021687790933893324
 MonoBehaviour:
   m_ObjectHideFlags: 0
