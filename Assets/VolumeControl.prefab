@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &729563013868698285
+--- !u!1 &7304771595144301799
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 729563013868698282}
-  - component: {fileID: 2458537992023892698}
+  - component: {fileID: 7304771595144301798}
+  - component: {fileID: 7304771595144301801}
   m_Layer: 0
-  m_Name: SoundManager
+  m_Name: VolumeControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &729563013868698282
+--- !u!4 &7304771595144301798
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 729563013868698285}
+  m_GameObject: {fileID: 7304771595144301799}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,23 +31,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2458537992023892698
+--- !u!114 &7304771595144301801
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 729563013868698285}
+  m_GameObject: {fileID: 7304771595144301799}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f13088965045dd43963bf76bc7f4613, type: 3}
+  m_Script: {fileID: 11500000, guid: f050003f913aa3c47ab8ff842c83d2be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgm: {fileID: 8300000, guid: 89f935015cc98724a862a586326fdf21, type: 3}
-  soundList:
-  - name: Laser
-    clip: {fileID: 8300000, guid: 242d16183cab6834086a4d5573941f66, type: 3}
-  sfxOutput: {fileID: 3474489624104542020, guid: 01e19f26ee2c0f0428adcfc59e93312d,
-    type: 2}
-  bgmOutput: {fileID: 2948268655846785522, guid: 01e19f26ee2c0f0428adcfc59e93312d,
-    type: 2}
+  audioMixer: {fileID: 24100000, guid: 01e19f26ee2c0f0428adcfc59e93312d, type: 2}
+  min_dB: -40
+  max_dB: 0
+  currentVolume_dB_bgm: -80
+  currentVolume_dB_sfx: -80
+  slider_sfx: {fileID: 0}
+  slider_bgm: {fileID: 0}
+  bgmVolume: 0
+  sfxVolume: 0

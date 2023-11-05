@@ -65,22 +65,35 @@ public class VolumeControl : MonoBehaviour
 
         // 슬라이더 상호작용 설정 : 변경한 슬라이더 값 적용 및 저장
         {
-            slider_sfx.onValueChanged.AddListener(delegate
+            if (slider_sfx)
             {
-                float val = slider_sfx.value;
-                // 저장 값 수정
-                SaveManager.SfxVolume = val;
-                // 실제 볼륨 조절
-                SfxVolume = val;
-            });
-            slider_bgm.onValueChanged.AddListener(delegate
+                slider_sfx.onValueChanged.AddListener(delegate
+                {
+                    float val = slider_sfx.value;
+                    // 저장 값 수정
+                    SaveManager.SfxVolume = val;
+                    // 실제 볼륨 조절
+                    SfxVolume = val;
+                });
+
+                // 슬라이더 : 현재 볼륨에 따라 슬라이더 값 할당
+                slider_sfx.value = SaveManager.SfxVolume;
+            }
+
+            if (slider_bgm)
             {
-                float val = slider_bgm.value;
-                // 저장 값 수정
-                SaveManager.BgmVolume = val;
-                // 실제 볼륨 조절
-                BgmVolume = val;
-            });
+                slider_bgm.onValueChanged.AddListener(delegate
+                {
+                    float val = slider_bgm.value;
+                    // 저장 값 수정
+                    SaveManager.BgmVolume = val;
+                    // 실제 볼륨 조절
+                    BgmVolume = val;
+                });
+
+                // 슬라이더 : 현재 볼륨에 따라 슬라이더 값 할당
+                slider_bgm.value = SaveManager.BgmVolume;
+            }                        
         }
     }
 

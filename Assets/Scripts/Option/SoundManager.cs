@@ -41,8 +41,8 @@ public class SoundManager : MonoBehaviour
     List<Sound> soundList;
 
     [Header("사운드 플레이어 리스트")]
-    [SerializeField]
-    List<AudioSource> playerList;
+    //[SerializeField] // 디버깅용
+    List<AudioSource> playerList = new List<AudioSource>();
 
     [Header("사운드 믹서")]
     [SerializeField]

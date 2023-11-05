@@ -114,8 +114,9 @@ public class PlayerShooter : ShooterBase
             GameObject go = CreateBullet(pos, rot);
             
             go.GetComponent<BulletBase>().Init_RPC(
-            targetLayer, damage, impactPower, projectileMovePower, projectileLiveTime, color.r, color.g, color.b);
-
+            targetLayer, damage, impactPower, projectileMovePower, projectileLiveTime, color.r, color.g, color.b);       
         }
+
+        SoundManager.Instance.PlaySound("Laser");
     }
 }
