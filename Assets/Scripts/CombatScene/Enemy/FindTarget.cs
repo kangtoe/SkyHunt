@@ -20,9 +20,12 @@ public class FindTarget : MonoBehaviourPun
         {
             // 타겟 갱신
             Transform tf = PlayerSpwaner.Instance.GetClosestPlayer(transform.position);
-            int id = tf.GetComponent<PhotonView>().ViewID;
-            UpdateTarget(id);
-            photonView.RPC(nameof(UpdateTarget), RpcTarget.OthersBuffered, id);
+            if (tf != null)
+            {
+                int id = tf.GetComponent<PhotonView>().ViewID;
+                UpdateTarget(id);
+                photonView.RPC(nameof(UpdateTarget), RpcTarget.OthersBuffered, id);
+            }            
 
             // 대기
             yield return new WaitForSeconds(1);

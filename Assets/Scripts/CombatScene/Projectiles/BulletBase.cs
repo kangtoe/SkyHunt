@@ -95,6 +95,8 @@ public class BulletBase : MonoBehaviourPun
         if (isDestroyed) return;
 
         PhotonView pv = PhotonView.Find(coll_Id);
+        if (!pv) return;
+
         Collider2D coll = pv.gameObject.GetComponent<Collider2D>();
 
         // 피해주기
