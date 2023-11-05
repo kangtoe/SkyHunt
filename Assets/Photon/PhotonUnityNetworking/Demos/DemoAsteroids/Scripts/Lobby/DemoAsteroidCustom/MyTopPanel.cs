@@ -4,7 +4,7 @@ using Photon.Pun;
 
 public class MyTopPanel : MonoBehaviour
 {
-    private readonly string connectionStatusMessage = "    Connection Status: ";
+    private readonly string connectionStatusMessage = "Status: ";
 
     [Header("UI References")]
     public Text ConnectionStatusText;
