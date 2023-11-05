@@ -74,16 +74,24 @@ public class MyPlayerListEntry : MonoBehaviour
     {
         ownerId = playerId;
         PlayerNameText.text = playerName;
+
+        OnPlayerNumberingChanged();
     }
 
     private void OnPlayerNumberingChanged()
     {
         foreach (Player p in PhotonNetwork.PlayerList)
         {
+            //if (p.ActorNumber == ownerId)
+            //{
+            //    PlayerColorImage.color = GameSettings.GetColor(p.GetPlayerNumber());
+            //}
+
             if (p.ActorNumber == ownerId)
-            {
-                PlayerColorImage.color = GameSettings.GetColor(p.GetPlayerNumber());
-            }
+            { 
+                if(p.IsMasterClient) PlayerColorImage.color = Color.green;
+                else PlayerColorImage.color = new Color(1, 0, 1);
+            }            
         }
     }
 
