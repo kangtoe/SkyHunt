@@ -9885,7 +9885,7 @@ MonoBehaviour:
     m_Bits: 256
   damage: 1
   impactPower: 1
-  projectileMovePower: 10
+  projectileMovePower: 8
   projectileLiveTime: 1
   color: {r: 1, g: 0, b: 0, a: 1}
   shootStartDelay: 1
