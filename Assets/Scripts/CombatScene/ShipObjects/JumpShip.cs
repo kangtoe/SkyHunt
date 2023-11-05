@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-// ¿ÀºêÁ§Æ®°¡ È­¸é ¹ÛÀ¸·Î ¹ş¾î³µÀ» ¶§,
-// ¹İ´ëÆí (¿À¸¥ÂÊ <-> ¿ŞÂÊ / À§ÂÊ <-> ¾Æ·¡ÂÊ) °¡ÀåÀÚ¸® ÀÌµ¿
+// ì˜¤ë¸Œì íŠ¸ê°€ í™”ë©´ ë°–ìœ¼ë¡œ ë²—ì–´ë‚¬ì„ ë•Œ,
+// ë°˜ëŒ€í¸ (ì˜¤ë¥¸ìª½ <-> ì™¼ìª½ / ìœ„ìª½ <-> ì•„ë˜ìª½) ê°€ì¥ìë¦¬ ì´ë™
 public class JumpShip : MonoBehaviourPun
 {
-    // player ship »çÀÌÁî¸¦ ¾Ë¾Æ¿À±â À§ÇØ »ç¿ë
+    // player ship ì‚¬ì´ì¦ˆë¥¼ ì•Œì•„ì˜¤ê¸° ìœ„í•´ ì‚¬ìš©
     Collider2D ShipCollider;
     TrailEffect effect;
     
@@ -15,13 +15,11 @@ public class JumpShip : MonoBehaviourPun
     Vector2 shipSize;
 
     float lastJumpTime = 0;
-    float jumpMinInterval = 0.5f; // ÇÑ¹ø °¡ÀåÀÚ¸® ÀÌµ¿ÀÌ ½ÇÇàµÇ¸é, Á÷ÈÄ ÀÌ ±â°£µ¿¾ÈÀº ´Ù½Ã °¡ÀåÀÚ¸® ÀÌµ¿Ã¼Å©¸¦ Áß´Ü
+    float jumpMinInterval = 0.5f; // í•œë²ˆ ê°€ì¥ìë¦¬ ì´ë™ì´ ì‹¤í–‰ë˜ë©´, ì§í›„ ì´ ê¸°ê°„ë™ì•ˆì€ ë‹¤ì‹œ ê°€ì¥ìë¦¬ ì´ë™ì²´í¬ë¥¼ ì¤‘ë‹¨
 
     // Start is called before the first frame update
     void Start()
-    {
-        if (!PhotonNetwork.IsMasterClient) return;
-
+    {       
         ShipCollider = GetComponent<Collider2D>();
         effect = GetComponentInChildren<TrailEffect>();
 
@@ -46,24 +44,26 @@ public class JumpShip : MonoBehaviourPun
 
 
 
-    // È­¸é¿¡¼­ ¹ş¾î³­ °¡ÀåÀÚ¸® ¹æÇâ¿¡ µû¶ó ¹İ´ëÆí °¡ÀåÀÚ¸®·Î ÀÌµ¿ 
+    // í™”ë©´ì—ì„œ ë²—ì–´ë‚œ ê°€ì¥ìë¦¬ ë°©í–¥ì— ë”°ë¼ ë°˜ëŒ€í¸ ê°€ì¥ìë¦¬ë¡œ ì´ë™ 
     void JumpToOppsiteCheck()
     {
+        if (!PhotonNetwork.IsMasterClient) return;
+
         if (Time.time < lastJumpTime + jumpMinInterval) return;
 
         float moveX = cameraSize.x / 2 + shipSize.x;
         float moveY = cameraSize.y / 2 + shipSize.y;
         Vector3 pos = transform.position;
 
-        // xÃà
+        // xì¶•
         if (transform.position.x < -moveX)
         {
-            if (effect) effect.TrailDistach();
+            if (effect) effect.TrailDistachRPC();
 
             photonView.RPC(nameof(SetPos), RpcTarget.AllBuffered, moveX, pos.y);
             //transform.position = new Vector3(moveX, pos.y, pos.z);
             
-            if (effect) effect.TrailAttach();
+            if (effect) effect.TrailAttachRPC();
             AddForceToOppsite(Edge.Right);
             lastJumpTime = Time.time;
 
@@ -71,27 +71,27 @@ public class JumpShip : MonoBehaviourPun
         }
         else if (transform.position.x > moveX)
         {
-            if (effect) effect.TrailDistach();
+            if (effect) effect.TrailDistachRPC();
 
             photonView.RPC(nameof(SetPos), RpcTarget.AllBuffered, -moveX, pos.y);
             //transform.position = new Vector3(-moveX, pos.y, pos.z);
 
-            if (effect) effect.TrailAttach();
+            if (effect) effect.TrailAttachRPC();
             AddForceToOppsite(Edge.Left);
             lastJumpTime = Time.time;
 
             //Debug.Log("move right -> left");
         }
 
-        // yÃà
+        // yì¶•
         if (transform.position.y < -moveY)
         {
-            if (effect) effect.TrailDistach();
+            if (effect) effect.TrailDistachRPC();
 
             photonView.RPC(nameof(SetPos), RpcTarget.AllBuffered, pos.x, moveY);
             //transform.position = new Vector3(pos.x, moveY, pos.z);
             
-            if (effect) effect.TrailAttach();
+            if (effect) effect.TrailAttachRPC();
             AddForceToOppsite(Edge.Up);
             lastJumpTime = Time.time;
 
@@ -99,12 +99,12 @@ public class JumpShip : MonoBehaviourPun
         }
         else if (transform.position.y > moveY)
         {
-            if (effect) effect.TrailDistach();
+            if (effect) effect.TrailDistachRPC();
 
             photonView.RPC(nameof(SetPos), RpcTarget.AllBuffered, pos.x, -moveY);
             //transform.position = new Vector3(pos.x, -moveY, pos.z);
 
-            if (effect) effect.TrailAttach();
+            if (effect) effect.TrailAttachRPC();
             AddForceToOppsite(Edge.Down);
             lastJumpTime = Time.time;
 
@@ -112,8 +112,8 @@ public class JumpShip : MonoBehaviourPun
         }
     }
 
-    // °¡Àå ÀÚ¸® ÀÌµ¿ ÈÄ ¹İ´ëÆíÀ¸·Î ¾à°£ ¹Ğ¾îÁØ´Ù
-    // -> Á¡ÇÁ Á÷ÈÄ ¼Ó·ÂÀÌ ÃæºĞÇÏÁö ¸øÇØ ´Ù½Ã Á¡ÇÁ°¡ ÀÏ¾î³ª´Â Çö»óÀ» ÁÙ¿©ÁØ´Ù
+    // ê°€ì¥ ìë¦¬ ì´ë™ í›„ ë°˜ëŒ€í¸ìœ¼ë¡œ ì•½ê°„ ë°€ì–´ì¤€ë‹¤
+    // -> ì í”„ ì§í›„ ì†ë ¥ì´ ì¶©ë¶„í•˜ì§€ ëª»í•´ ë‹¤ì‹œ ì í”„ê°€ ì¼ì–´ë‚˜ëŠ” í˜„ìƒì„ ì¤„ì—¬ì¤€ë‹¤
     void AddForceToOppsite(Edge jumpedEdge)
     {
         //Debug.Log("AddForceToCenter");

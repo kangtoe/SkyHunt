@@ -273,7 +273,12 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
     {
         SetActivePanel(JoinRandomRoomPanel.name);
 
-        PhotonNetwork.JoinRandomRoom();
+        // 방의 최대 플레이어 수를 설정합니다.
+        string roomName = "Room " + Random.Range(1000, 10000);
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.MaxPlayers = 2;
+        // 무작위 방에 참가합니다. 만약 해당 조건을 만족하는 방이 없으면 새로운 방을 생성합니다.
+        PhotonNetwork.JoinOrCreateRoom(roomName, roomOptions, TypedLobby.Default);
 
         SoundManager.Instance.PlaySound("Click");
     }

@@ -49,7 +49,8 @@ public class Damageable : MonoBehaviourPun
     {
         onDeadLocal.Invoke();
         if (!PhotonNetwork.IsMasterClient) return;
-       
+        //if (!photonView.IsMine) return;
+
         if (diePrefab)
         {
             string str = "Projectiles/" + diePrefab.name;

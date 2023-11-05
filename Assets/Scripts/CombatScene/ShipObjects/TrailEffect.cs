@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class TrailEffect : MonoBehaviour
+public class TrailEffect : MonoBehaviourPun
 {
     public GameObject trailPrefab;
     public Transform[] tarilPoints;
@@ -15,18 +16,23 @@ public class TrailEffect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TrailAttach();
-        
+        TrailAttach();        
     }
 
-    // ship¿¡ trail renderer »ı¼º -> ship ¼ø°£ÀÌµ¿ Á÷ÈÄ È£Ãâ
-    public void TrailAttach()
+    public void TrailAttachRPC()
     {
-        // Áßº¹ È£Ãâ ¹æÁö
+        photonView.RPC(nameof(TrailAttach), RpcTarget.All);
+    }
+
+    // shipì— trail renderer ìƒì„± -> ship ìˆœê°„ì´ë™ ì§í›„ í˜¸ì¶œ
+    [PunRPC]    
+    void TrailAttach()
+    {
+        // ì¤‘ë³µ í˜¸ì¶œ ë°©ì§€
         if (trailAttached) return;
         trailAttached = true;
 
-        // °¢ point ¸¶´Ù trailPrefab »ı¼º
+        // ê° point ë§ˆë‹¤ trailPrefab ìƒì„±
         foreach (Transform tarilPoint in tarilPoints)
         {
             GameObject go = Instantiate(trailPrefab, tarilPoint);
@@ -34,14 +40,20 @@ public class TrailEffect : MonoBehaviour
         }
     }
 
-    // ship °ú trail renderer ºĞ¸® -> ship ¼ø°£ÀÌµ¿ Á÷Àü È£Ãâ
-    public void TrailDistach()
+    public void TrailDistachRPC()
     {
-        // Áßº¹ È£Ãâ ¹æÁö
+        photonView.RPC(nameof(TrailDistach), RpcTarget.All);
+    }
+
+    // ship ê³¼ trail renderer ë¶„ë¦¬ -> ship ìˆœê°„ì´ë™ ì§ì „ í˜¸ì¶œ
+    [PunRPC]    
+    void TrailDistach()
+    {
+        // ì¤‘ë³µ í˜¸ì¶œ ë°©ì§€
         if (!trailAttached) return;
         trailAttached = false;
 
-        // ÇöÀç ¸ğµç trailµé ºĞ¸®, È¿°ú°¡ »ç¶óÁú¶§ ÀÚµ¿À¸·Î »èÁ¦ÇÏµµ·Ï º¯°æ
+        // í˜„ì¬ ëª¨ë“  trailë“¤ ë¶„ë¦¬, íš¨ê³¼ê°€ ì‚¬ë¼ì§ˆë•Œ ìë™ìœ¼ë¡œ ì‚­ì œí•˜ë„ë¡ ë³€ê²½
         foreach (TrailRenderer trail in trails)
         {
             trail.transform.parent = null;

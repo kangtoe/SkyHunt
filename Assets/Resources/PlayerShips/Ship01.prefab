@@ -143,7 +143,7 @@ MonoBehaviour:
     m_Bits: 512
   damage: 34
   impactPower: 2
-  projectileMovePower: 25
+  projectileMovePower: 20
   projectileLiveTime: 3
   color: {r: 0, g: 1, b: 0, a: 1}
   shooterLevel: 1
@@ -370,13 +370,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2792188529032828526}
   - component: {fileID: 5808110881373275212}
+  - component: {fileID: 3183888900930129456}
   m_Layer: 8
   m_Name: Trails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2792188529032828526
 Transform:
   m_ObjectHideFlags: 0
@@ -410,6 +411,28 @@ MonoBehaviour:
   tarilPoints:
   - {fileID: 6863338797552860725}
   - {fileID: 6468577047753008073}
+--- !u!114 &3183888900930129456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5104008959996921973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6016685876697823388
 GameObject:
   m_ObjectHideFlags: 0
