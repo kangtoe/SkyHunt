@@ -17,6 +17,7 @@ public class Damageable : MonoBehaviourPun
     [HideInInspector]
     public UnityEvent onDeadLocal;
 
+    [HideInInspector]
     public int lastHitObjOwner;
 
     // Start is called before the first frame update

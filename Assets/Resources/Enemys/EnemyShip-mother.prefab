@@ -193,8 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15265918ed62ca2498a7eb8768f03e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactDamage: 10
-  impactPower: 10
+  impactDamage: 1
+  impactPower: 5
 --- !u!114 &-1914723409101829364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
   diePrefab: {fileID: 8453916313859941413, guid: be4f42f73043c554dae90cc3711f9937,
     type: 3}
   bumpEffect: {fileID: 0}
-  maxHealth: 100
+  maxHealth: 800
   onDeadGlobal:
     m_PersistentCalls:
       m_Calls: []
@@ -230,8 +230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d6f235ab3d09fa4cad3dae0ae4ba152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  point: 100
-  spwanMinWave: 0
+  point: 800
+  spwanMinWave: 4
 --- !u!114 &-4600262395806841282
 MonoBehaviour:
   m_ObjectHideFlags: 0

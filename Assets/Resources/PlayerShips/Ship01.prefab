@@ -138,8 +138,8 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 512
-  damage: 5
-  impactPower: 5
+  damage: 34
+  impactPower: 2
   projectileMovePower: 25
   projectileLiveTime: 3
   color: {r: 0, g: 1, b: 0, a: 1}

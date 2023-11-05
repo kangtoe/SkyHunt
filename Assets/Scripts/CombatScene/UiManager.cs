@@ -38,6 +38,14 @@ public class UiManager : MonoBehaviour
     [SerializeField]
     Text otherNameText;
 
+    [Header("Score record")]
+    [SerializeField]
+    Text bestScoreText;
+    [SerializeField]
+    Text lastScoreText;
+    [SerializeField]
+    Text recordText;
+
     [Header("level info")]
     [SerializeField]
     Text levelText;
@@ -62,6 +70,21 @@ public class UiManager : MonoBehaviour
     void Update()
     {
         // 옵션 버튼 황성화 중, UI 제외한 어느 클릭이라도 있으면 판넬 닫기
+    }
+
+    public void SetBestScoreText(int i)
+    {        
+        bestScoreText.text = "BEST SCORE : " + i.ToString("D5");
+    }
+
+    public void SetLadtScoreText(int i)
+    {        
+        lastScoreText.text = "SCORE : " + i.ToString("D5");
+    }
+
+    public void ActiveRecordUi()
+    {
+        recordText.enabled = true;
     }
 
     public void ActiveOverPanel()

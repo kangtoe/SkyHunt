@@ -1880,6 +1880,9 @@ MonoBehaviour:
   otherScoreText: {fileID: 642814753}
   myNameText: {fileID: 1267224557}
   otherNameText: {fileID: 1355505726}
+  bestScoreText: {fileID: 1496067012}
+  lastScoreText: {fileID: 1460690159}
+  recordText: {fileID: 1008326705}
   levelText: {fileID: 1727907884}
   expImage: {fileID: 199946019}
   optionPanel: {fileID: 1773894855}

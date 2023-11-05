@@ -192,8 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15265918ed62ca2498a7eb8768f03e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactDamage: 10
-  impactPower: 10
+  impactDamage: 1
+  impactPower: 5
 --- !u!114 &4305803180733988029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,9 +206,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54115f783d39a3c4da246d7e949a18e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diePrefab: {fileID: 0}
+  diePrefab: {fileID: 8453916313859941413, guid: be4f42f73043c554dae90cc3711f9937,
+    type: 3}
   bumpEffect: {fileID: 0}
-  maxHealth: 10
+  maxHealth: 200
   onDeadGlobal:
     m_PersistentCalls:
       m_Calls: []
@@ -255,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ffd60065294164a9648c8e912b7b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 1
+  turnSpeed: 5
 --- !u!114 &-5018156843497066851
 MonoBehaviour:
   m_ObjectHideFlags: 0

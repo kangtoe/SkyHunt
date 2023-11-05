@@ -18,10 +18,27 @@ public class ScoreManager : MonoBehaviourPun
     private static ScoreManager instance;
 
     int currScore = 0;
+    public int CurrScore => currScore;
+
+    const string RECORD_KEY = "SCORE_RECORD";
+    public int BestRecord
+    {
+        get
+        {
+            if (PlayerPrefs.HasKey(RECORD_KEY) == false) return 0;
+            else return PlayerPrefs.GetInt(RECORD_KEY);
+            
+        }
+        set
+        {
+            PlayerPrefs.SetInt(RECORD_KEY, value);
+        }
+    }
 
     private void Start()
     {
-        
+        //디버그용
+        //PlayerPrefs.DeleteKey(RECORD_KEY);
     }
 
     public void AddScore(int score)

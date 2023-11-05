@@ -51,9 +51,26 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void GameOver()
     {
         UiManager.Instance.ActiveOverPanel();
-        // 취득 점수 표시 
-        // 최고 점수 표시
-        // 비교하여 신기록 표기 여부 결정 및 저장
+
+        // 점수 기록 표기
+        {
+            int currScore = ScoreManager.Instance.CurrScore;
+            int recordScore = ScoreManager.Instance.BestRecord;
+
+            // 취득 점수 표시
+            UiManager.Instance.SetLadtScoreText(currScore);
+            // 최고 점수 표시
+            UiManager.Instance.SetBestScoreText(recordScore);
+
+            if (currScore == 0) return;
+
+            // 비교하여 신기록 표기 여부 결정 및 저장
+            if (currScore > recordScore)
+            {
+                UiManager.Instance.ActiveRecordUi();
+                ScoreManager.Instance.BestRecord = currScore;
+            }
+        }     
     }
 
     // 현재 게임 나가기 -> 버튼 이벤트

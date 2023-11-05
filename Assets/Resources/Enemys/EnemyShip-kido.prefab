@@ -5025,7 +5025,7 @@ MonoBehaviour:
   diePrefab: {fileID: 8453916313859941413, guid: be4f42f73043c554dae90cc3711f9937,
     type: 3}
   bumpEffect: {fileID: 0}
-  maxHealth: 100
+  maxHealth: 150
   onDeadGlobal:
     m_PersistentCalls:
       m_Calls: []

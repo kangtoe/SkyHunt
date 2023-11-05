@@ -107,7 +107,8 @@ public class BulletBase : MonoBehaviourPun
         Rigidbody2D rbody = coll.transform.GetComponent<Rigidbody2D>();
         if (rbody)
         {
-            Vector2 dir = coll.transform.position - transform.position;
+            //Vector2 dir = coll.transform.position - transform.position;
+            Vector2 dir = transform.up;
             rbody.AddForce(dir * impact, ForceMode2D.Impulse);
         }        
     }

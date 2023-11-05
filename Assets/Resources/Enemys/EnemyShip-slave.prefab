@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactDamage: 1
-  impactPower: 10
+  impactPower: 5
 --- !u!114 &5172696338509140534
 MonoBehaviour:
   m_ObjectHideFlags: 0

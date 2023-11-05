@@ -212,7 +212,7 @@ MonoBehaviour:
   diePrefab: {fileID: 8453916313859941413, guid: be4f42f73043c554dae90cc3711f9937,
     type: 3}
   bumpEffect: {fileID: 0}
-  maxHealth: 100
+  maxHealth: 300
   onDeadGlobal:
     m_PersistentCalls:
       m_Calls: []
@@ -232,8 +232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d6f235ab3d09fa4cad3dae0ae4ba152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  point: 100
-  spwanMinWave: 0
+  point: 600
+  spwanMinWave: 4
 --- !u!114 &564139049502904139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
   firePoints:
   - {fileID: 4055243090185163688}
   - {fileID: 6772494037147143156}
-  fireDelay: 0.5
+  fireDelay: 1
   projectilePrefab: {fileID: 7742814071415333893, guid: b6bd1ad98e859854a8cd194247489c3d,
     type: 3}
   targetLayer:

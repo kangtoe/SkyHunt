@@ -249,15 +249,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoints:
   - {fileID: 6145656491371575802}
-  fireDelay: 1.5
+  fireDelay: 2
   projectilePrefab: {fileID: 7376661153922887653, guid: 1eae06d0200f4444482b25fcb8bc7b64,
     type: 3}
   targetLayer:
     serializedVersion: 2
     m_Bits: 256
-  damage: 0
+  damage: 10
   impactPower: 0
-  projectileMovePower: 10
+  projectileMovePower: 6
   projectileLiveTime: 3
   color: {r: 1, g: 0, b: 0, a: 0}
   shootStartDelay: 1
@@ -275,15 +275,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoints:
   - {fileID: 6145656493167433651}
-  fireDelay: 1.5
+  fireDelay: 2
   projectilePrefab: {fileID: 7376661153922887653, guid: 1eae06d0200f4444482b25fcb8bc7b64,
     type: 3}
   targetLayer:
     serializedVersion: 2
     m_Bits: 256
-  damage: 0
+  damage: 10
   impactPower: 0
-  projectileMovePower: 10
+  projectileMovePower: 6
   projectileLiveTime: 3
   color: {r: 1, g: 0, b: 0, a: 0}
   shootStartDelay: 1.5
