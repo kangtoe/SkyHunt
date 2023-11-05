@@ -26,19 +26,15 @@ public class Damageable : MonoBehaviourPun
         currnetHealth = maxHealth;
         //rbody = GetComponent<Rigidbody2D>();
 
-        onDeadLocal.AddListener(delegate { Debug.Log("onDeadLocal"); });        
+        //onDeadLocal.AddListener(delegate { Debug.Log("onDeadLocal"); });        
     }
 
     virtual public void GetDamaged(float damage, int hitObjOwner)
     {
-        lastHitObjOwner = hitObjOwner;
-        //Debug.Log(name + " : GetDamaged = " + damage + "( by : player " + hitObjOwner + ")");
+        if (!photonView.IsMine) return;
 
-        if (!PhotonNetwork.IsMasterClient)
-        {
-            // TODO :  마스터 클라이언트와 체력 동기화
-            //return;
-        }                
+        lastHitObjOwner = hitObjOwner;
+        //Debug.Log(name + " : GetDamaged = " + damage + "( by : player " + hitObjOwner + ")");         
 
         currnetHealth -= damage;
         if (currnetHealth < 0) currnetHealth = 0;
@@ -48,8 +44,8 @@ public class Damageable : MonoBehaviourPun
     virtual protected void Die()
     {
         onDeadLocal.Invoke();
-        if (!PhotonNetwork.IsMasterClient) return;
-        //if (!photonView.IsMine) return;
+        //if (!PhotonNetwork.IsMasterClient) return;
+        if (!photonView.IsMine) return;
 
         if (diePrefab)
         {
