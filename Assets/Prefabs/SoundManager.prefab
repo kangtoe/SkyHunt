@@ -43,10 +43,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f13088965045dd43963bf76bc7f4613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgm: {fileID: 8300000, guid: 89f935015cc98724a862a586326fdf21, type: 3}
+  bgm: {fileID: 8300000, guid: 35967e8a4dfb1664e9b066939272c0a4, type: 3}
   soundList:
   - name: Laser
     clip: {fileID: 8300000, guid: 242d16183cab6834086a4d5573941f66, type: 3}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 1ecd04c15717e314282bf193a68f6857, type: 3}
+  - name: OnDamage
+    clip: {fileID: 8300000, guid: d374ec2186de7234bb3fe0828ee1d823, type: 3}
+  - name: OnHit
+    clip: {fileID: 8300000, guid: 8d25f782fcd55384fa1c33310d47f083, type: 3}
+  - name: Click
+    clip: {fileID: 8300000, guid: 326bdd055ff7db14a9053f8d214f4111, type: 3}
+  - name: Start
+    clip: {fileID: 8300000, guid: 66d8309498b3a20459f0c959cfd73586, type: 3}
   sfxOutput: {fileID: 3474489624104542020, guid: 01e19f26ee2c0f0428adcfc59e93312d,
     type: 2}
   bgmOutput: {fileID: 2948268655846785522, guid: 01e19f26ee2c0f0428adcfc59e93312d,

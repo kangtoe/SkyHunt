@@ -18,6 +18,8 @@ public class PlayerDamageable : Damageable
         {
             UiManager.Instance.UpdateOtherHpGage(healthRatio);
         }
+
+        SoundManager.Instance.PlaySound("OnDamage");
     }
 
     private void Update()

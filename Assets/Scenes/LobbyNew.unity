@@ -3656,7 +3656,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1310044697}
+      - m_Target: {fileID: 1310044700}
         m_MethodName: OnRoomListButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -5284,7 +5284,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1310044697}
+      - m_Target: {fileID: 1310044700}
         m_MethodName: OnJoinRandomRoomButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -6264,11 +6264,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2458537992023892698, guid: 0cefc7d1fc15d2f4fa526189ef20b2af,
-        type: 3}
-      propertyPath: soundList.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: cc43572a528236a4e93bb1dea1d6b017, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cefc7d1fc15d2f4fa526189ef20b2af, type: 3}
 --- !u!1 &1928118585

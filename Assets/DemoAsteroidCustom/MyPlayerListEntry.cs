@@ -80,7 +80,7 @@ public class MyPlayerListEntry : MonoBehaviour
 
     private void OnPlayerNumberingChanged()
     {
-        foreach (Player p in PhotonNetwork.PlayerList)
+        foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
         {
             //if (p.ActorNumber == ownerId)
             //{

@@ -30,6 +30,8 @@ public class BulletBase : MonoBehaviourPun
 
     public int ownerActor;
 
+   
+
     // Start is called before the first frame update
     virtual protected void Start()
     {
@@ -79,7 +81,13 @@ public class BulletBase : MonoBehaviourPun
             else
             {
                 DestroyLocal();
-            }           
+            }
+
+            // 적 피격 시 음향효과 (플레이어는 PlayerDamageable에서 음향효과 처리)
+            if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                SoundManager.Instance.PlaySound("OnHit");
+            }            
         }
     }
 

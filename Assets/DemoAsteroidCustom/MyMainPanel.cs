@@ -124,7 +124,7 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
             playerListEntries = new Dictionary<int, GameObject>();
         }
 
-        foreach (Player p in PhotonNetwork.PlayerList)
+        foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
         {
             GameObject entry = Instantiate(PlayerListEntryPrefab);
             entry.transform.SetParent(InsideRoomPanel.transform);
@@ -162,7 +162,7 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
         playerListEntries = null;
     }
 
-    public override void OnPlayerEnteredRoom(Player newPlayer)
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         GameObject entry = Instantiate(PlayerListEntryPrefab);
         entry.transform.SetParent(InsideRoomPanel.transform);
@@ -174,7 +174,7 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
         StartGameButton.gameObject.SetActive(CheckPlayersReady());
     }
 
-    public override void OnPlayerLeftRoom(Player otherPlayer)
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
         Destroy(playerListEntries[otherPlayer.ActorNumber].gameObject);
         playerListEntries.Remove(otherPlayer.ActorNumber);
@@ -182,7 +182,7 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
         StartGameButton.gameObject.SetActive(CheckPlayersReady());
     }
 
-    public override void OnMasterClientSwitched(Player newMasterClient)
+    public override void OnMasterClientSwitched(Photon.Realtime.Player newMasterClient)
     {
         if (PhotonNetwork.LocalPlayer.ActorNumber == newMasterClient.ActorNumber)
         {
@@ -190,7 +190,7 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
         }
     }
 
-    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
+    public override void OnPlayerPropertiesUpdate(Photon.Realtime.Player targetPlayer, Hashtable changedProps)
     {
         if (playerListEntries == null)
         {
@@ -221,6 +221,7 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
             PhotonNetwork.LeaveLobby();
         }
 
+        SoundManager.Instance.PlaySound("Click");
         SetActivePanel(SelectionPanel.name);
     }
 
@@ -238,6 +239,8 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
         {
             Debug.LogError("Player Name is invalid.");
         }
+
+        SoundManager.Instance.PlaySound("Click");
     }
 
     public void OnCreateRoomButtonClicked_OnSelection()
@@ -245,6 +248,8 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
         SetActivePanel("CreateRoomPanel");
         string roomName = "Room " + Random.Range(1000, 10000);
         RoomNameInputField.text = roomName;
+
+        SoundManager.Instance.PlaySound("Click");
     }
 
     public void OnCreateRoomButtonClicked_OnRoomSetting()
@@ -260,6 +265,8 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
         RoomOptions options = new RoomOptions { MaxPlayers = maxPlayers, PlayerTtl = 10000 };
 
         PhotonNetwork.CreateRoom(roomName, options, null);
+
+        SoundManager.Instance.PlaySound("Click");
     }
 
     public void OnJoinRandomRoomButtonClicked()
@@ -267,11 +274,15 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
         SetActivePanel(JoinRandomRoomPanel.name);
 
         PhotonNetwork.JoinRandomRoom();
+
+        SoundManager.Instance.PlaySound("Click");
     }
 
     public void OnLeaveGameButtonClicked()
     {
         PhotonNetwork.LeaveRoom();
+
+        SoundManager.Instance.PlaySound("Click");
     }  
 
     public void OnRoomListButtonClicked()
@@ -282,6 +293,8 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
         }
 
         SetActivePanel(RoomListPanel.name);
+
+        SoundManager.Instance.PlaySound("Click");
     }
 
     public void OnStartGameButtonClicked()
@@ -290,7 +303,9 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
         PhotonNetwork.CurrentRoom.IsVisible = false;
 
         // 모든 룸 참가자 Main 씬 로드
-        PhotonNetwork.LoadLevel("Combat");        
+        PhotonNetwork.LoadLevel("Combat");
+
+        SoundManager.Instance.PlaySound("Start");
     }
 
     #endregion
@@ -310,7 +325,7 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
             return false;
         }
 
-        foreach (Player p in PhotonNetwork.PlayerList)
+        foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
         {
             object isPlayerReady;
             if (p.CustomProperties.TryGetValue(GameSettings.PLAYER_READY, out isPlayerReady))
