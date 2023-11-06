@@ -26,7 +26,8 @@ public class ResolutionSetting : MonoBehaviour
 
         optionList.Add("1280 * 720");
         optionList.Add("1600 * 900");
-        optionList.Add("1920 * 1080");                     
+        optionList.Add("1920 * 1080");
+        optionList.Add("1920 * 1080 FULL");
 
         options.AddOptions(optionList);
 
@@ -50,6 +51,9 @@ public class ResolutionSetting : MonoBehaviour
                 break;
             case 2:
                 Screen.SetResolution(1920, 1080, false);
+                break;
+            case 3:
+                Screen.SetResolution(1920, 1080, true);
                 break;
         }
 
