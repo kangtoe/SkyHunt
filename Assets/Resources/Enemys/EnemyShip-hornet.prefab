@@ -9841,7 +9841,8 @@ MonoBehaviour:
   diePrefab: {fileID: 8453916313859941413, guid: be4f42f73043c554dae90cc3711f9937,
     type: 3}
   bumpEffect: {fileID: 0}
-  maxHealth: 350
+  maxHealth: 300
+  currnetHealth: 0
   onDeadGlobal:
     m_PersistentCalls:
       m_Calls: []
@@ -9883,8 +9884,8 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 256
-  damage: 1
-  impactPower: 1
+  damage: 5
+  impactPower: 5
   projectileMovePower: 8
   projectileLiveTime: 1
   color: {r: 1, g: 0, b: 0, a: 1}

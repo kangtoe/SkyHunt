@@ -5026,6 +5026,7 @@ MonoBehaviour:
     type: 3}
   bumpEffect: {fileID: 0}
   maxHealth: 150
+  currnetHealth: 0
   onDeadGlobal:
     m_PersistentCalls:
       m_Calls: []
