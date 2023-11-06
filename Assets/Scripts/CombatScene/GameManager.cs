@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         UiManager.Instance.ActiveOverPanel();
 
+        SoundManager.Instance.PlaySound("Over");
+
         // 점수 기록 표기
         {
             int currScore = ScoreManager.Instance.CurrScore;
@@ -76,6 +78,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     // 현재 게임 나가기 -> 버튼 이벤트
     public void QuitGame()
     {
+        SoundManager.Instance.PlaySound("Exit");
+
         //PhotonNetwork.AutomaticallySyncScene = false;      
         OnwershipTrans();
         PhotonNetwork.LeaveRoom(); 

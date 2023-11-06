@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerShooter : ShooterBase
 {
@@ -19,6 +20,9 @@ public class PlayerShooter : ShooterBase
     private void Update()
     {
         if (!photonView.IsMine) return;
+
+        //UI위에 커서가 있을때 = ture
+        if (EventSystem.current.IsPointerOverGameObject() == true) return;
 
         if (Input.GetMouseButton(0))
         {

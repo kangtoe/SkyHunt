@@ -56,7 +56,11 @@ MonoBehaviour:
   - name: Click
     clip: {fileID: 8300000, guid: 326bdd055ff7db14a9053f8d214f4111, type: 3}
   - name: Start
-    clip: {fileID: 8300000, guid: 66d8309498b3a20459f0c959cfd73586, type: 3}
+    clip: {fileID: 8300000, guid: e6b430653926b204f96bfefe75ff43af, type: 3}
+  - name: Over
+    clip: {fileID: 8300000, guid: 4dec70f687ad60449b4a76824ed20a56, type: 3}
+  - name: Exit
+    clip: {fileID: 8300000, guid: 57c18d5ac3727274980bfc9da0fb160d, type: 3}
   sfxOutput: {fileID: 3474489624104542020, guid: 01e19f26ee2c0f0428adcfc59e93312d,
     type: 2}
   bgmOutput: {fileID: 2948268655846785522, guid: 01e19f26ee2c0f0428adcfc59e93312d,

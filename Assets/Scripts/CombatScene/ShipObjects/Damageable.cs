@@ -19,6 +19,8 @@ public class Damageable : MonoBehaviourPun
 
     [HideInInspector]
     public int lastHitObjOwner;
+    
+    bool isDestoryed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +28,30 @@ public class Damageable : MonoBehaviourPun
         currnetHealth = maxHealth;
         //rbody = GetComponent<Rigidbody2D>();
 
-        //onDeadLocal.AddListener(delegate { Debug.Log("onDeadLocal"); });        
+        onDeadLocal.AddListener(delegate {
+            //Debug.Log("onDeadLocal");
+
+            isDestoryed = true;
+            gameObject.SetActive(false);
+            SoundManager.Instance.PlaySound("Explosion");            
+
+            if (diePrefab)
+            {
+                string str = "Projectiles/" + diePrefab.name;
+                PhotonNetwork.Instantiate(str, transform.position, diePrefab.transform.rotation);
+            }
+        });
+
+        onDeadGlobal.AddListener(delegate {
+            //Debug.Log("onDeadLocal");
+
+            PhotonNetwork.Destroy(photonView);            
+        });
     }
 
     virtual public void GetDamaged(float damage, int hitObjOwner)
     {
-        if (!photonView.IsMine) return;
+        //if (!photonView.IsMine) return;
 
         lastHitObjOwner = hitObjOwner;
         //Debug.Log(name + " : GetDamaged = " + damage + "( by : player " + hitObjOwner + ")");         
@@ -43,18 +63,11 @@ public class Damageable : MonoBehaviourPun
 
     virtual protected void Die()
     {
-        onDeadLocal.Invoke();
-        //if (!PhotonNetwork.IsMasterClient) return;
-        if (!photonView.IsMine) return;
-
-        if (diePrefab)
-        {
-            string str = "Projectiles/" + diePrefab.name;
-            PhotonNetwork.Instantiate(str, transform.position, diePrefab.transform.rotation);
-        }
-
-        SoundManager.Instance.PlaySound("Explosion");
-        onDeadGlobal.Invoke();
-        PhotonNetwork.Destroy(photonView);        
+        if (isDestoryed) return;
+        
+        onDeadLocal.Invoke();        
+        //if (!PhotonNetwork.IsMasterClient) return;        
+        
+        if (photonView.IsMine) onDeadGlobal.Invoke();
     }
 }
