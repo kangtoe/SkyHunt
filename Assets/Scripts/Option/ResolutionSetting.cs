@@ -58,6 +58,6 @@ public class ResolutionSetting : MonoBehaviour
         }
 
         // option 관련 동작
-        Debug.Log("current option : " + option);
+        //Debug.Log("current option : " + option);
     }
 }

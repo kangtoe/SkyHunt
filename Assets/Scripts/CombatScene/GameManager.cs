@@ -85,8 +85,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void QuitGame()
     {
         SoundManager.Instance.PlaySound("Exit");
-
-        // 다른 로컬에서, 다른 플레이어 (현재 로컬 기준, 본인) 정보 UI 비활성화
+        
+        // 다른 플레이어에서 현재 플레이어에 대한 UI 표시 비활성화
         photonView.RPC(nameof(InactiveOtherUi), RpcTarget.Others);
         
         //PhotonNetwork.AutomaticallySyncScene = false;      
@@ -97,9 +97,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     // 룸을 떠날 때 자동실행 (콜백)
     public override void OnLeftRoom()
     {
-        Debug.Log("OnLeftRoom");
-        // 다른 플레이어에서 현재 플레이어에 대한 UI 표시 비활성화
-
+        //Debug.Log("OnLeftRoom");
+        
         SceneManager.LoadScene(GameSettings.LobbyScene);                
     }
 

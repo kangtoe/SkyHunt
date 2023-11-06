@@ -6,35 +6,39 @@ using Photon.Pun;
 public class PlayerDamageable : Damageable
 {
     protected void Start()
-    {
-        base.Start();
-
+    {        
         onDeadLocal.AddListener(delegate {
-            //Debug.Log("onDeadLocal");
-       
+            //Debug.Log("onDeadLocal");       
         });
 
         onDeadGlobal.AddListener(delegate {
+            Debug.Log("onDeadGlobal");
 
             if (photonView.IsMine) GameManager.Instance.GameOver();
-            photonView.RPC(nameof(OtherDie), RpcTarget.Others);
+            photonView.RPC(nameof(OtherDie), RpcTarget.OthersBuffered);
         });
+
+        base.Start();
     }
 
     override public void GetDamaged(float damage, int hitObjOwner)
     {
-        Debug.Log("player GetDamaged :" + damage);
+        //Debug.Log("player GetDamaged :" + damage);        
 
-        base.GetDamaged(damage, hitObjOwner);
+        lastHitObjOwner = hitObjOwner;        
 
+        currnetHealth -= damage;
+        if (currnetHealth < 0) currnetHealth = 0;        
         float healthRatio = currnetHealth / maxHealth;
+
         if (photonView.IsMine)
         {            
             UiManager.Instance.UpdateMyHpGage(healthRatio);
             photonView.RPC(nameof(UpdateOtherHpGageRPC), RpcTarget.OthersBuffered, healthRatio);
-        }     
-
-        SoundManager.Instance.PlaySound("OnDamage");
+        }
+        
+        if (currnetHealth == 0) Die();
+        else SoundManager.Instance.PlaySound("OnDamage"); // 사망 시에는 사망 효과음 재생
     }
 
     private void Update()
@@ -58,6 +62,7 @@ public class PlayerDamageable : Damageable
     [PunRPC]
     void OtherDie()
     {
+        Debug.Log("OtherDie");
         UiManager.Instance.ActiveOtherDeathUi();
     }
 }

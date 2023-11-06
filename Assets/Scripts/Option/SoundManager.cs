@@ -111,7 +111,7 @@ public class SoundManager : MonoBehaviour
             if (!soundPlayer.isPlaying) return soundPlayer;
         }
 
-        Debug.Log("모든 플레이어 재생 중");
+        //Debug.Log("모든 플레이어 재생 중");
         return null;
     }
 
