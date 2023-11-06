@@ -28,27 +28,33 @@ public class Damageable : MonoBehaviourPun
     protected void Start()
     {
         currnetHealth = maxHealth;
-        //rbody = GetComponent<Rigidbody2D>();
+        //rbody = GetComponent<Rigidbody2D>()
 
-        onDeadLocal.AddListener(delegate {
-            //Debug.Log("onDeadLocal");
+        // 사망 시 이벤트 체인 등록
+        {
+            onDeadLocal.AddListener(delegate {
+                //Debug.Log("onDeadLocal");
 
-            isDestoryedLocal = true;
-            gameObject.SetActive(false);
-            SoundManager.Instance.PlaySound("Explosion");            
+                // 임시 사망 처리
+                isDestoryedLocal = true;
+                gameObject.SetActive(false);
 
-            if (diePrefab)
-            {
-                string str = "Projectiles/" + diePrefab.name;
-                PhotonNetwork.Instantiate(str, transform.position, diePrefab.transform.rotation);
-            }
-        });
+                // 사망 효과
+                SoundManager.Instance.PlaySound("Explosion");
+                if (diePrefab)
+                {
+                    string str = "Projectiles/" + diePrefab.name;
+                    PhotonNetwork.Instantiate(str, transform.position, diePrefab.transform.rotation);
+                }
+            });
 
-        onDeadGlobal.AddListener(delegate {
-            //Debug.Log("onDeadLocal");
-
-            PhotonNetwork.Destroy(photonView);            
-        });
+            onDeadGlobal.AddListener(delegate {
+                //Debug.Log("onDeadLocal");
+                
+                // 오브젝트 삭제
+                PhotonNetwork.Destroy(photonView);
+            });
+        }        
     }
 
     virtual public void GetDamaged(float damage, int hitObjOwner)
@@ -58,16 +64,15 @@ public class Damageable : MonoBehaviourPun
         lastHitObjOwner = hitObjOwner;
         //Debug.Log(name + " : GetDamaged = " + damage + "( by : player " + hitObjOwner + ")");         
 
+        // 피격 및 사망 처리
         currnetHealth -= damage;
         if (currnetHealth < 0) currnetHealth = 0;
-        if (currnetHealth == 0) Die();
+        if (currnetHealth == 0) Die();         
     }
 
     virtual protected void Die()
     {
-        Debug.Log("die");
-
-        //if (!PhotonNetwork.IsMasterClient) return;      
+        Debug.Log("die");        
 
         if (!isDestoryedLocal) onDeadLocal.Invoke();          
         if (photonView.IsMine) onDeadGlobal.Invoke();
