@@ -75,11 +75,20 @@ public class GameManager : MonoBehaviourPunCallbacks
         }     
     }
 
+    [PunRPC]
+    void InactiveOtherUi()
+    {
+        UiManager.Instance.InactiveOtherUi();
+    }
+
     // 현재 게임 나가기 -> 버튼 이벤트
     public void QuitGame()
     {
         SoundManager.Instance.PlaySound("Exit");
 
+        // 다른 로컬에서, 다른 플레이어 (현재 로컬 기준, 본인) 정보 UI 비활성화
+        photonView.RPC(nameof(InactiveOtherUi), RpcTarget.Others);
+        
         //PhotonNetwork.AutomaticallySyncScene = false;      
         OnwershipTrans();
         PhotonNetwork.LeaveRoom(); 

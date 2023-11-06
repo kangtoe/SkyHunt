@@ -9,6 +9,8 @@ public class Damageable : MonoBehaviourPun
     public GameObject diePrefab;
     public GameObject bumpEffect; // 충돌 시 Impactable에서 호출    
     public float maxHealth = 100;    
+
+    [SerializeField]
     protected float currnetHealth;
     //Rigidbody2D rbody;        
 
@@ -20,10 +22,10 @@ public class Damageable : MonoBehaviourPun
     [HideInInspector]
     public int lastHitObjOwner;
     
-    bool isDestoryed = false;
+    bool isDestoryedLocal = false;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         currnetHealth = maxHealth;
         //rbody = GetComponent<Rigidbody2D>();
@@ -31,7 +33,7 @@ public class Damageable : MonoBehaviourPun
         onDeadLocal.AddListener(delegate {
             //Debug.Log("onDeadLocal");
 
-            isDestoryed = true;
+            isDestoryedLocal = true;
             gameObject.SetActive(false);
             SoundManager.Instance.PlaySound("Explosion");            
 
@@ -51,7 +53,7 @@ public class Damageable : MonoBehaviourPun
 
     virtual public void GetDamaged(float damage, int hitObjOwner)
     {
-        //if (!photonView.IsMine) return;
+        if (!photonView.IsMine) return;
 
         lastHitObjOwner = hitObjOwner;
         //Debug.Log(name + " : GetDamaged = " + damage + "( by : player " + hitObjOwner + ")");         
@@ -63,11 +65,11 @@ public class Damageable : MonoBehaviourPun
 
     virtual protected void Die()
     {
-        if (isDestoryed) return;
-        
-        onDeadLocal.Invoke();        
-        //if (!PhotonNetwork.IsMasterClient) return;        
-        
+        Debug.Log("die");
+
+        //if (!PhotonNetwork.IsMasterClient) return;      
+
+        if (!isDestoryedLocal) onDeadLocal.Invoke();          
         if (photonView.IsMine) onDeadGlobal.Invoke();
     }
 }

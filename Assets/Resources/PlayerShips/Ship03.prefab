@@ -213,6 +213,7 @@ MonoBehaviour:
   diePrefab: {fileID: 0}
   bumpEffect: {fileID: 0}
   maxHealth: 100
+  currnetHealth: 0
   onDeadGlobal:
     m_PersistentCalls:
       m_Calls: []
