@@ -104,12 +104,8 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
-    {
-        string roomName = "Room " + Random.Range(1000, 10000);
-
-        RoomOptions options = new RoomOptions { MaxPlayers = 8 };
-
-        PhotonNetwork.CreateRoom(roomName, options, null);
+    {        
+        CreateRoom();        
     }
 
     public override void OnJoinedRoom()
@@ -254,17 +250,8 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
 
     public void OnCreateRoomButtonClicked_OnRoomSetting()
     {
-        string roomName = RoomNameInputField.text;
-        roomName = (roomName.Equals(string.Empty)) ? "Room " + Random.Range(1000, 10000) : roomName;        
-
-        byte maxPlayers;
-        //byte.TryParse(MaxPlayersInputField.text, out maxPlayers);
-        //maxPlayers = (byte)Mathf.Clamp(maxPlayers, 2, 8);
-        maxPlayers = 2;
-
-        RoomOptions options = new RoomOptions { MaxPlayers = maxPlayers, PlayerTtl = 10000 };
-
-        PhotonNetwork.CreateRoom(roomName, options, null);
+        string roomName = RoomNameInputField.text;        
+        CreateRoom(roomName);
 
         SoundManager.Instance.PlaySound("Click");
     }
@@ -273,12 +260,8 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
     {
         SetActivePanel(JoinRandomRoomPanel.name);
 
-        // 방의 최대 플레이어 수를 설정합니다.
-        string roomName = "Room " + Random.Range(1000, 10000);
-        RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 2;
-        // 무작위 방에 참가합니다. 만약 해당 조건을 만족하는 방이 없으면 새로운 방을 생성합니다.
-        PhotonNetwork.JoinOrCreateRoom(roomName, roomOptions, TypedLobby.Default);
+        // 무작위 방에 참가합니다. 만약 해당 조건을 만족하는 방이 없으면 콜백에서 새로운 방 생성.
+        PhotonNetwork.JoinRandomRoom();
 
         SoundManager.Instance.PlaySound("Click");
     }
@@ -314,6 +297,13 @@ public class MyMainPanel : MonoBehaviourPunCallbacks
     }
 
     #endregion
+
+    void CreateRoom(string roomName = null)
+    {
+        roomName = string.IsNullOrEmpty(roomName) ? "Room " + Random.Range(1000, 10000) : roomName;        
+        RoomOptions options = new RoomOptions { MaxPlayers = 2 };
+        PhotonNetwork.CreateRoom(roomName, options, null);
+    }
 
     void UpdateUserNameUi()
     {
