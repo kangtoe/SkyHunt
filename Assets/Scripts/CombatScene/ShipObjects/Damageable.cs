@@ -35,10 +35,6 @@ public class Damageable : MonoBehaviourPun
             onDeadLocal.AddListener(delegate {
                 //Debug.Log("onDeadLocal");
 
-                // 임시 사망 처리
-                isDestoryedLocal = true;
-                gameObject.SetActive(false);
-
                 // 사망 효과
                 SoundManager.Instance.PlaySound("Explosion");
                 if (diePrefab)
@@ -46,20 +42,26 @@ public class Damageable : MonoBehaviourPun
                     string str = "Projectiles/" + diePrefab.name;
                     PhotonNetwork.Instantiate(str, transform.position, diePrefab.transform.rotation);
                 }
+
+                // 임시 사망 처리
+                isDestoryedLocal = true;
+                //gameObject.SetActive(false); // 해당 코드 이후 등록된 AddListener 코드들이 호출되지 않으므로 주석처리
+                
+                // 실제 사망
+                photonView.RPC(nameof(GlobalDestroy), RpcTarget.AllBuffered);
             });
 
             onDeadGlobal.AddListener(delegate {
                 //Debug.Log("onDeadLocal");
+
                 
-                // 오브젝트 삭제
-                PhotonNetwork.Destroy(photonView);
             });
         }        
     }
 
     virtual public void GetDamaged(float damage, int hitObjOwner)
     {
-        if (!photonView.IsMine) return;
+        //if (!photonView.IsMine) return;
 
         lastHitObjOwner = hitObjOwner;
         //Debug.Log(name + " : GetDamaged = " + damage + "( by : player " + hitObjOwner + ")");         
@@ -74,7 +76,30 @@ public class Damageable : MonoBehaviourPun
     {
         Debug.Log("die");        
 
-        if (!isDestoryedLocal) onDeadLocal.Invoke();          
-        if (photonView.IsMine) onDeadGlobal.Invoke();
+        if (!isDestoryedLocal) onDeadLocal.Invoke();
+        //if (photonView.IsMine) onDeadGlobal.Invoke();
+        onDeadGlobal.Invoke();
+    }
+
+    [PunRPC]
+    void GlobalDestroy()
+    {
+        Debug.Log("lastHitObjOwner : " + lastHitObjOwner + " || LocalPlayer: " + PhotonNetwork.LocalPlayer.ActorNumber);
+
+        // 격추한 플레이어인가?
+        if (lastHitObjOwner != PhotonNetwork.LocalPlayer.ActorNumber) return;
+        
+        // 점수 증가
+        int i = GetComponent<EnemyInfo>().point;
+        ScoreManager.Instance.AddScore(i);
+
+        // 오브젝트 삭제
+        photonView.RPC(nameof(NetDestory), RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    void NetDestory()
+    { 
+        if(photonView.IsMine) PhotonNetwork.Destroy(photonView);
     }
 }

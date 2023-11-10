@@ -107,7 +107,7 @@ public class PlayerShooter : ShooterBase
                     if (i <= centerIdxDown) adjustX = i - centerIdxDown - 0.5f;
                     else adjustX = i - centerIdxUp + 0.5f;
 
-                    Debug.Log("i : "+ i +" || adjust : " + adjustX);
+                    //Debug.Log("i : "+ i +" || adjust : " + adjustX);
                 }                
             }
 

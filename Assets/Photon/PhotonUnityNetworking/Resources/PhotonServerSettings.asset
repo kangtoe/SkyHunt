@@ -62,6 +62,8 @@ MonoBehaviour:
   - TrailDistach
   - InactiveOtherUi
   - UpdateOtherHpGageRPC
+  - GlobalDestroy
+  - NetDestory
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

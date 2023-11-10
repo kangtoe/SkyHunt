@@ -103,7 +103,7 @@ public class BulletBase : MonoBehaviourPun
         if (isDestroyed) return;
 
         PhotonView pv = PhotonView.Find(coll_Id);
-        if (!pv) return;
+        if (!pv || !photonView.IsMine) return;
 
         Collider2D coll = pv.gameObject.GetComponent<Collider2D>();
 

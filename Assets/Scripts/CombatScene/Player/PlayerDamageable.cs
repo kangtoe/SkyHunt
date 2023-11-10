@@ -53,10 +53,11 @@ public class PlayerDamageable : Damageable
         UiManager.Instance.UpdateOtherHpGage(ratio);
     }
 
+    // 다른 플레이어 사망
     [PunRPC]
     void OtherDie()
     {
-        Debug.Log("OtherDie");
+        //Debug.Log("OtherDie");
         UiManager.Instance.ActiveOtherDeathUi();
     }
 }
