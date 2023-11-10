@@ -15,6 +15,7 @@ public class PlayerShooter : ShooterBase
     private void Start()
     {
         GetExp(0);
+        if (photonView.IsMine) UiManager.Instance.UpdateLevelText(shooterLevel.ToString());
     }
 
     private void Update()
