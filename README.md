@@ -1,7 +1,7 @@
 ## 개요
 |![1](https://github.com/user-attachments/assets/06594eed-ac32-434f-a311-229c8872f488)|![2](https://github.com/user-attachments/assets/16b81325-d7bb-4979-94e8-4dbc39a27eda)|
 |:---:|:---:|
-|러닝 액션|문제 풀이 화면|
+|플레이 화면 1|플레이 화면 2|
 
 ## 프로젝트 설명
 협력 멀티플레이를 지원하는 아케이드 슈팅 게임입니다.<br>
