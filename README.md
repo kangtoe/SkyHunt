@@ -1,5 +1,5 @@
 ## 개요
-|![1](https://github.com/user-attachments/assets/06594eed-ac32-434f-a311-229c8872f488)|![2](https://github.com/user-attachments/assets/16b81325-d7bb-4979-94e8-4dbc39a27eda)|
+|![1](https://github.com/user-attachments/assets/06594eed-ac32-434f-a311-229c8872f488)|![2](https://github.com/user-attachments/assets/ded668a3-a9ee-46ac-8e2b-ae2b7d2ecea1)|
 |:---:|:---:|
 |플레이 화면 1|플레이 화면 2|
 
@@ -17,3 +17,4 @@
 3. photon 네트워크 동기화 및 보간 적용 
 4. 커스텀 메터리얼 기반의 스크롤 배경 구현
 5. 파티클 시스템을 활용한 이동 및 피격 시각 효과
+
